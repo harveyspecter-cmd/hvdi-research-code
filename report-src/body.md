@@ -10,6 +10,8 @@ The proposed solution has three parts: the index itself as a reusable instrument
 
 ### 1.1 Background
 
+In late 2026 the first AI racks built around an open scale-up standard shipped without the fabric they were named for. The standard had a specification, a consortium and a second version; it did not yet have a switch chip. That distance between the story told and the product delivered is the subject of this project.
+
 The scale of AI infrastructure spending is settled. The four largest hyperscalers guide to roughly $720 to $740 billion of 2026 capital expenditure (forecast; secondary compilation, [[S32]]). Switch sales into AI back-end networks passed front-end networks for the first time in the second quarter of 2026 (estimate, [[S29]]). Hyperscalers sold more than $370.7 billion of bonds in 2026 to 4 November, about one-fifth of US investment-grade issuance (estimate, [[S57]]).
 
 What is unsettled is which parts of the interconnect stack have earned their narrative. The exploratory phase showed how easily signals are mixed. The proposal's $15.4 billion market figure described all Ethernet switching, not data-center switching, and a widely quoted grid-queue total described generation projects, not data-center load ([[S01,S05]]).
@@ -26,6 +28,10 @@ The objective is to design the HVDI, test it, and apply it to the AI network har
 ### 1.3 Scope and research matrix
 
 The unit of analysis is technology by buyer type by generation by date. This report scores a hyperscale buyer on evidence available on 11 November 2026. Ten technologies are scored: Ethernet scale-out (800G, RoCEv2), InfiniBand scale-out, Ultra Ethernet transport, NVLink scale-up, native UALink scale-up, Ethernet scale-up (SUE, ESUN, UALink over Ethernet), merchant DPUs, co-packaged optics (CPO), linear pluggable optics (LPO) and active electrical cables (AEC). High-bandwidth memory and advanced packaging are treated as gates. GPU ranking and application-layer economics are out of scope. The 2025 to 2030 horizon holds observations to late 2026 and scenarios beyond. The research matrix, which maps each question to evidence, method and managerial output, is in Appendix 1.
+
+### 1.4 How the report unfolds
+
+The report tells one story in four moves. Section 2 states the planner's problem and why existing tools cannot settle it. Section 3 builds the framework and shows it working on one technology. Section 4 reads the results as eight findings, each ending with what it means for the planner. Sections 5 and 6 turn those findings into decision rules and a way to adopt the instrument.
 
 ## 2. Problem Statement
 
@@ -52,13 +58,25 @@ Measuring the gap between expectation and maturity is not new. Kim et al. (2026)
 
 These claims of novelty rest on a limited literature search and are provisional.
 
-### 3.2 Parameters, index and verdict
+### 3.2 The HVDI framework
 
-Each technology receives an integer score from 0 to 4 on five parameters: claimed maturity (H), technical proof (T), adoption (A), capital quality (Q) and buyer economics (E). The rubric for every level is in Appendix 2. The sixth parameter, X, is a set of five gates: site power and grid, advanced packaging, high-bandwidth memory, indium phosphide lasers and export policy. Each gate is open, constraining or blocked, and applies only to the technologies exposed to it.
+Figure 1 shows the framework in one view. It has five steps and two side rules.
 
-Proven value is V = wT·T + wA·A + wE·E, and the gap is D = H − V. Equal weights are the baseline, following the composite-indicator sequence of framework, indicators, weighting and sensitivity ([[S21]]). D of +1.0 or more means the story is ahead; −1.0 or less means the proof is ahead; between the two, the technology is broadly aligned. One rubric level is the threshold because it is the smallest step a coder can distinguish. Q is reported beside the gap and is never subtracted from it.
+![Figure 1. The HVDI framework: evidence is graded, scored, differenced and tested before it becomes a posture.](fig_framework.png)
 
-An outlook label is derived by a transparent rule: a dated milestone within twelve months that addresses the weakest evidence leg, whether the last milestone arrived on time, and capital quality. A blocked gate overrides the sum. The rule has not been calibrated against outcomes.
+**Step 1: evidence.** Every claim enters a ledger with its publisher, date, period and unit, and is graded by who holds it: a buyer, an independent tracker, a regulatory filing or a vendor.
+
+**Step 2: five scores.** Each technology receives an integer from 0 to 4 on claimed maturity (H), technical proof (T), adoption (A), buyer economics (E) and capital quality (Q). The rubric for every level is in Appendix 2. The admission rule governs this step: a score of 3 or more needs buyer, tracker or filing evidence, and vendor marketing alone stops at 2.
+
+**Step 3: the gap.** Proven value is V = wT·T + wA·A + wE·E, and the gap is D = H − V. Equal weights are the baseline, following the composite-indicator sequence of framework, indicators, weighting and sensitivity ([[S21]]).
+
+**Step 4: the verdict.** D of +1.0 or more means the story is ahead; −1.0 or less means the proof is ahead; between the two, the technology is broadly aligned. One rubric level is the threshold because it is the smallest step a coder can distinguish. Each verdict carries a stability figure from the robustness test in Section 3.4.
+
+**Step 5: the posture.** The verdict, an outlook label and the gates together give a posture (Section 5.2). The outlook comes from a transparent rule: a dated milestone within twelve months that addresses the weakest evidence leg, whether the last milestone arrived on time, and capital quality. The rule has not been calibrated against outcomes.
+
+**Two side rules.** Capital quality (Q) is reported beside the gap and never subtracted from it, because money is not proof. The gates (X) sit outside the arithmetic: site power and grid, advanced packaging, high-bandwidth memory, indium phosphide lasers and export policy. Each is open, constraining or blocked, applies only to the technologies exposed to it, and overrides every score when blocked.
+
+**A worked example.** Native UALink is positioned as the open alternative to NVLink, with a second specification already published, so H = 3. Its targets rest on simulation and no switch chip had sampled by 11 November 2026, so T = 1. No product carries a native UALink switch, so A = 1. No buyer has reported a benefit, so E = 1. Proven value is therefore 1.00 and the gap is +2.00: story ahead. The verdict survives 99% of random re-scorings. Capital is venture and acquisition money with no product revenue (Q = 1), and the last milestone slipped, so the outlook is stalling. No gate is blocked. The posture is to defer until switch silicon samples.
 
 ### 3.3 Data collection
 
@@ -74,9 +92,11 @@ The engine has 43 automated tests: exhaustive bounds and monotonicity over every
 
 ## 4. Analysis and Findings
 
-### 4.1 Scores and robustness
+The findings follow the framework's own order: the gap first, then the two technologies whose story is furthest ahead, then the weakest evidence leg, the money, the technologies that are under-told, the gates, and the one buyer-side quantity that public data can bound.
 
-Three technologies are scored as story ahead of proof, seven as broadly aligned and none as proof ahead (Table 1, Figure 1).
+### 4.1 Finding 1: three stories are ahead of their proof, and only one verdict is firm
+
+Three technologies are scored as story ahead of proof, seven as broadly aligned and none as proof ahead (Table 1, Figure 2).
 
 **Table 1.** *HVDI scores at 11 November 2026, equal weights*
 
@@ -95,55 +115,73 @@ Three technologies are scored as story ahead of proof, seven as broadly aligned 
 
 *Note.* Stability is the share of 20,000 Monte Carlo draws that keep the verdict. Evidence for every score is in Appendix 4.
 
-![Figure 1. Claimed maturity against proven value. Points above the upper dashed line are story ahead of proof.](fig1_claimed_vs_proven.png)
+![Figure 2. Claimed maturity against proven value. Points above the upper dashed line are story ahead of proof.](fig1_claimed_vs_proven.png)
 
-Under the three alternative weightings, eight verdicts do not change. Ethernet scale-out becomes story ahead when buyer economics carries half the weight (D = +1.00), and Ethernet scale-up becomes aligned when technical proof does (D = +0.75). The 90% interval for UALink's gap is +1.00 to +3.00, entirely on the story-ahead side; for every other technology the interval crosses a threshold (Figure 2). The honest reading is one firm verdict and nine directional ones. Ethernet scale-up, at exactly +1.00, is close to a coin toss.
+Under the three alternative weightings, eight verdicts do not change. Ethernet scale-out becomes story ahead when buyer economics carries half the weight (D = +1.00), and Ethernet scale-up becomes aligned when technical proof does (D = +0.75). The 90% interval for UALink's gap is +1.00 to +3.00, entirely on the story-ahead side; for every other technology the interval crosses a threshold (Figure 3). The honest reading is one firm verdict and nine directional ones. Ethernet scale-up, at exactly +1.00, is close to a coin toss.
 
-![Figure 2. Gap D at equal weights (point) with the 5th to 95th percentile of 20,000 Monte Carlo draws (bar). Shaded band: broadly aligned.](fig2_gap_interval.png)
+![Figure 3. Gap D at equal weights (point) with the 5th to 95th percentile of 20,000 Monte Carlo draws (bar). Shaded band: broadly aligned.](fig2_gap_interval.png)
 
 The audit moved two scores. Ethernet scale-up technical proof rose from 2 to 3 because Meta states that its Tahan Ethernet scale-up switch is shipping ([[S124]]). Merchant-DPU buyer economics rose from 1 to 2 because Google reports host cores freed against on-host baselines on a co-designed device ([[S136]]); the one independent merchant-DPU baseline is unfavourable to offload ([[S112]]).
 
-### 4.2 The open scale-up story is ahead of its proof
+*For the planner:* treat UALink's verdict as settled and the other nine as direction, to be re-checked each quarter.
+
+### 4.2 Finding 2: the open scale-up story is ahead of its proof
 
 Native UALink has the largest and firmest gap. A 2.0 specification was published in April 2026 before any 1.0 silicon shipped ([[S33]]), and its performance targets rest on modelling and simulation ([[S34]]). AMD's first Helios racks run their scale-up domain over UALink-over-Ethernet on Broadcom silicon because native UALink switch chips are still in validation ([[S63,S98]]). Astera Labs, a named UALink supplier, reports record revenue but discloses no UALink revenue ([[S150]]).
 
 That one fact explains two outlooks. UALink is likely to stall: its last milestone slipped and its capital is venture money. Ethernet scale-up is likely to close its gap: racks are shipping, Meta's switch is shipping, and Broadcom said on its September call that Tomahawk Ultra began deployment in its current quarter ([[S68]]). NVLink, the incumbent, is aligned and still dominates scale-up deployments ([[S65]]). A buyer choosing 2026 racks could not buy the native open alternative.
 
-### 4.3 A compliance label is not a deployed transport
+*For the planner:* defer native UALink, and hold Ethernet scale-up as an option without tying a commissioning date to it.
+
+### 4.3 Finding 3: a compliance label is not a deployed transport
 
 Ultra Ethernet transport scores D = +1.33. The specification reached version 1.1 in October 2026 and compliant NICs are announced, and one buyer, Oracle, has stated an intent to deploy them ([[S72,S78]]). Compliance is self-attested under the specification's own rules, with no published test-lab result ([[S73]]), and the consortium's test-bed guidance leaves interoperation and performance testing out of scope ([[S152]]). A vendor-sponsored report still described the transport in April 2026 as emerging, with RoCEv2 the working choice in hyperscale fabrics ([[S71]]).
 
-### 4.4 Buyer economics is the weakest proof everywhere
+*For the planner:* buy hardware that can carry the standard, and ask for an interoperability result before relying on it.
+
+### 4.4 Finding 4: buyer economics is the weakest proof everywhere
 
 No technology scores above 2 on buyer economics, including Ethernet scale-out, which scores 4 on technical proof and adoption ([[S10,S29]]). Public sources show that buyers deploy and expand; they do not show matched-baseline cost, energy or downtime. Meta reports parity, not benefit, between its RoCE and InfiniBand clusters ([[S87]]).
 
 A bounded model shows why this gap matters. If the network is 15% of cluster cost, a network priced 20% higher raises total cost by 3.0%, and pays for itself if useful output rises by 3.0%. Small utilization gains justify large premiums, and nobody outside the buyer can verify the gain.
 
-### 4.5 Real revenue, few payers
+*For the planner:* the missing proof has to be bought; Section 5.3 shows how to write it into the contract.
+
+### 4.5 Finding 5: the revenue is real, but it rests on few payers
 
 Nine of ten technologies score 2 or less on capital quality. Only Ethernet scale-out reaches 3: Arista's 10-Q shows remaining performance obligations of about $8.6 billion and deferred revenue of $6.84 billion, both owed by buyers, against $3.66 billion of quarterly revenue ([[S139,S30]]). Its $11.4 billion of purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment.
 
 Elsewhere, revenue rests on few payers. Credo's two largest customers were 43% and 28% of revenue in the quarter to 1 August 2026, and 81% together in fiscal 2026 ([[S147,S142]]). NVIDIA's three largest direct customers were 44% of first-half fiscal 2027 revenue ([[S54]]). AMD's binding 1 GW commitment from Meta comes with a warrant for up to 160 million shares, and it is for GPUs, not the scale-up fabric ([[S140,S141]]). Buyers also lean on external funding: third-quarter capital expenditure was 182% of operating cash flow at Amazon, 122% at Alphabet and 103% at Meta (secondary compilation, [[S32]]). Concentration is not hype, but a single buyer's pause would change the picture faster than any technical event.
 
-### 4.6 Quieter technologies are not over-told
+*For the planner:* read supplier concentration as a supply risk, and ask for capacity reservations and second sources.
+
+### 4.6 Finding 6: the quieter technologies are not over-told
 
 InfiniBand, linear pluggable optics and active electrical cables all have a negative gap. InfiniBand sales more than tripled in the first quarter of 2026 against a narrative of decline ([[S11]]). Meta reports, from about 4,000 linear modules on one fabric hop over four months, roughly 2 times fewer link interruptions and 2.6 times fewer service-affecting failures than retimed optics ([[S137]]). Its 800G cable slides describe fleet use with three qualified suppliers, and failures that appeared only at cluster scale ([[S148]]). Each is one operator's account, not independent replication.
 
 Co-packaged optics is closer to aligned than its reputation. Meta's evaluation logged one million flap-free port-hours, and a follow-up reported about 65% lower optics power ([[S66]]); initial deployments arrived in 2026, as analysts had forecast ([[S37,S36]]). The evidence is from the 51.2 Tb/s generation, and adoption remains the weak leg.
 
-### 4.7 Constraints are real but not yet blocking
+*For the planner:* the under-told technologies are deployable now; co-packaged optics merits a pilot at scale with a pluggable fallback.
+
+### 4.7 Finding 7: constraints outside the stack are real but not yet blocking
 
 All five gates are constraining and none is blocked (Appendix 5). Grid-connection waits exceed four years in primary US markets ([[S62]]), advanced-packaging supply ran about 20% short of demand in mid-2026 ([[S60]]), one supplier's HBM4 ramp slipped a quarter ([[S43]]), a leading indium phosphide laser supplier ships about 30% below demand ([[S61]]), and certain AI chips need case-by-case export licences ([[S59]]). Interconnect readiness is not what limits value in late 2026; delivered capacity, packaging, memory and lasers are.
 
 The scenarios show a structural asymmetry. A halt in indium exports blocks the four optical technologies and leaves the six copper or protocol technologies untouched. A Taiwan packaging disruption, tighter export rules or worse grid delays block all ten. These are exposure tests and predict nothing.
 
-### 4.8 Energy per bit depends on the boundary
+*For the planner:* schedule by gate, not by product, and keep a copper path where reach allows.
+
+### 4.8 Finding 8: energy per bit depends on where the boundary is drawn
 
 Rated switch energy per bit fell about 4.7 times across four generations of Tomahawk-based systems, from 58.4 to 12.5 picojoules per bit at typical load without optics ([[S46,S47,S48,S49]]). The boundary changes the answer more than the generation does: the same Tomahawk 5 switch reads 12.5 pJ/bit with copper cables and 43.3 at maximum load with optics ([[S49]]). A linear 800G module is rated 7.5 W below a retimed one ([[S51,S50]]). At $0.08 per kWh, a facility overhead of 1.2 and a four-year life, that saving is worth $25.23 per module in energy; if freed site capacity is valued at $8 per watt, it adds $72.00. The inputs are illustrative, not sourced prices. The structural point is that the case for linear optics rests on freed capacity and reliability, not on electricity. All values are vendor-rated, not measured in operation.
+
+*For the planner:* never compare energy figures without fixing the boundary, the load and the optics.
 
 The eight hypotheses from the proposal are assessed in Appendix 6: four are supported, one is indeterminate and three could not be tested with public data.
 
 ## 5. Proposed Solutions
+
+The eight findings point to three solutions. Findings 1 to 3 call for an instrument that separates claim from proof; the verdicts call for decision rules; and Findings 4, 5 and 7 call for buying practices that close the evidence gap and manage exposure.
 
 ### 5.1 The index as a reusable instrument
 

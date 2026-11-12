@@ -26,7 +26,7 @@ outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 
 | `hvdi/make_public.py` | Writes the public copy of the page with identifying text removed. |
 | `hvdi/shot.py`, `hvdi/figs.py` | Browser smoke test and screenshots (optional). |
 | `hvdi/EVIDENCE_AUDIT.md` | Evidence audit of 12 November 2026: what was checked, what changed, falsifiers. |
-| `report-src/` | Report text (`body.md`, `appendix.md`), figures and the scripts that build the Word file. |
+| `report-src/` | Report text (`body.md`, `appendix.md`), figures (including the framework diagram, `make_framework_fig.py`) and the scripts that build the Word file. |
 | `deck-src/` | Slide source (`build.js`). |
 
 ## 2. Requirements
@@ -100,7 +100,7 @@ cd hvdi && python3 make_public.py            # writes ../site-public/index.html
 pip install playwright && python3 shot.py    # expect "ERRORS: [] net-errs: 0"
 
 # Report (Word): needs pandoc, matplotlib, python-docx
-cd ../report-src && python3 make_figs.py && python3 build_report.py && python3 finish_docx.py
+cd ../report-src && python3 make_figs.py && python3 make_framework_fig.py ../deck-src && python3 build_report.py && python3 finish_docx.py
 
 # Deck: needs Node.js, pptxgenjs and the apply_theme.js helper (not included in this repository)
 cd ../deck-src && npm install pptxgenjs

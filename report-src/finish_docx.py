@@ -90,6 +90,20 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
     for t in d.tables:
         t.alignment = WD_TABLE_ALIGNMENT.CENTER
         borders(t)
+        if len(t.columns) >= 10:  # the score table: wide first column, narrow score columns
+            widths = [1.65] + [0.36] * 5 + [0.5, 0.55, 0.85, 0.7, 0.7][: len(t.columns) - 6]
+            t.autofit = False
+            tblPr = t._tbl.tblPr
+            for tag in ("w:tblW", "w:tblLayout"):
+                for old in tblPr.findall(qn(tag)):
+                    tblPr.remove(old)
+            tw = OxmlElement("w:tblW"); tw.set(qn("w:w"), str(int(sum(widths) * 1440))); tw.set(qn("w:type"), "dxa"); tblPr.append(tw)
+            lay = OxmlElement("w:tblLayout"); lay.set(qn("w:type"), "fixed"); tblPr.append(lay)
+            for gc, w in zip(t._tbl.tblGrid.findall(qn("w:gridCol")), widths):
+                gc.set(qn("w:w"), str(int(w * 1440)))
+            for row in t.rows:
+                for cell, w in zip(row.cells, widths):
+                    cell.width = Inches(w)
         for ri, row in enumerate(t.rows):
             for c in row.cells:
                 for p in c.paragraphs:
