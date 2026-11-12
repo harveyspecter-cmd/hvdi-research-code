@@ -1,0 +1,1347 @@
+{
+ "asof": "2026-11-11",
+ "audit": "2026-11-12",
+ "weights": {
+  "equal": [
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "t": [
+   0.5,
+   0.25,
+   0.25
+  ],
+  "a": [
+   0.25,
+   0.5,
+   0.25
+  ],
+  "e": [
+   0.25,
+   0.25,
+   0.5
+  ]
+ },
+ "weight_names": {
+  "equal": "Equal",
+  "t": "Technical-heavy",
+  "a": "Adoption-heavy",
+  "e": "Economics-heavy"
+ },
+ "categories": {
+  "eth_scaleout": {
+   "name": "Ethernet scale-out",
+   "sub": "800G, RoCEv2",
+   "layer": "Scale-out switching",
+   "medium": "optics",
+   "H": {
+    "v": 4,
+    "basis": "independent",
+    "conf": "high",
+    "why": "Analyst headlines describe Ethernet extending its lead in AI back-end networks.",
+    "src": [
+     "S11",
+     "S29"
+    ]
+   },
+   "T": {
+    "v": 4,
+    "basis": "buyer",
+    "conf": "high",
+    "why": "Operator-documented production across generations; 800G dominates back-end shipments.",
+    "src": [
+     "S10",
+     "S29"
+    ]
+   },
+   "A": {
+    "v": 4,
+    "basis": "independent",
+    "conf": "high",
+    "why": "About two-thirds of AI-cluster switch sales in Q1 2026; back-end passed front-end in Q2.",
+    "src": [
+     "S11",
+     "S29"
+    ]
+   },
+   "Q": {
+    "v": 3,
+    "basis": "filing",
+    "conf": "high",
+    "why": "Arista 10-Q to 30 Sep 2026: remaining performance obligations about $8.6B (91% to be recognised within two years) and deferred revenue $6,839.5M, both contractual buyer-side balances; 100+ Etherlink customers; buyers fund from cash flow and investment-grade debt. Its $11.4B of non-cancellable purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment. Customer-concentration percentages were not read at origin.",
+    "src": [
+     "S139",
+     "S55",
+     "S30",
+     "S57"
+    ]
+   },
+   "E": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Operators report reliability outcomes; no matched-baseline cost or energy result is public.",
+    "src": [
+     "S39"
+    ]
+   },
+   "milestone": {
+    "text": "1.6T systems: trials in 2H 2026, production deployment expected 2027 (Arista).",
+    "targets_weak_leg": false,
+    "due_within_12m": true,
+    "punctual": 0,
+    "src": [
+     "S55"
+    ]
+   }
+  },
+  "infiniband": {
+   "name": "InfiniBand scale-out",
+   "sub": "800G generation",
+   "layer": "Scale-out switching",
+   "medium": "optics",
+   "H": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Framed as the fabric losing share to Ethernet.",
+    "src": [
+     "S11",
+     "S29"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "800G systems shipping in volume with the Blackwell Ultra platform.",
+    "src": [
+     "S11"
+    ]
+   },
+   "A": {
+    "v": 3,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Sales more than tripled in Q1 2026; about one-third of AI-cluster switch sales.",
+    "src": [
+     "S11"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "filing",
+    "conf": "medium",
+    "why": "Single vendor. NVIDIA's 10-Q confirms three direct customers at 16%, 15% and 13% (44%) of first-half FY2027 revenue; it holds large stakes in and guarantees for customers.",
+    "src": [
+     "S143",
+     "S54",
+     "S58"
+    ]
+   },
+   "E": {
+    "v": 1,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta ran matched 24,576-GPU clusters on RoCE and on InfiniBand and reports both ran without network bottlenecks: parity, not a benefit.",
+    "src": [
+     "S87"
+    ]
+   },
+   "milestone": {
+    "text": "800G ramp arrived with the platform it was tied to.",
+    "targets_weak_leg": false,
+    "due_within_12m": false,
+    "punctual": 1,
+    "src": [
+     "S11"
+    ]
+   }
+  },
+  "uet": {
+   "name": "Ultra Ethernet transport",
+   "sub": "UEC 1.0 / UET",
+   "layer": "Scale-out transport",
+   "medium": "none",
+   "H": {
+    "v": 3,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Products marketed as UEC-compliant; the specification is described in the present tense.",
+    "src": [
+     "S07",
+     "S09",
+     "S44"
+    ]
+   },
+   "T": {
+    "v": 2,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Specification 1.0 (June 2025), then 1.0.1 and 1.0.2 correcting congestion-control algorithms, 1.0.3 (July 2026, adds 200 Gb/s per lane) and 1.1 (12 Oct 2026, 764 pages, adds a scale-up profile); Section 8 of the specification states compliance is self-attested from UEC checklists; the 562-page specification's own overview paper (spec authors from AMD, Broadcom, HPE, Microsoft, OpenAI, Cisco, Intel) reports no measurements and calls the first products future; compliance is self-attested, with no test lab or plugfest result published. The UEC Transport and PHY/link-layer profile matrices and compliance checklists (revision 1.0) define what a compliance claim covers, and the June 2025 test-bed recommendations (revision 1.0, marked UEC proprietary and confidential) put interoperation, system and performance testing out of scope; none of them is a test result.",
+    "src": [
+     "S72",
+     "S73",
+     "S75",
+     "S138",
+     "S44",
+     "S151",
+     "S152"
+    ]
+   },
+   "A": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "low",
+    "why": "Oracle states it will be first to deploy UEC-capable NICs: an intent in the future tense, with no port or cluster counts and no proof the UET protocol itself is in production.",
+    "src": [
+     "S78",
+     "S45"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "vendor",
+    "conf": "low",
+    "why": "No UET-specific revenue, backlog or design win on the AMD or Broadcom calls of August to November 2026; a strict reading gives 1.",
+    "src": [
+     "S80",
+     "S82",
+     "S83"
+    ]
+   },
+   "E": {
+    "v": 1,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Vendor claim only: 25% better RDMA performance than RoCEv2, workload and baseline unstated.",
+    "src": [
+     "S44",
+     "S07"
+    ]
+   },
+   "milestone": {
+    "text": "UEC-compliant 800G NICs ship inside AMD Helios racks ramping in Q4 2026.",
+    "targets_weak_leg": true,
+    "due_within_12m": true,
+    "punctual": 0,
+    "src": [
+     "S63"
+    ]
+   }
+  },
+  "nvlink": {
+   "name": "NVLink scale-up",
+   "sub": "proprietary incumbent",
+   "layer": "Scale-up fabric",
+   "medium": "copper",
+   "H": {
+    "v": 3,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Described as the dominant scale-up fabric today, with open alternatives expected to challenge it.",
+    "src": [
+     "S65"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Dominates scale-up deployments across successive accelerator generations.",
+    "src": [
+     "S65"
+    ]
+   },
+   "A": {
+    "v": 4,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Analysts describe it as dominating scale-up deployments.",
+    "src": [
+     "S65"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "filing",
+    "conf": "medium",
+    "why": "Single vendor. NVIDIA's 10-Q confirms three direct customers at 16%, 15% and 13% (44%) of first-half FY2027 revenue; large stakes in and guarantees for customers. Networking is not reported apart from compute, so NVLink revenue is not separable in the filing.",
+    "src": [
+     "S143",
+     "S145",
+     "S54",
+     "S58"
+    ]
+   },
+   "E": {
+    "v": 1,
+    "basis": "none",
+    "conf": "low",
+    "why": "No NVLink revenue or price disclosed; cost is bundled into rack-scale systems. Best proxy is a trade-press estimate.",
+    "src": [
+     "S86",
+     "S106",
+     "S107"
+    ]
+   },
+   "milestone": {
+    "text": "Next generation arrives with the 2026 accelerator platform; no dated event adds buyer-economics evidence.",
+    "targets_weak_leg": false,
+    "due_within_12m": true,
+    "punctual": 1,
+    "src": [
+     "S65"
+    ]
+   }
+  },
+  "ualink": {
+   "name": "UALink scale-up",
+   "sub": "native switched fabric",
+   "layer": "Scale-up fabric",
+   "medium": "copper",
+   "H": {
+    "v": 3,
+    "basis": "vendor",
+    "conf": "high",
+    "why": "Positioned as the open alternative to NVLink; a 2.0 specification followed in April 2026.",
+    "src": [
+     "S33"
+    ]
+   },
+   "T": {
+    "v": 1,
+    "basis": "vendor",
+    "conf": "high",
+    "why": "Targets rest on simulation; a hardware teardown finds first racks carrying UALink over Ethernet because native switch chips were not ready; no sampling statement found by 11 Nov 2026.",
+    "src": [
+     "S34",
+     "S98",
+     "S93"
+    ]
+   },
+   "A": {
+    "v": 1,
+    "basis": "independent",
+    "conf": "high",
+    "why": "No native UALink switch in products; first AMD Helios racks use UALink over Ethernet instead.",
+    "src": [
+     "S33",
+     "S63"
+    ]
+   },
+   "Q": {
+    "v": 1,
+    "basis": "independent",
+    "conf": "high",
+    "why": "Venture and acquisition capital only: a $200M Series A and a $540M acquisition; no recognized product revenue found. Astera Labs, a named UALink supplier, reports Q3 2026 revenue of $584.9M led by Scorpio switches but names UALink only in its portfolio description and, among its forward-looking risks, the timing of any initial UALink 2.0 programs; no UALink revenue is disclosed.",
+    "src": [
+     "S150",
+     "S63",
+     "S33"
+    ]
+   },
+   "E": {
+    "v": 1,
+    "basis": "vendor",
+    "conf": "high",
+    "why": "Developer targets only; no buyer-stated or matched figure for a native fabric.",
+    "src": [
+     "S92",
+     "S34"
+    ]
+   },
+   "milestone": {
+    "text": "First merchant switch silicon samples at end of 2026, volume in 2027. First racks shipped without it.",
+    "targets_weak_leg": true,
+    "due_within_12m": true,
+    "punctual": -1,
+    "src": [
+     "S63",
+     "S33"
+    ]
+   }
+  },
+  "eth_scaleup": {
+   "name": "Ethernet scale-up",
+   "sub": "UALink over Ethernet, RoCE; not yet ESUN",
+   "layer": "Scale-up fabric",
+   "medium": "copper",
+   "H": {
+    "v": 3,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Vendor and operator roadmaps present Ethernet as the open scale-up answer; Arista announced an ESUN-based rack architecture on 3 Nov 2026 (an announcement, not a shipment).",
+    "src": [
+     "S35",
+     "S19b",
+     "S146"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta's own post (12 Oct 2026) says its Tahan Ethernet scale-up switch for MTIA 300 is shipping: Broadcom Tomahawk 5, RoCE transport, four switches per 16 accelerators, 6.4 Tb/s per accelerator. No unit counts, and it is Meta's own variant, not ESUN. AMD separately reports first Helios revenue shipments (Q3 2026); a teardown shows UALink over Ethernet on Tomahawk 6.",
+    "src": [
+     "S124",
+     "S81",
+     "S98",
+     "S99"
+    ]
+   },
+   "A": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta reports Ethernet scale-up in production for its own accelerator; analysts see scale-up only emerging in 2H 2026.",
+    "src": [
+     "S39",
+     "S29"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "filing",
+    "conf": "medium",
+    "why": "AMD's 8-K of 24 Feb 2026 (read at origin) states Meta agreed a binding commitment to buy the initial 1 GW of Instinct GPU products, no period stated; the 6 GW total is not stated as binding. Meta's warrant covers up to 160M shares at $0.01 (first tranche on shipment of the initial 1 GW; price thresholds escalating to $600). The 10-Q to 26 Sep 2026 reports no warrant shares vested, a $1.1B warrant-liability charge in Q3 and $4.5B of unrecognised grant-date value. AMD's 8-K for 5 Oct 2025 shows the same structure with OpenAI (binding initial 1 GW of MI450, a 160M-share warrant at $0.01, 6 GW for full vesting, price targets to $600). The commitments are for GPUs, not the scale-up fabric, and supplier equity sits beside the orders, so Q stays 2.",
+    "src": [
+     "S140",
+     "S149",
+     "S141",
+     "S105",
+     "S63"
+    ]
+   },
+   "E": {
+    "v": 1,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Vendor simulation only (33% switching cost saving, 13% training speed-up), and the saving is tied to scale-out switches.",
+    "src": [
+     "S101",
+     "S35"
+    ]
+   },
+   "milestone": {
+    "text": "AMD Helios racks with UALink-over-Ethernet on Broadcom silicon: shipments from late Q3 2026, ramp in Q4.",
+    "targets_weak_leg": true,
+    "due_within_12m": true,
+    "punctual": 1,
+    "src": [
+     "S63"
+    ]
+   }
+  },
+  "dpu": {
+   "name": "Merchant DPU / SmartNIC",
+   "sub": "offload and isolation",
+   "layer": "Endpoints",
+   "medium": "none",
+   "H": {
+    "v": 3,
+    "basis": "vendor",
+    "conf": "medium",
+    "why": "Positioned by vendors as core AI-factory infrastructure.",
+    "src": [
+     "S111",
+     "S67"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "low",
+    "why": "Oracle describes a SmartNIC offload device in production compute shapes but gives no counts and does not name the silicon; a strict merchant-only reading gives 2.",
+    "src": [
+     "S110",
+     "S111",
+     "S42"
+    ]
+   },
+   "A": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Two cloud providers took most shipments in 2024; in late 2026 analysts still ask whether adoption will broaden beyond established cloud deployments.",
+    "src": [
+     "S42",
+     "S67"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "filing",
+    "conf": "medium",
+    "why": "NVIDIA reports networking as one line ($31.4B, fiscal 2026) with no DPU breakout; trackers describe hyperscalers on customised devices.",
+    "src": [
+     "S116",
+     "S117",
+     "S42"
+    ]
+   },
+   "E": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Google's Wave (ASPLOS 2025) reports against on-host baselines on a co-designed Intel IPU: 1.1% to 7.4% slowdown, 16 host cores saved (memory management), 8 cores (RPC), 11.2% VM gain. A research system, not a merchant DPU in production; an independent lab study (S112) finds 7.5x lower compute throughput than the host. No cost figure.",
+    "src": [
+     "S136",
+     "S112"
+    ]
+   },
+   "milestone": {
+    "text": "Next-generation merchant DPU launches with 2026 accelerator platforms; it does not address the missing economics evidence.",
+    "targets_weak_leg": false,
+    "due_within_12m": true,
+    "punctual": 0,
+    "src": []
+   }
+  },
+  "cpo": {
+   "name": "Co-packaged optics",
+   "sub": "scale-out switches",
+   "layer": "Physical connectivity",
+   "medium": "optics",
+   "H": {
+    "v": 3,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Described as moving from long-promised to entering production.",
+    "src": [
+     "S36"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "high",
+    "why": "Meta ran 15 CPO switches for nine months (36 million device-hours) after one million flap-free port-hours in lab testing.",
+    "src": [
+     "S66",
+     "S39"
+    ]
+   },
+   "A": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Early deployments in 2026; unit volumes still small.",
+    "src": [
+     "S36",
+     "S38"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Early revenue plus strategic capital upstream: NVIDIA put $2B each into two laser suppliers with supply agreements.",
+    "src": [
+     "S61",
+     "S36"
+    ]
+   },
+   "E": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Buyer tests report about 65% lower optics power and fewer interruptions (0.2% against 1.22% a year) than pluggables.",
+    "src": [
+     "S66",
+     "S39"
+    ]
+   },
+   "milestone": {
+    "text": "102.4T CPO platforms enter production in 2027; 2026 initial deployments arrived when analysts forecast in 2025.",
+    "targets_weak_leg": true,
+    "due_within_12m": true,
+    "punctual": 1,
+    "src": [
+     "S40",
+     "S37"
+    ]
+   }
+  },
+  "lpo": {
+   "name": "Linear pluggable optics",
+   "sub": "800G LPO",
+   "layer": "Physical connectivity",
+   "medium": "optics",
+   "H": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "medium",
+    "why": "Less prominent than co-packaged optics in coverage.",
+    "src": [
+     "S36"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "high",
+    "why": "Meta's OCP 2026 talk (slides read in full): live production on one hop of a DSF fabric (4k modules, 4 months) shows about 2x fewer interruptions and about 2.6x fewer service-affecting failures than retimed optics at the same link mode; a ~1k-module lab loopback logged 0 module-attributable failures in 2.96M link-hours. 100G/lane only; Meta's own measurement, no independent replication.",
+    "src": [
+     "S137",
+     "S39"
+    ]
+   },
+   "A": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta states a limited LPO-LPO deployment: about 4k modules on one network hop for 4 months, the rest of the fabric retimed. Oracle production is reported only in a secondary write-up (S39). Scale is small against a hyperscale fleet.",
+    "src": [
+     "S137",
+     "S39"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "vendor",
+    "conf": "low",
+    "why": "A chip supplier reports LPO revenue growing inside a $71.6M data-centre line; no filing separates LPO revenue or units.",
+    "src": [
+     "S129",
+     "S39"
+    ]
+   },
+   "E": {
+    "v": 2,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta's lab, fan speed fixed: -46% power per module and -17.5 C module temperature; fewer interruptions in production. No cost-per-bit or fleet energy result is public.",
+    "src": [
+     "S137",
+     "S39"
+    ]
+   },
+   "milestone": {
+    "text": "No dated milestone admitted that would add economics evidence.",
+    "targets_weak_leg": false,
+    "due_within_12m": false,
+    "punctual": 0,
+    "src": []
+   }
+  },
+  "aec": {
+   "name": "Active electrical cables",
+   "sub": "in-rack and rack-to-rack copper",
+   "layer": "Physical connectivity",
+   "medium": "copper",
+   "H": {
+    "v": 2,
+    "basis": "independent",
+    "conf": "low",
+    "why": "Limited coverage relative to optics.",
+    "src": [
+     "S41",
+     "S130"
+    ]
+   },
+   "T": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "medium",
+    "why": "Meta presented its large-scale deployment of 800G active electrical cables in AI data centres at OCP 2026; failure-rate data inside the talk is unread.",
+    "src": [
+     "S120",
+     "S121",
+     "S41"
+    ]
+   },
+   "A": {
+    "v": 3,
+    "basis": "buyer",
+    "conf": "high",
+    "why": "Meta, a named buyer, describes 800G AEC in its fleet with three qualified suppliers; Credo's 10-Q reports revenue of $479.0M in the quarter to 1 Aug 2026, with over 90% of the increase from AEC shipments to hyperscale customers.",
+    "src": [
+     "S148",
+     "S147",
+     "S41"
+    ]
+   },
+   "Q": {
+    "v": 2,
+    "basis": "filing",
+    "conf": "high",
+    "why": "Recognized revenue, but concentrated: the 10-K for the year to 2 May 2026 shows Customer A at 49% and Customer B at 32% of revenue (81% together), receivables at 53%, 20% and 19% for three customers, top ten about 90% of revenue; the quarter to May 2026 had a top three of 77% on the call. The 10-Q for the quarter to 1 Aug 2026 shows Customer A at 43% and Customer B at 28% of revenue (71%), receivables at 57% and 28%, and $222.2M of non-cancellable purchase commitments owed by Credo to its own suppliers; no buyer commitments are disclosed.",
+    "src": [
+     "S147",
+     "S142",
+     "S56"
+    ]
+   },
+   "E": {
+    "v": 2,
+    "basis": "vendor",
+    "conf": "low",
+    "why": "Vendor financials and a bounded vendor comparison; the only buyer statement is qualitative.",
+    "src": [
+     "S130",
+     "S41",
+     "S120"
+    ]
+   },
+   "milestone": {
+    "text": "No dated milestone admitted that would add economics evidence.",
+    "targets_weak_leg": false,
+    "due_within_12m": false,
+    "punctual": 0,
+    "src": []
+   }
+  }
+ },
+ "gates": {
+  "power": {
+   "name": "Site power and grid",
+   "status": 1,
+   "applies": "all",
+   "why": "Average grid-connection wait above four years in primary US markets; transformer lead times above 160 weeks; Microsoft built less than guided because capacity arrived late.",
+   "src": [
+    "S62",
+    "S31"
+   ]
+  },
+  "packaging": {
+   "name": "Advanced packaging",
+   "status": 1,
+   "applies": "all",
+   "why": "CoWoS supply about 20% short of demand in mid-2026, expected to narrow to about 10% by year end; capacity concentrated in Taiwan.",
+   "src": [
+    "S60"
+   ]
+  },
+  "memory": {
+   "name": "High-bandwidth memory",
+   "status": 1,
+   "applies": "all",
+   "why": "One supplier's HBM4 volume ramp moved to Q3 2026 and the 2026 shipment outlook was cut from 4.5 to 4.0 billion gigabits.",
+   "src": [
+    "S43"
+   ]
+  },
+  "lasers": {
+   "name": "Indium phosphide lasers",
+   "status": 1,
+   "applies": [
+    "optics"
+   ],
+   "why": "A leading supplier ships about 30% below demand with capacity committed through 2027; refined indium supply is concentrated in China and under export control.",
+   "src": [
+    "S61"
+   ]
+  },
+  "policy": {
+   "name": "Export policy",
+   "status": 1,
+   "applies": "all",
+   "why": "Since 15 January 2026, certain AI chips for China are licensed case by case with conditions, alongside a 25% tariff proclamation. The rules also changed in January 2025 and May 2025.",
+   "src": [
+    "S59"
+   ]
+  }
+ },
+ "scenarios": {
+  "base": {
+   "name": "As observed",
+   "set": {},
+   "note": "Gates as evidenced on 11 November 2026."
+  },
+  "taiwan": {
+   "name": "Taiwan supply disruption",
+   "set": {
+    "packaging": 2,
+    "memory": 1
+   },
+   "note": "Advanced packaging is concentrated in Taiwan, so every accelerator-dependent category is blocked."
+  },
+  "indium": {
+   "name": "Indium export halt",
+   "set": {
+    "lasers": 2
+   },
+   "note": "Optical categories are blocked; copper categories are not."
+  },
+  "export": {
+   "name": "Export rules tightened",
+   "set": {
+    "policy": 2
+   },
+   "note": "Binding for sales into restricted destinations; shown here as binding for all."
+  },
+  "grid": {
+   "name": "Grid delays worsen",
+   "set": {
+    "power": 2
+   },
+   "note": "No new capacity can be energized on schedule, whatever the fabric."
+  }
+ },
+ "actors": [
+  {
+   "actor": "Arista",
+   "metric": "Non-cancellable purchase commitments",
+   "value": 11.4,
+   "unit": "$B",
+   "period": "30 Sep 2026",
+   "label": "OBS",
+   "src": "S55"
+  },
+  {
+   "actor": "Arista",
+   "metric": "Deferred revenue",
+   "value": 6.84,
+   "unit": "$B",
+   "period": "30 Sep 2026",
+   "label": "OBS",
+   "src": "S55"
+  },
+  {
+   "actor": "Arista",
+   "metric": "Quarterly revenue",
+   "value": 3.66,
+   "unit": "$B",
+   "period": "Q3 2026",
+   "label": "OBS",
+   "src": "S30"
+  },
+  {
+   "actor": "Broadcom",
+   "metric": "AI networking share of AI semiconductor revenue (computed as 100 minus the 73% XPU share stated on the call)",
+   "value": 27,
+   "unit": "%",
+   "period": "Q3 FY2026 (quarter to 2 Aug 2026)",
+   "label": "EST",
+   "src": "S68"
+  },
+  {
+   "actor": "Credo",
+   "metric": "Top-2 customer share of revenue",
+   "value": 71,
+   "unit": "%",
+   "period": "quarter to 1 Aug 2026",
+   "label": "OBS",
+   "src": "S147"
+  },
+  {
+   "actor": "NVIDIA",
+   "metric": "Top-3 direct customer share of revenue",
+   "value": 44,
+   "unit": "%",
+   "period": "first half FY2027",
+   "label": "OBS",
+   "src": "S54"
+  },
+  {
+   "actor": "NVIDIA",
+   "metric": "Unlisted equity investments",
+   "value": 42,
+   "unit": "$B",
+   "period": "end April 2026",
+   "label": "OBS",
+   "src": "S58"
+  },
+  {
+   "actor": "Five hyperscalers",
+   "metric": "Bonds sold in 2026 to 4 Nov",
+   "value": 370.7,
+   "unit": "$B",
+   "period": "2026 year to date",
+   "label": "EST",
+   "src": "S57"
+  },
+  {
+   "actor": "Amazon",
+   "metric": "Capex / operating cash flow",
+   "value": 182,
+   "unit": "%",
+   "period": "Q3 2026",
+   "label": "OBS",
+   "src": "S32"
+  },
+  {
+   "actor": "Alphabet",
+   "metric": "Capex / operating cash flow",
+   "value": 122,
+   "unit": "%",
+   "period": "Q3 2026",
+   "label": "OBS",
+   "src": "S32"
+  },
+  {
+   "actor": "Meta",
+   "metric": "Capex / operating cash flow",
+   "value": 103,
+   "unit": "%",
+   "period": "Q3 2026",
+   "label": "OBS",
+   "src": "S32"
+  }
+ ],
+ "energy": [
+  [
+   "Switch, Tomahawk",
+   58.4,
+   58.4,
+   "Switch system, no optics",
+   "S46"
+  ],
+  [
+   "Switch, Tomahawk 3",
+   30.3,
+   30.3,
+   "Switch system, no optics",
+   "S47"
+  ],
+  [
+   "Switch, Tomahawk 4",
+   20.6,
+   20.6,
+   "Switch system, no optics",
+   "S48"
+  ],
+  [
+   "Switch, Tomahawk 5",
+   12.5,
+   12.5,
+   "Switch system, no optics",
+   "S49"
+  ],
+  [
+   "Tomahawk 5 with optics, max",
+   43.3,
+   43.3,
+   "Switch system with optics",
+   "S49"
+  ],
+  [
+   "102.4T system, retimed optics",
+   37.3,
+   37.3,
+   "Switch system with optics",
+   "S39"
+  ],
+  [
+   "100G module",
+   35,
+   45,
+   "Optical module",
+   "S52"
+  ],
+  [
+   "400G DR4 module",
+   20,
+   30,
+   "Optical module",
+   "S52"
+  ],
+  [
+   "800G DR8 retimed",
+   18.8,
+   20.0,
+   "Optical module",
+   "S50"
+  ],
+  [
+   "800G DR8 linear",
+   10.6,
+   10.6,
+   "Optical module",
+   "S51"
+  ],
+  [
+   "1.6T DR8 retimed",
+   12.5,
+   18.8,
+   "Optical module",
+   "S52"
+  ]
+ ],
+ "audit_score_changes": [
+  [
+   "eth_scaleup",
+   "T",
+   2,
+   3
+  ],
+  [
+   "dpu",
+   "E",
+   1,
+   2
+  ]
+ ],
+ "sources": {
+  "S07": {
+   "text": "Ultra Ethernet Consortium, Specification 1.0 release, 11 Jun 2025",
+   "url": "https://ultraethernet.org/ultra-ethernet-consortium-uec-launches-specification-1-0-transforming-ethernet-for-ai-and-hpc-at-scale/"
+  },
+  "S09": {
+   "text": "Broadcom, Tomahawk 6 launch, 3 Jun 2025",
+   "url": "https://investors.broadcom.com/node/63146/pdf"
+  },
+  "S10": {
+   "text": "Meta, RDMA over Ethernet for distributed AI training, SIGCOMM 2024",
+   "url": "https://doi.org/10.1145/3651890.3672233"
+  },
+  "S11": {
+   "text": "Dell'Oro Group, AI back-end networks Q1 2026, 2 Jun 2026",
+   "url": "https://www.delloro.com/news/ethernet-extends-lead-in-ai-scale-out-networks-despite-strong-infiniband-rebound/"
+  },
+  "S19b": {
+   "text": "Open Compute Project, ESUN operator requirements rev 1.0, 9 Feb 2026",
+   "url": "https://www.opencompute.org/documents/ocp-esun-network-operator-requirements-base-specification-rev-1-0-final-pdf/"
+  },
+  "S29": {
+   "text": "Dell'Oro Group, AI back-end networks Q2 2026, 3 Sep 2026",
+   "url": "https://www.delloro.com/news/ai-back-end-networks-switch-sales-surpass-front-end-networks-for-the-first-time-in-2q2026/"
+  },
+  "S30": {
+   "text": "Arista, Q3 2026 results (8-K exhibit), 3 Nov 2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000252/ex991q326-earningsrelease.htm"
+  },
+  "S31": {
+   "text": "Redmond Magazine on Microsoft's September 2026 quarter, 30 Oct 2026",
+   "url": "https://redmondmag.com/articles/2026/10/30/microsoft-revenue-jumps-as-azure-and-ai-demand--fuel-growth.aspx"
+  },
+  "S32": {
+   "text": "Capex trackers compiled from Q3 2026 releases (secondary)",
+   "url": "https://walnutinvest.com/stats/ai-capex-statistics"
+  },
+  "S33": {
+   "text": "The Register, UALink 2.0 before 1.0 silicon, 7 Apr 2026",
+   "url": "https://www.theregister.com/2026/04/07/ualink_2_specs/"
+  },
+  "S34": {
+   "text": "UALink Consortium white paper, Jan 2026",
+   "url": "https://ualinkconsortium.org/wp-content/uploads/2026/01/UALink_White_Paper_Publication_FINAL_UPDATED.pdf"
+  },
+  "S35": {
+   "text": "Broadcom, Tomahawk Ultra ships, 15 Jul 2025",
+   "url": "https://investors.broadcom.com/node/63341/pdf"
+  },
+  "S36": {
+   "text": "Dell'Oro Group, OCP 2026 optics blog, Oct 2026",
+   "url": "https://www.delloro.com/ocp-2026-optics-takes-center-stage-in-enabling-the-next-wave-of-ai-networking-and-high-speed-switching/"
+  },
+  "S37": {
+   "text": "Cignal AI, Co-packaged optics forecast, 27 Feb 2025",
+   "url": "https://cignal.ai/2025/02/co-packaged-optics-inevitable-but-not-imminent/"
+  },
+  "S38": {
+   "text": "SemiAnalysis, Co-packaged optics report, 2026",
+   "url": "https://newsletter.semianalysis.com/p/co-packaged-optics-cpo-book-scaling"
+  },
+  "S39": {
+   "text": "Simple Tech Trend, OCP Global Summit 2026 session write-ups (secondary)",
+   "url": "https://www.simpletechtrend.com/en/post/ocp-global-summit-2026-npo-buyers-cpo-timeline-en"
+  },
+  "S40": {
+   "text": "NextGenInfra, OCP Global Summit 2026 showcase",
+   "url": "https://nextgeninfra.io/2026-ocp-global-summit/"
+  },
+  "S41": {
+   "text": "Credo, Q1 FY2027 results, 1 Sep 2026",
+   "url": "https://www.01net.it/credo-technology-group-holding-ltd-reports-first-quarter-of-fiscal-year-2027-financial-results/"
+  },
+  "S42": {
+   "text": "Crehan Research via Converge Digest, 8 Apr 2025",
+   "url": "https://convergedigest.com/?p=101493"
+  },
+  "S43": {
+   "text": "TrendForce, HBM4 ramp, 23 Jun 2026",
+   "url": "https://www.trendforce.com/news/2026/06/23/news-memory-giants-split-on-hbm4-strategy-samsung-hbm4-sales-reportedly-tops-1b-sk-hynix-slows-ramp/"
+  },
+  "S44": {
+   "text": "Tom's Hardware, AMD Pollara 400 and Oracle, Jun 2025",
+   "url": "https://www.tomshardware.com/networking/amd-deploys-its-first-ultra-ethernet-ready-network-card-pensando-pollara-provides-up-to-400-gbps-performance"
+  },
+  "S45": {
+   "text": "IP Infusion, Ultra Ethernet product page, 2026",
+   "url": "https://www.ipinfusion.com/technology/ultra-ethernet/"
+  },
+  "S46": {
+   "text": "Arista, 7060X and 7260X data sheet",
+   "url": "https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf"
+  },
+  "S47": {
+   "text": "Arista, 7060X4 data sheet",
+   "url": "https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf"
+  },
+  "S48": {
+   "text": "Arista, 7060X5 quick start guide",
+   "url": "https://www.arista.com/assets/data/pdf/qsg/qsg-books/QS_7060X5.pdf"
+  },
+  "S49": {
+   "text": "Arista, 7060X6 data sheet",
+   "url": "https://www.arista.com/assets/data/pdf/Datasheets/7060X6-Datasheet.pdf"
+  },
+  "S50": {
+   "text": "Jabil, 800G OSFP DR8 data sheet",
+   "url": "https://www.jabil.com/dam/jcr:9134ce1b-c889-4d8e-9d7e-fdaa513e5c5e/Jabil_800G%20OSFP%20DR8_DR8+%20OpticalTransceiver_10.pdf"
+  },
+  "S51": {
+   "text": "FS, 800G LPO module article",
+   "url": "https://www.fs.com/blog/what-is-the-lpo-transceiver-8.html"
+  },
+  "S52": {
+   "text": "Module power guides (secondary)",
+   "url": "https://ascentoptics.com/blog/osfp-power-consumption/"
+  },
+  "S65": {
+   "text": "Dell'Oro Group, AI back-end switch five-year forecast, 4 Feb 2026",
+   "url": "https://www.delloro.com/news/ai-back-end-switch-market-will-push-past-100-billion-by-2030/"
+  },
+  "S66": {
+   "text": "Broadcom on Meta CPO test results (ECOC 2025 paper), 1 Oct 2025; OFC 2026 follow-up (secondary)",
+   "url": "https://investors.broadcom.com/node/63616/pdf"
+  },
+  "S67": {
+   "text": "Dell'Oro Group, It is not just about faster NICs, Oct 2026",
+   "url": "https://www.delloro.com/it-is-not-just-about-faster-nics/"
+  },
+  "S68": {
+   "text": "Broadcom Q3 FY2026 earnings call, 2 Sep 2026 (call summaries)",
+   "url": "https://www.marketbeat.com/instant-alerts/transcript-broadcom-q3-earnings-call-highlights-2026-09-02/"
+  },
+  "S69": {
+   "text": "Credo 10-Q for quarter to 1 Aug 2026 (via results coverage)",
+   "url": "https://www.itiger.com/news/1122940235"
+  },
+  "S70": {
+   "text": "Cignal AI, Optical Components Report, Jan and Jun 2026",
+   "url": "https://cignal.ai/2026/06/datacom-optical-component-revenue-doubles-to-7-7-billion-in-1q26/"
+  },
+  "S54": {
+   "text": "NVIDIA, Form 10-Q for quarter ended 26 Jul 2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm"
+  },
+  "S55": {
+   "text": "Arista, Form 10-Q for 30 Sep 2026 and Q3 call",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000254/anet-20260930.htm"
+  },
+  "S56": {
+   "text": "Credo customer concentration, quarter to May 2026 (results summaries)",
+   "url": "https://www.nasdaq.com/articles/credo-technology-stock-outlook-hinges-ai-and-optical-scale"
+  },
+  "S57": {
+   "text": "Reuters/LSEG data via Tech Insider, hyperscaler bonds to 4 Nov 2026 (secondary)",
+   "url": "https://tech-insider.org/big-tech-us-corporate-bond-record-1-88-trillion-2026/"
+  },
+  "S58": {
+   "text": "Financial Times (republished) and Axios on NVIDIA customer financing, 2026 (secondary)",
+   "url": "https://axios.com/2026/07/27/nvidia-openai-financing-ai-jensen-huang-ssi"
+  },
+  "S59": {
+   "text": "Morgan Lewis on BIS final rule effective 15 Jan 2026",
+   "url": "https://www.morganlewis.com/pubs/2026/01/bis-revises-export-review-policy-for-advanced-ai-chips-destined-for-china-and-macau"
+  },
+  "S60": {
+   "text": "TrendForce, CoWoS supply-demand gap, 15 Jun 2026",
+   "url": "https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-rep"
+  },
+  "S61": {
+   "text": "Tom's Hardware, indium phosphide shortage, 2026",
+   "url": "https://www.tomshardware.com/tech-industry/semiconductors/lumentum-ceo-says-the-indium-phosphide-shortage-will-become-worse-than-memory"
+  },
+  "S62": {
+   "text": "EC&M citing JLL 2026 outlook; Reuters, 9 Jul 2026, on transformer lead times",
+   "url": "https://www.ecmag.com/magazine/articles/article-detail/how-long-does-it-take-to-power-a-data-center"
+  },
+  "S63": {
+   "text": "TBR and Fierce Network on AMD Helios and UALink over Ethernet, 2026",
+   "url": "https://tbri.com/special-reports/amd-enters-the-execution-phase-of-its-full-stack-ai-strategy/"
+  },
+  "S72": {
+   "text": "Ultra Ethernet Consortium, Ultra Ethernet Specification v1.1 (764 pp) and v1.1 release notes, 12 Oct 2026 [Standards body; read from PDFs supplied by the project author, Section 8 and release notes read]",
+   "url": "https://ultraethernet.org/specification"
+  },
+  "S73": {
+   "text": "Ultra Ethernet Consortium, Compliance page, accessed 11 Nov 2026 [Standards body; Fetch-tool extraction (landing page only)]",
+   "url": "https://ultraethernet.org/compliance/"
+  },
+  "S75": {
+   "text": "Network World, Ultra Ethernet 1.1 extends the specification to scale-up networks and adds programmable congestion control, 14 Oct 2026 [Trade press; Fetch-tool extraction]",
+   "url": "https://www.networkworld.com/article/4235340/ultra-ethernet-1-1-extends-the-specification-to-scale-up-networks-and-adds-programmable-congestion-control.html"
+  },
+  "S78": {
+   "text": "Oracle, Oracle and AMD Collaborate to Help Customers Deliver Breakthrough Performance for Large-Scale AI and Agentic Workloads, 12 Jun 2025 [Buyer (joint release with vendor); Fetch-tool extraction]",
+   "url": "https://www.oracle.com/sa-ar/news/announcement/oracle-and-amd-collaborate-to-help-customers-deliver-breakthrough-performance-for-large-scale-ai-and-agentic-workloads-2025-06-12/"
+  },
+  "S80": {
+   "text": "AMD, via Stock Analysis, Q3 2026 earnings call transcript, 3 Nov 2026 [Vendor call (third-party transcript); Fetch-tool extraction]",
+   "url": "https://stockanalysis.com/stocks/amd/transcripts/724028-q3-2026/"
+  },
+  "S81": {
+   "text": "AMD, via Earnings Whispers, Q3 2026 earnings call transcript, 3 Nov 2026 [Vendor call (third-party transcript); Fetch-tool extraction]",
+   "url": "https://www.earningswhispers.com/transcript/AMD/Q32026"
+  },
+  "S82": {
+   "text": "AMD, via Motley Fool, Q2 2026 earnings call transcript, 4 Aug 2026 (page 11 Aug 2026; dates inconsistent) [Vendor call (third-party transcript); Fetch-tool extraction]",
+   "url": "https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/"
+  },
+  "S83": {
+   "text": "Broadcom, via Webull/Benzinga, Q3 FY2026 earnings call transcript, 2 Sep 2026 [Vendor call (third-party transcript); Fetch-tool extraction]",
+   "url": "https://www.webull.com/news/15511095937917952"
+  },
+  "S86": {
+   "text": "NVIDIA, Q2 FY2027 earnings call transcript, 26 Aug 2026 [Vendor call (issuer-hosted); Fetch-tool extraction]",
+   "url": "https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf"
+  },
+  "S87": {
+   "text": "Meta Engineering, Building Meta's GenAI Infrastructure, 12 Mar 2024 [Buyer; Fetch-tool extraction]",
+   "url": "https://engineering.fb.com/2024/03/12/data-center-engineering/building-metas-genai-infrastructure/"
+  },
+  "S92": {
+   "text": "Tom's Hardware, UALink roadmap, date not captured [Trade press; Fetch-tool extraction]",
+   "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/ualink-roadmap-plots-course-to-optimized-ai-data-center-interconnects-examining-the-open-standard-designed-to-combat-vendor-lock-in-while-offering-cost-and-performance-optimization"
+  },
+  "S93": {
+   "text": "Astera Labs, via Finviz, Third quarter 2026 financial results, 3 Nov 2026 [Vendor reported financials (mirror); Fetch-tool extraction of mirror; not read at origin]",
+   "url": "https://finviz.com/news/414695/astera-labs-reports-third-quarter-2026-financial-results"
+  },
+  "S98": {
+   "text": "ServeTheHome, AMD Helios architecture deep dive (page 4), 3 Aug 2026 [Trade press, hardware review; Fetch-tool extraction (page 4 only)]",
+   "url": "https://www.servethehome.com/amd-helios-architecture-deep-dive-amd-broadcom-hardware-combined/4/"
+  },
+  "S99": {
+   "text": "Open Compute Project, The OCP ESUN 1.0 specification has been released, 10 Mar 2026 [Standards body; Fetch-tool extraction]",
+   "url": "https://www.opencompute.org/news/the-ocp-esun-10-specification-has-been-released/"
+  },
+  "S101": {
+   "text": "Fierce Network, AMD's Helios bets AI networking on open Ethernet, 2026 (date not captured) [Trade press; Fetch-tool extraction]",
+   "url": "https://www.fierce-network.com/cloud/amds-helios-bets-ai-networking-open-ethernet"
+  },
+  "S104": {
+   "text": "AMD, via Boardroom Alpha, Form 8-K (Meta warrant), 24 Feb 2026 [Filing (third-party mirror); Fetch-tool extraction of mirror; not read at origin]",
+   "url": "https://www.boardroomalpha.com/sec/amd-8-k-2026-02-24-0000002488-26-000045"
+  },
+  "S105": {
+   "text": "Reuters, via Business Standard, AMD's OpenAI, Meta chip deals trigger $1 billion quarterly charge, 4 Nov 2026 [Wire report (syndicated); Fetch-tool extraction]",
+   "url": "https://business-standard.com/world-news/amd-s-openai-meta-chip-deals-trigger-1-billion-quarterly-charge-126110400389_1.html"
+  },
+  "S106": {
+   "text": "The Next Platform, The Network Is More Of Nvidia's Computer Than It Ever Was At Sun, 27 Aug 2026 [Trade press, author estimates; Fetch-tool extraction]",
+   "url": "https://www.nextplatform.com/compute/2026/08/27/the-network-is-more-of-nvidias-computer-than-it-ever-was-at-sun/5292807"
+  },
+  "S107": {
+   "text": "Dell'Oro Group, AI back-end switch sales to approach $1 trillion over the next five years, 28 Jul 2026 [Independent tracker (originating release); Fetch-tool extraction]",
+   "url": "https://www.delloro.com/news/ai-back-end-switch-sales-to-approach-1-trillion-over-the-next-five-years/"
+  },
+  "S110": {
+   "text": "Oracle, Oracle Acceleron, updated 27 Oct 2026 [Buyer; Fetch-tool extraction]",
+   "url": "https://www.oracle.com/cloud/networking/acceleron/"
+  },
+  "S111": {
+   "text": "AMD, AMD Pensando DPUs: A Programmable Foundation for AMD-Based Oracle Acceleron SmartNICs, 27 Oct 2026 [Vendor; Fetch-tool extraction]",
+   "url": "https://www.amd.com/en/blogs/2026/amd-pensando--dpus--a-programmable-foundation-for-amd-based-orac.html"
+  },
+  "S112": {
+   "text": "Chen et al. (Zhejiang University, Alibaba Cloud, UW-Madison), Demystifying Datapath Accelerator Enhanced Off-path SmartNIC, arXiv:2402.03041 v4, 2024 [Peer-reviewed lab study (venue apparently IEEE ICNP; unconfirmed); Fetch-tool extraction]",
+   "url": "https://arxiv.org/html/2402.03041v4"
+  },
+  "S116": {
+   "text": "NVIDIA, Form 8-K, Q4 and fiscal 2026 results (Ex. 99.1, 99.2), 25 Feb 2026 [Filing (issuer-hosted copy); Fetch-tool extraction]",
+   "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/5f86707e-03f3-4e5e-b9bd-048e42123723.pdf"
+  },
+  "S117": {
+   "text": "Dell'Oro Group, via PR Newswire, Smart NIC Market to Exceed $5 Billion by 2028, 1 Feb 2024 [Independent tracker (originating release); Fetch-tool extraction]",
+   "url": "https://prnewswire.com/news-releases/smart-nic-market-to-exceed-5-billion-by-2028-according-to-delloro-group-302050315.html"
+  },
+  "S120": {
+   "text": "Meta Engineering, OCP Summit 2026: Meta networking talks, 26 Oct 2026 [Buyer; Fetch-tool extraction]",
+   "url": "https://engineering.fb.com/2026/10/26/open-source/ocp-summit-2026-meta-networking-talks/"
+  },
+  "S121": {
+   "text": "Open Compute Project, 2026 Global Summit recorded content index, page modified 30 Oct 2026 [Standards body index of buyer talks; Fetch-tool extraction (4 of 5 segments); slides and video not read at origin]",
+   "url": "https://www.opencompute.org/?p=245678"
+  },
+  "S129": {
+   "text": "Semtech, via FinancialFilings, Q1 FY2027 earnings call (machine transcript), 26 May 2026 [Vendor call (third-party transcript); Fetch-tool extraction]",
+   "url": "https://financialfilings.com/filings/semtech-corp/call-transcript/2026/48476694/"
+  },
+  "S130": {
+   "text": "Credo, via Webull, Q1 FY2027 earnings call summary, 1 to 2 Sep 2026 [Vendor call via secondary; Fetch-tool extraction; filing not read at origin]",
+   "url": "https://www.webull.com/news/15507667615802368"
+  },
+  "S124": {
+   "text": "Meta Engineering, OCP Summit 2026: Powering AI with Open Innovations in Scale-Up, Scale-Out, and Scale-Across Networks, 12 Oct 2026 [Buyer; read via search extract and secondary summaries]",
+   "url": "https://engineering.fb.com/2026/10/12/open-source/ocp-summit-2026-powering-ai-with-open-innovations-in-scale-up-scale-out-and-scale-across-networks/"
+  },
+  "S143": {
+   "text": "NVIDIA, Form 10-Q for the quarter ended 26 Jul 2026, filed 26 Aug 2026 [Filing; read in full from the copy supplied by the project author]",
+   "url": "https://www.opencapital.sh/filings/0001045810-26-000075.md"
+  },
+  "S144": {
+   "text": "Broadcom, Form 10-Q for the quarter ended 2 Aug 2026 [Filing; read in part from the copy supplied by the project author]",
+   "url": "https://investors.broadcom.com/static-files/96641754-401f-4090-a4ab-210728c83a28"
+  },
+  "S145": {
+   "text": "NVIDIA FY2026 Form 10-K segment note, via edgar.tools, filed 25 Feb 2026 [Filing excerpt via aggregator; PDF supplied by the project author]",
+   "url": "https://app.edgar.tools/companies/NVDA/disclosures/segments"
+  },
+  "S146": {
+   "text": "Arista Networks, Form 8-K Ex. 99.1, Q3 2026 results, 3 Nov 2026 [Filing; PDF supplied by the project author; exact document URL not retrieved, link is the EDGAR directory for CIK 1596532]: revenue $3.66B, +58.5%; announces ESUN-based Etherlink SU-144 rack architecture (144 accelerators per rack)",
+   "url": "https://www.sec.gov/Archives/edgar/data/1596532/"
+  },
+  "S147": {
+   "text": "Credo, Form 10-Q for the quarter ended 1 Aug 2026 [Filing; read in full from the PDF supplied by the project author; link is the Credo investor-relations site, exact document URL not retrieved]: revenue $479.0M; Customer A 43% and B 28% of revenue; $222.2M non-cancellable purchase commitments",
+   "url": "https://investors.credosemi.com"
+  },
+  "S148": {
+   "text": "Yu and Chakravarty (Meta), Large-Scale Deployment of 800Gb/s Active Electrical Cables (AEC) in Meta Data Centers for AI Applications, OCP AI Open Data Center session slides, 17 pp. [Buyer; read in full from PDF supplied by the project author; slide date not stated, locator is the OCP 2026 content index (see S121)]",
+   "url": "https://www.opencompute.org/?p=245678"
+  },
+  "S149": {
+   "text": "AMD, Form 8-K dated 5 Oct 2025 (OpenAI warrant; accession 0001193125-25-230895) [Filing; read in full from the PDF supplied by the project author; link is the EDGAR directory for CIK 2488]",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000119312525230895/"
+  },
+  "S150": {
+   "text": "Astera Labs, Form 8-K Ex. 99.1, Q3 2026 results, 3 Nov 2026 [Filing; read in full from the PDF supplied by the project author; URL from search]: revenue $584.9M; Scorpio largest product family; Q4 outlook $730M to $750M",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001736297/000173629726000044/q326exhibit991.htm"
+  },
+  "S151": {
+   "text": "Ultra Ethernet Consortium, Transport Matrix and Checklist v1.0 (profile revision 1.0; an earlier workbook is revision 0.8) and PHY-LL Matrix and Checklist (revision 1.0) [Standards body; workbooks read in full from files supplied by the project author; public download location not retrieved, see S72]",
+   "url": "https://ultraethernet.org/"
+  },
+  "S152": {
+   "text": "Ultra Ethernet Consortium, Test Bed Recommendations, revision 1.0, 10 Jun 2025, 7 pp. [Standards body; marked UEC proprietary and confidential; read in full from PDF supplied by the project author; only paraphrased, scope statement used]",
+   "url": "https://ultraethernet.org/"
+  },
+  "S139": {
+   "text": "Arista Networks, Form 10-Q for the quarter ended 30 Sep 2026 [Filing; read at origin on sec.gov]",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000254/anet-20260930.htm"
+  },
+  "S140": {
+   "text": "AMD, Form 8-K dated 23 Feb 2026 (Meta warrant), filed 24 Feb 2026 [Filing; read at origin on ir.amd.com]",
+   "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/amd-20260223.htm"
+  },
+  "S141": {
+   "text": "AMD, Form 10-Q for the quarter ended 26 Sep 2026, filed 4 Nov 2026 [Filing; read at origin on ir.amd.com, notes 4 and 11 sections]",
+   "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000191/amd-20260926.htm"
+  },
+  "S142": {
+   "text": "Credo, Form 10-K for the fiscal year ended 2 May 2026, filed 15 Jun 2026 [Filing; read in full from the copy supplied by the project author]",
+   "url": "https://s205.q4cdn.com/511065572/files/doc_financials/2026/q4/a4179788-9dac-4cf3-9082-3e17792eb967.pdf"
+  },
+  "S137": {
+   "text": "Yekani & Wang (Meta), Operating Linear Pluggable Optics at Hyperscale: From Link Management to Production Reliability, OCP Global Summit 2026 session slides, 11 pp. [Buyer; read in full from PDF supplied by the project author; locator is the OCP content index, see S121]",
+   "url": "https://www.opencompute.org/?p=245678"
+  },
+  "S138": {
+   "text": "Hoefler et al., Ultra Ethernet's Design Principles and Architectural Innovations, arXiv:2508.08906v1, 12 Aug 2025 [Spec authors' overview; read in full from PDF supplied by the project author]",
+   "url": "https://arxiv.org/abs/2508.08906v1"
+  },
+  "S136": {
+   "text": "Humphries et al. (Stanford, Google), Wave: Offloading Resource Management to SmartNIC Cores, ASPLOS '25, doi:10.1145/3676642.3736113 [Peer-reviewed, buyer-authored; abstract and arXiv v4 read]",
+   "url": "https://arxiv.org/abs/2408.17351v4"
+  },
+  "S71": {
+   "text": "Futuriom (byline M. Jander), Top Trends in Networking for AI: Connectivity from AI Clusters to the Edge, 22 Apr 2026 [Sponsored analyst report (sponsors: DriveNets, Arrcus, Nokia); 34-page PDF supplied by the project author and read; qualitative, no market figures]",
+   "url": "https://www.futuriom.com/articles/news/top-trends-in-networking-for-ai-connectivity-from-ai-clusters-to-the-edge/2026/04"
+  }
+ }
+}

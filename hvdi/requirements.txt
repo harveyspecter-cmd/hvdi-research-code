@@ -1,0 +1,5 @@
+# Engine (hvdi.py) uses the standard library only. Python 3.9+.
+pytest>=7
+# Optional, only for shot.py and figs.py (browser smoke test and figures):
+playwright>=1.40
+black>=24  # formatter, optional
