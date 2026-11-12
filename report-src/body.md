@@ -190,7 +190,7 @@ A planning team can adopt the instrument in five steps.
 
 ### 6.2 Implementation artefact
 
-The deliverable is a working instrument: the dataset, the tested engine and an interactive page on which a reader selects a technology, an evidence weighting and a stress scenario. The page is self-contained and is hosted at {{SITE_URL}}.
+The deliverable is a working instrument: the dataset, the tested engine and an interactive page on which a reader selects a technology, an evidence weighting and a stress scenario. The page is self-contained and is public at {{SITE_URL}}. The code, dataset and tests are in a private repository at {{CODE_URL}}, with access granted to evaluators on request.
 
 ### 6.3 Execution plan, challenges and roadblocks
 

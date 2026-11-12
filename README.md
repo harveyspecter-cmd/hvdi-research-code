@@ -9,6 +9,9 @@ outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 
 
 **Private repository. Proprietary and confidential; see `LICENSE`.**
 
+- Interactive page (public): https://harveyspecter-cmd.github.io/hvdi-research/
+- This repository (private): https://github.com/harveyspecter-cmd/hvdi-research-code
+
 ## 1. What is here
 
 | Path | Contents |

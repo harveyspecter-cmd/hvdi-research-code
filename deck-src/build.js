@@ -113,10 +113,11 @@ SEC="Implications"; p.addSection({title:SEC});
  T(s,"Buy the missing proof: write matched-baseline measurement into the contract.",{x:0.7,y:5.95,w:11.9,h:0.6,fontSize:20});}
 // 12
 {const s=S("Limits, next steps and where the evidence lives","Be direct about limits: one coder, one date, uncalibrated outlook. The back-test on earlier networking bets is the condition for calling the index predictive. Everything behind a score is in the report appendix, the source ledger and the code. Close and invite questions.");
- const cols=[["Limits",["One coder scored every cell","One date: cannot show a gap closing","Outlook rule is uncalibrated","Buyer economics is mostly private"]],["Next",["Second coder with an agreement statistic","Quarterly panel","Back-test on 400G, SDN and SmartNICs"]],["Evidence",["Report: scoring rationale and 70 references","Ledger: 152 sources, S01 to S152","Code: engine, dataset, 43 tests","Interactive page: shown live"]]];
+ const cols=[["Limits",["One coder scored every cell","One date: cannot show a gap closing","Outlook rule is uncalibrated","Buyer economics is mostly private"]],["Next",["Second coder with an agreement statistic","Quarterly panel","Back-test on 400G, SDN and SmartNICs"]],["Evidence",["Report: scoring rationale and 70 references","Ledger: 152 sources, S01 to S152","Code: engine, dataset, 43 tests","Interactive page: public link below"]]];
  cols.forEach((c,i)=>{const x=0.7+i*4.05;card(s,x,1.6,3.8,3.5,"close"+i);T(s,c[0],{x:x+0.3,y:1.82,w:3.2,h:0.4,fontSize:20,bold:true,color:i===0?HOT:INK});
   T(s,c[1].map((t,k)=>({text:t,options:{bullet:true,breakLine:k<c[1].length-1}})),{x:x+0.3,y:2.4,w:3.25,h:2.5,fontSize:15,color:MUT,paraSpaceAfter:6});});
  T(s,"Key references: Kim et al. (2026); Dedehayir & Steinert (2016); Adner & Kapoor (2010); Hevner et al. (2004). Full list in the report.",{x:0.7,y:5.35,w:11.9,h:0.4,fontSize:12,color:MUT});
- T(s,"Thank you. Questions?",{x:0.7,y:5.9,w:11.9,h:0.7,fontSize:28,bold:true});}
+ T(s,[{text:"Page: ",options:{color:MUT}},{text:"harveyspecter-cmd.github.io/hvdi-research/",options:{color:INK,hyperlink:{url:"https://harveyspecter-cmd.github.io/hvdi-research/"}}},{text:"      Code (private, access on request): ",options:{color:MUT}},{text:"github.com/harveyspecter-cmd/hvdi-research-code",options:{color:INK,hyperlink:{url:"https://github.com/harveyspecter-cmd/hvdi-research-code"}}}],{x:0.7,y:5.68,w:11.9,h:0.35,fontSize:12});
+ T(s,"Thank you. Questions?",{x:0.7,y:6.12,w:11.9,h:0.6,fontSize:28,bold:true});}
 await p.writeFile({fileName:OUT}); await applyTheme(OUT,THEME); console.log("ok");
 })().catch(e=>{console.error(e);process.exit(1)});

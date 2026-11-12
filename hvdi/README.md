@@ -29,6 +29,11 @@ The 18 weakest evidence cells were re-researched. Two scores changed (Ethernet s
 
 Python 3.9 or later. The engine uses the standard library only. `pip install -r requirements.txt`, then `python3 -m pytest -q` and `python3 build.py > results.txt` (writes `site/index.html` and `site/data.json`). The page has no external dependencies and opens from a file or any static host.
 
+## Links
+
+- Interactive page (public): https://harveyspecter-cmd.github.io/hvdi-research/
+- Code repository (private): https://github.com/harveyspecter-cmd/hvdi-research-code
+
 ## Licence
 
 Proprietary and confidential. Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All rights reserved. See `LICENSE`.

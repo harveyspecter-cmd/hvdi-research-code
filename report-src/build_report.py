@@ -6,7 +6,8 @@ import subprocess
 
 HERE = pathlib.Path(__file__).resolve().parent
 SRC = (HERE / "src_rev56.md").read_text(encoding="utf-8")
-SITE_URL = "[GitHub Pages link to be inserted by the author]"
+SITE_URL = "https://harveyspecter-cmd.github.io/hvdi-research/"
+CODE_URL = "https://github.com/harveyspecter-cmd/hvdi-research-code"
 
 _refs = SRC[SRC.find("## 10. References"):SRC.find("## Appendix A")]
 _lines = [l[2:].strip() for l in _refs.split("\n") if l.startswith("- ")]
@@ -154,8 +155,8 @@ def words(md: str) -> int:
 
 
 def main() -> None:
-    body = render((HERE / "body.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL)
-    app = render((HERE / "appendix.md").read_text(encoding="utf-8"))
+    body = render((HERE / "body.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
+    app = render((HERE / "appendix.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
     entries = sorted(((R[k][1], k) for k in USED), key=lambda e: re.sub(r"[^a-z0-9 ]", "", e[0].lower()))
     ref = ["## References", "",
            "Ledger identifiers in square brackets (S01 to S152) link each entry to the project's source ledger and dataset.", ""]

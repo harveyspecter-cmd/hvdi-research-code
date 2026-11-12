@@ -89,7 +89,7 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 
 ### Appendix 8. Declarations
 
-**Data.** All data are public and secondary. No primary data, employer information or purchased report was used. The full source ledger (S01 to S152), the dataset, the code and its tests accompany this report.
+**Data.** All data are public and secondary. No primary data, employer information or purchased report was used. The full source ledger (S01 to S152), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
 
 **Use of AI assistance.** An AI assistant (Claude, Anthropic) was used to search for and retrieve public sources, extract figures from documents, draft and edit text, and write and test code. The author set the research design, supplied primary documents, reviewed the outputs and is responsible for all judgements and any errors.
 
