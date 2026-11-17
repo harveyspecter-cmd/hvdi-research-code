@@ -55,34 +55,46 @@ let SEC="Question"; p.addSection({title:SEC});
  T(s,"How should a planner allocate investment across interconnect options when narrative, capital, deployable infrastructure and workload value mature at different speeds?",{x:0.7,y:5.45,w:11.9,h:1.1,fontSize:20});}
 SEC="Framework"; p.addSection({title:SEC});
 // 3
-{const s=S("The framework: no score can outvote a gate","Walk left to right. One: every source is logged and graded by who holds it, and claimed maturity is scored from 76 dated public claims, not from the coder's impression. Two: five scores from 0 to 4, where a 3 or more needs buyer, tracker or filing evidence. Three: the gap is claimed minus proven value. Four: the verdict, with a stability figure from 20,000 random re-scorings. Five: a posture. Two side rules: capital quality is reported beside the gap and never subtracted, and a blocked gate overrides every score.");
- // gates band
- s.addShape(p.ShapeType.roundRect,{x:0.7,y:1.4,w:11.9,h:0.62,rectRadius:0.08,fill:{color:BG},line:{color:HX.accent1,width:1.25},objectName:"gates-band"});
- T(s,[{text:"X  Gates",options:{bold:true,color:HOT}},{text:"   outside the arithmetic",options:{color:MUT}}],{x:0.9,y:1.58,w:3.1,h:0.3,fontSize:14,objectName:"gates-label"});
- ["Power and grid","Packaging","Memory","Lasers","Export policy"].forEach((g,i)=>{const x=3.85+i*1.33;
-  s.addShape(p.ShapeType.roundRect,{x,y:1.54,w:1.22,h:0.34,rectRadius:0.17,fill:{color:C.text2},line:{color:LINE,width:0.75},objectName:"gate"+i});
-  T(s,g,{x,y:1.54,w:1.22,h:0.34,fontSize:10.5,align:"center",valign:"middle",color:INK,objectName:"gate-t"+i});});
- T(s,"A blocked gate overrides every score",{x:10.55,y:1.5,w:1.9,h:0.42,fontSize:11,bold:true,align:"right",valign:"middle",objectName:"gates-rule"});
- // chevron flow
- const st=[["1","Evidence"],["2","Five scores"],["3","Gap"],["4","Verdict"],["5","Posture"]];
- st.forEach((v,i)=>{const x=0.7+i*2.35,last=i===4;
-  s.addShape(i===0?p.ShapeType.homePlate:p.ShapeType.chevron,{x,y:2.3,w:2.5,h:1.15,fill:{color:last?HX.accent1:HX.accent4},line:{color:last?HX.accent1:HX.accent4,width:0},objectName:"chev"+i});
-  T(s,[{text:v[0]+"  ",options:{bold:true,color:last?C.text1:HOT,fontSize:26}},{text:v[1],options:{bold:true,color:last?C.text1:INK,fontSize:17}}],{x:x+(i?0.5:0.25),y:2.3,w:1.85,h:1.15,valign:"middle",objectName:"chev-t"+i});});
- // detail under each step
- const dx=i=>0.7+i*2.35+0.12, DW=2.15;
- T(s,[{text:"217 sources and 76 dated claims",options:{bold:true,breakLine:true}},{text:"each graded by who holds the proof: buyer, tracker, filing or vendor",options:{color:MUT}}],{x:dx(0),y:3.7,w:DW,h:1.5,fontSize:13,objectName:"d1"});
- [["H",HX.accent1],["T",HX.accent2],["A",HX.accent2],["E",HX.accent2],["Q",HX.accent3]].forEach((t,k)=>{const x=dx(1)+k*0.43;
-  s.addShape(p.ShapeType.roundRect,{x,y:3.72,w:0.36,h:0.42,rectRadius:0.06,fill:{color:BG},line:{color:t[1],width:1.5},objectName:"tile"+t[0]});
-  T(s,t[0],{x,y:3.72,w:0.36,h:0.42,fontSize:15,bold:true,align:"center",valign:"middle",color:k===0?HOT:(k===4?MID:COOL),objectName:"tile-t"+t[0]});});
- T(s,[{text:"Each 0 to 4. ",options:{bold:true}},{text:"H from dated claims; T, A, E = proof; Q = capital",options:{color:MUT}}],{x:dx(1),y:4.28,w:DW,h:0.95,fontSize:13,objectName:"d2"});
- T(s,[{text:"D = H − V",options:{bold:true,fontSize:22,breakLine:true}},{text:"V = mean(T, A, E): story minus proof",options:{color:MUT}}],{x:dx(2),y:3.7,w:DW,h:1.5,fontSize:13,objectName:"d3"});
- T(s,[{text:"D ≥ +1  story ahead",options:{bold:true,color:HOT,breakLine:true}},{text:"between  aligned",options:{bold:true,breakLine:true}},{text:"D ≤ −1  proof ahead",options:{bold:true,color:COOL,breakLine:true}},{text:"stability over 20,000 re-scorings",options:{color:MUT}}],{x:dx(3),y:3.7,w:DW,h:1.5,fontSize:13,objectName:"d4"});
- T(s,[{text:"Deploy · Pilot · Hold an option · Defer · Prove the baseline",options:{bold:true,breakLine:true}},{text:"each with the evidence that would move it",options:{color:MUT}}],{x:dx(4),y:3.7,w:DW,h:1.5,fontSize:13,objectName:"d5"});
- // side rules
- [["Admission rule","A 3 or more needs a buyer, tracker or filing. Vendor-only evidence stops at 2."],["Capital quality Q","Reported beside the gap, never subtracted from it."],["Outlook","Dated milestone, punctuality of the last one, and Q: closing, holding or stalling."]].forEach((r,i)=>{const x=0.7+i*4.0;
-  card(s,x,5.4,3.8,1.25,"rule"+i);
-  T(s,r[0],{x:x+0.25,y:5.52,w:3.3,h:0.3,fontSize:14,bold:true,color:i===0?HOT:INK,objectName:"rule-h"+i});
-  T(s,r[1],{x:x+0.25,y:5.86,w:3.35,h:0.7,fontSize:12.5,color:MUT,objectName:"rule-b"+i});});}
+{const s=S("The framework: no score can outvote a gate","Read it as a picture of one technology, NVLink at 11 November 2026. The orange tower is claimed maturity H, scored from dated public claims. The blue bars are the three kinds of proof: technical proof T, adoption A and buyer economics E; their mean is proven value V. The gap between the tower and the line is D, here plus 1.33: story ahead. The dashed line at level 3 is the admission rule: nothing above it without a buyer, a tracker or a filing. Capital quality Q stands beside the proof and is never subtracted. The whole scale stands inside the gates: a blocked gate overrides every score. On the right, the gap becomes a verdict, a stability figure from 20,000 re-scorings, an outlook and a posture.");
+ const B=6.05,U=0.85,lv=k=>B-k*U, L=1.35, R=6.55;
+ // gate: lintel and pillars
+ s.addShape(p.ShapeType.rect,{x:0.75,y:1.38,w:6.2,h:0.42,fill:{color:HX.accent4},line:{color:HX.accent1,width:1},objectName:"gate-lintel"});
+ T(s,[{text:"X  GATES   ",options:{bold:true,color:HOT}},{text:"power · packaging · memory · lasers · export",options:{color:INK}}],{x:0.95,y:1.38,w:5.9,h:0.42,fontSize:12,valign:"middle",objectName:"gate-text"});
+ [0.75,6.71].forEach((x,k)=>s.addShape(p.ShapeType.rect,{x,y:1.8,w:0.24,h:B-1.8+0.25,fill:{color:HX.accent4},line:{color:HX.accent4,width:0},objectName:"pillar"+k}));
+ T(s,[{text:"- - -  admission rule: ",options:{color:HOT,bold:true}},{text:"a 3 or more needs a buyer, tracker or filing.   ",options:{color:MUT}},{text:"A blocked gate overrides every score.",options:{color:INK,bold:true}}],{x:0.75,y:B+0.38,w:6.2,h:0.3,fontSize:10.5,align:"center",objectName:"gate-rule"});
+ // level grid
+ [1,2,3,4].forEach(k=>{const y=lv(k);
+  s.addShape(p.ShapeType.line,{x:L,y,w:R-L,h:0,line:{color:k===3?HX.accent1:HX.accent4,width:k===3?1.25:0.75,dashType:k===3?"dash":"solid"},objectName:"lvl"+k});
+  T(s,String(k),{x:1.05,y:y-0.13,w:0.25,h:0.26,fontSize:11,color:MUT,align:"right",objectName:"lvl-t"+k});});
+ s.addShape(p.ShapeType.line,{x:L,y:B,w:R-L,h:0,line:{color:HX.accent3,width:1},objectName:"base"});
+ // H tower
+ s.addShape(p.ShapeType.rect,{x:1.6,y:lv(4),w:1.05,h:4*U,fill:{color:HX.accent1},line:{color:HX.accent1,width:0},objectName:"H-tower"});
+ T(s,"H",{x:1.6,y:lv(4)+0.08,w:1.05,h:0.5,fontSize:26,bold:true,color:C.text1,align:"center",objectName:"H-t"});
+ T(s,"claimed\n76 dated claims",{x:1.45,y:B+0.04,w:1.35,h:0.34,fontSize:9,color:MUT,align:"center",objectName:"H-lab"});
+ // proof bars T A E and V line
+ [["T",3],["A",4],["E",1]].forEach((b,k)=>{const x=4.3+k*0.48;
+  s.addShape(p.ShapeType.rect,{x,y:lv(b[1]),w:0.4,h:b[1]*U,fill:{color:HX.accent2},line:{color:HX.accent2,width:0},transparency:k===2?0:15,objectName:"bar"+b[0]});
+  T(s,b[0],{x,y:B+0.04,w:0.4,h:0.24,fontSize:11,bold:true,color:COOL,align:"center",objectName:"bar-t"+b[0]});});
+ const vY=lv(2.67);
+ s.addShape(p.ShapeType.line,{x:4.15,y:vY,w:1.6,h:0,line:{color:HX.lt1,width:2.25},objectName:"V-line"});
+ T(s,"V = 2.67",{x:3.08,y:vY-0.3,w:1.0,h:0.28,fontSize:12,bold:true,objectName:"V-t"});
+ s.addShape(p.ShapeType.line,{x:2.65,y:vY,w:1.5,h:0,line:{color:HX.lt2,width:0.75,dashType:"dash"},objectName:"V-lead"});
+ // gap bracket
+ s.addShape(p.ShapeType.line,{x:2.95,y:lv(4),w:0,h:vY-lv(4),line:{color:HX.accent1,width:2,beginArrowType:"triangle",endArrowType:"triangle"},objectName:"gap"});
+ s.addShape(p.ShapeType.line,{x:2.65,y:lv(4),w:0.4,h:0,line:{color:HX.accent1,width:1,dashType:"dash"},objectName:"gap-top"});
+ T(s,[{text:"D = +1.33",options:{bold:true,color:HOT,breakLine:true}},{text:"story ahead",options:{color:HOT,fontSize:11}}],{x:3.08,y:lv(4)+0.02,w:1.2,h:0.6,fontSize:15,objectName:"gap-t"});
+ // Q beside
+ s.addShape(p.ShapeType.rect,{x:6.05,y:lv(2),w:0.4,h:2*U,fill:{color:BG},line:{color:HX.accent3,width:1.25,dashType:"dash"},objectName:"Q-bar"});
+ T(s,"Q",{x:6.05,y:B+0.04,w:0.4,h:0.24,fontSize:11,bold:true,color:MID,align:"center",objectName:"Q-t"});
+ T(s,"beside,\nnever\nsubtracted",{x:5.68,y:lv(2)-0.75,w:1.15,h:0.7,fontSize:9,color:MUT,align:"center",objectName:"Q-lab"});
+ T(s,"Worked on NVLink, 11 Nov 2026",{x:3.35,y:1.95,w:3.2,h:0.26,fontSize:10,color:MUT,align:"right",objectName:"example"});
+ // right: readout chain
+ const st=[["Evidence","217 sources graded by who holds the proof; H from 76 dated claims"],["Gap","D = H − V,  with  V = mean(T, A, E)"],["Verdict","D ≥ +1 story ahead  ·  aligned  ·  D ≤ −1 proof ahead. NVLink: story ahead, kept in 58% of 20,000 re-scorings"],["Outlook","Dated milestone, punctuality and Q. NVLink: closing"],["Posture","Deploy · Pilot · Hold an option · Defer · Prove the baseline. NVLink: deploy, verify the economics"]];
+ s.addShape(p.ShapeType.line,{x:7.62,y:1.62,w:0,h:4.45,line:{color:HX.accent4,width:1.5},objectName:"chain"});
+ st.forEach((r,k)=>{const y=1.45+k*0.98,last=k===4;
+  s.addShape(p.ShapeType.ellipse,{x:7.47,y:y+0.05,w:0.3,h:0.3,fill:{color:last?HX.accent1:BG},line:{color:k===0?HX.accent3:HX.accent1,width:1.5},objectName:"node"+k});
+  T(s,r[0],{x:8.0,y:y,w:4.6,h:0.32,fontSize:16,bold:true,color:last?HOT:INK,objectName:"st-h"+k});
+  T(s,r[1],{x:8.0,y:y+0.34,w:4.6,h:0.6,fontSize:12,color:MUT,objectName:"st-b"+k});});}
 // 4
 {const s=S("A high score must be earned from the right evidence","Every parameter runs on the same 0 to 4 scale with stated anchors. H is scored from dated public claims: a stage claim and a narrative claim each get a level, H is the level a strict majority of claims reach, taking the higher of the two kinds. The line between level 2 and level 3 is the admission rule: vendor-only evidence stops at 2. This is what stops a press release from moving the index. The full rubric, including level 0, is in the report's Appendix 2.");
  const hdr=["Level","H  Claimed (stage; narrative)","T  Technical proof","A  Adoption","E  Buyer economics","Q  Capital quality"];
