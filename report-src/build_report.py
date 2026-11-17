@@ -1,4 +1,5 @@
 """Assemble the Live Project report: APA in-text citations, reference list, figures, docx."""
+import csv
 import json
 import pathlib
 import re
@@ -113,6 +114,71 @@ R = {
 }
 
 
+# ---- claims corpus sources (S153 onward), generated from hvdi/new_sources.csv ----
+ALIAS = {"Arista": "Arista Networks", "AMD": "Advanced Micro Devices", "Dell'Oro Group": "Dell'Oro Group",
+         "Credo": "Credo Technology Group", "Marvell": "Marvell Technology", "IDC": "IDC",
+         "NVIDIA and Marvell": "NVIDIA", "Lightwave": "Lightwave", "Futurum Group": "Futurum Group"}
+MONTHS = "January February March April May June July August September October November December".split()
+
+
+def _author(pub: str) -> str:
+    """Organisation as APA author: drop bylines in brackets and relays ("via ...")."""
+    a = re.split(r"\s*\(|,\s*via\s|\s+via\s", pub)[0].strip().rstrip(",")
+    a = a.split(" / ")[0].strip()
+    return ALIAS.get(a, a)
+
+
+def _add_corpus_sources() -> None:
+    path = HERE.parent / "hvdi" / "new_sources.csv"
+    if not path.exists():
+        return
+    rows = [r for r in csv.DictReader(open(path, encoding="utf-8")) if r["source_id"] not in R]
+    new = {}
+    for r in rows:
+        y, mo, dd = (r["date"] + "--").split("-")[:3]
+        year = y if y.isdigit() else "n.d."
+        when = year if not (mo.isdigit() and dd.isdigit()) else f"{year}, {MONTHS[int(mo) - 1]} {int(dd)}"
+        c0 = r["class"].lower()
+        cls = ("Earnings call transcript" if "earnings call" in c0 else "Press release" if "press release" in c0
+               else "Blog post" if "blog" in c0 else "Research note" if "analyst" in c0
+               else "Sponsored article" if "sponsored" in c0 else "Article" if "trade" in c0 else "Web page")
+        new[r["source_id"]] = dict(author=_author(r["publisher"]), year=year, when=when, title=r["title"].strip(),
+                                   url=r["url"].strip(), cls=cls, date=r["date"])
+    # APA year suffixes across existing and new entries that share author and year
+    groups = {}
+    for k, (intext, _) in R.items():
+        if ", " in intext:
+            a, y = intext.rsplit(", ", 1)
+            groups.setdefault((a, y[:4]), []).append(("0", k))
+    for k, v in new.items():
+        groups.setdefault((v["author"], v["year"]), []).append((v["date"] or "9", k))
+    for (a, y), members in groups.items():
+        if len(members) < 2:
+            members = members
+        letters = len(members) > 1
+        members.sort(key=lambda m: (m[0] != "0", R[m[1]][0] if m[0] == "0" else m[0]))
+        for i, (_, k) in enumerate(members):
+            suf = chr(97 + i) if letters and y != "n.d." else ("-" + chr(97 + i) if letters else "")
+            if k in new:
+                v = new[k]
+                when = v["when"].replace(v["year"], v["year"] + suf, 1)
+                entry = f"{v['author']}. ({when}). *{v['title']}* [{v['cls']}]. {v['url']}"
+                R[k] = (f"{v['author']}, {v['year']}{suf}", entry)
+            elif letters:
+                intext, entry = R[k]
+                base = re.sub(r"(\d{4})[a-z]?$", r"\1", intext.rsplit(", ", 1)[1])
+                if base == y:
+                    R[k] = (f"{a}, {y}{suf}", re.sub(r"\((\d{4})[a-z]?", lambda m: f"({m.group(1)}{suf}", entry, count=1))
+
+
+R.update({
+    "S75": ("Network World, 2026", "Network World. (2026, October 14). *Ultra Ethernet 1.1 extends the specification to scale-up networks and adds programmable congestion control* [Article]. https://www.networkworld.com/article/4235340/ultra-ethernet-1-1-extends-the-specification-to-scale-up-networks-and-adds-programmable-congestion-control.html"),
+    "S83": ("Broadcom, 2026", "Broadcom. (2026, September 2). *Q3 fiscal year 2026 earnings call* [Earnings call transcript, via Webull]. https://www.webull.com/news/15511095937917952"),
+    "S86": ("NVIDIA, 2026", "NVIDIA. (2026, August 26). *Q2 fiscal year 2027 earnings call* [Earnings call transcript]. https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf"),
+})
+_add_corpus_sources()
+
+
 def cite(m: re.Match) -> str:
     keys = [k.strip() for k in m.group(1).split(",")]
     for k in keys:
@@ -154,12 +220,33 @@ def words(md: str) -> int:
     return len(re.sub(r"[#*|_]", " ", md).split())
 
 
+TECH = {"eth_scaleout": "Ethernet scale-out", "infiniband": "InfiniBand", "uet": "Ultra Ethernet transport",
+        "nvlink": "NVLink", "ualink": "Native UALink", "eth_scaleup": "Ethernet scale-up", "dpu": "Merchant DPU",
+        "cpo": "Co-packaged optics", "lpo": "Linear pluggable optics", "aec": "Active electrical cables"}
+SAME_DOC = {"S83": "S68"}  # two transcript copies of one Broadcom call: cite the one already in the report
+
+
+def claims_table() -> str:
+    """Markdown table of the included claims, citing each source."""
+    path = HERE.parent / "hvdi" / "claims.csv"
+    rows = [r for r in csv.DictReader(open(path, encoding="utf-8")) if r["include"] == "yes"]
+    order = list(TECH)
+    rows.sort(key=lambda r: (order.index(r["tech"]), r["kind"] != "stage", r["date"]))
+    out = ["| Technology | ID | Date | Claimant | Kind | Level | Source |", "| --- | --- | --- | --- | --- | --- | --- |"]
+    for r in rows:
+        who = re.sub(r"\s+", " ", r["claimant"].replace("|", "/")).strip()
+        sid = SAME_DOC.get(r["source_id"], r["source_id"])
+        lvl = r["level"] + (f" (or {r['alt_level']})" if r["alt_level"].strip() else "")
+        out.append(f"| {TECH[r['tech']]} | {r['claim_id']} | {r['date']} | {who} | {r['kind']} | {lvl} | ([[{sid}]]) |")
+    return "\n".join(out)
+
+
 def main() -> None:
     body = render((HERE / "body.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
-    app = render((HERE / "appendix.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
+    app = render((HERE / "appendix.md").read_text(encoding="utf-8").replace("{{CLAIMS_TABLE}}", claims_table())).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
     entries = sorted(((R[k][1], k) for k in USED), key=lambda e: re.sub(r"[^a-z0-9 ]", "", e[0].lower()))
     ref = ["## References", "",
-           "Ledger identifiers in square brackets (S01 to S152) link each entry to the project's source ledger and dataset.", ""]
+           "Ledger identifiers in square brackets (S01 to S217) link each entry to the project's source ledger and dataset.", ""]
     for e, k in entries:
         ref.append(e + (f" [{k}]" if k.startswith("S") else ""))
         ref.append("")

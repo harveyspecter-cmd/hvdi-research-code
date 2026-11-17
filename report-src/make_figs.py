@@ -23,8 +23,8 @@ ax.plot([0, 3], [1, 4], color="#888888", lw=1, ls="--")
 ax.plot([1, 4], [0, 3], color="#888888", lw=1, ls="--")
 seen = {}
 OFF = {"ualink": (0, 9, "center"), "uet": (0, -15, "center"), "eth_scaleup": (0, 24, "center"),
-       "dpu": (22, 42, "center"), "cpo": (14, -28, "center"), "nvlink": (10, 8, "left"),
-       "eth_scaleout": (-8, -14, "right"), "infiniband": (-8, -4, "right"), "lpo": (10, 4, "left"), "aec": (10, -10, "left")}
+       "dpu": (22, 42, "center"), "cpo": (-6, -28, "right"), "nvlink": (10, 8, "left"),
+       "eth_scaleout": (8, 6, "left"), "infiniband": (-8, -4, "right"), "lpo": (-4, 10, "center"), "aec": (12, -24, "left")}
 for c in cats:
     key = (c["V"], c["H"]); n = seen.get(key, 0); seen[key] = n + 1
     x = c["V"] + 0.045 * n

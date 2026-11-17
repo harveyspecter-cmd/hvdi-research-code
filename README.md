@@ -20,7 +20,11 @@ outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 
 | `hvdi/evidence.json` | The dataset: every score with its evidence text, basis, confidence and source IDs; gates; scenarios; the source ledger. **Edit this file to change a score, not the code.** |
 | `hvdi/data.py` | Loads and validates `evidence.json`. |
 | `hvdi/build.py` | Runs the engine over the dataset; writes `results.txt` (console table), `site/data.json` and `site/index.html`. |
-| `hvdi/test_hvdi.py` | 43 automated tests. |
+| `hvdi/claims.csv` | The claims corpus behind H: 76 included dated public claims (12 Nov 2025 to 11 Nov 2026), each with claimant, kind (stage or narrative), level, alternative level, quote, URL and source ID. **Edit this file to change an H score.** |
+| `hvdi/H_RULE.md` | Rule v3.1 for scoring H from claims: the stage and narrative scales and the aggregation rule. |
+| `hvdi/hclaims.py` | Computes H from the claims corpus and runs the claim-resampling Monte Carlo. Standard library only. |
+| `hvdi/quote_checks_1611.csv`, `hvdi/quote_checks_1611b.csv` | Live-page checks of the quotes (59 of 76 verbatim, none failed). |
+| `hvdi/test_hvdi.py`, `hvdi/test_hclaims.py` | 64 automated tests. |
 | `hvdi/template.html` | Source of the interactive page. `build.py` injects the data into it. |
 | `hvdi/site/` | The built page (`index.html`, self-contained, no external requests) and `data.json`. |
 | `hvdi/make_public.py` | Writes the public copy of the page with identifying text removed. |
@@ -43,7 +47,7 @@ git clone <this repository> && cd hvdi-research-code/hvdi
 python3 -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-python3 -m pytest -q                 # 1. verify the engine: expect "43 passed"
+python3 -m pytest -q                 # 1. verify the engine: expect "64 passed"
 python3 build.py > results.txt       # 2. score all ten technologies and rebuild the page
 cat results.txt                      # 3. read the scorecard
 ```
@@ -84,11 +88,13 @@ h.gap(2.5, 1, 1, 1)      # TypeError: H must be an integer rubric level
    add new sources there with the next free ID.
 3. **Admission rule:** a score of 3 or more on T, A, Q or E needs a `basis` of buyer, independent tracker or
    filing. Vendor-only evidence stops at 2. The tests enforce this.
-4. Run `python3 -m pytest -q`. One test pins the published scores (`test_scores_reproduced_after_12_nov_audit`);
+4. Run `python3 -m pytest -q`. One test pins the published scores (`test_scores_reproduced_after_16_nov_claims_revision`);
    if you changed a score on purpose, update that test and record the change under `audit_score_changes`.
 5. Run `python3 build.py > results.txt` and review the new verdicts.
 
 Gates and stress scenarios are edited the same way under `gates` and `scenarios`.
+
+**H is different.** H is not edited in `evidence.json`; it is computed from `claims.csv` by the rule in `H_RULE.md` (for stage and for narrative claims, the highest level a strict majority reaches; H is the higher of the two; a narrative level needs at least two claims). To change H, add, recode or exclude claims in `claims.csv` (set `include` to `yes` or `no`), then update the H cell in `evidence.json` to match: `build.py` stops with an error if they differ.
 
 ## 6. Optional builds
 

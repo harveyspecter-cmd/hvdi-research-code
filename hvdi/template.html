@@ -299,7 +299,8 @@ function drawCurve(){
         gdot.append(sv("line",{x1:x,x2:x,y1:below?y+11:y-11,y2:below?ly-4:ly+3,stroke:"#3a3d3a"}));
         lab.setAttribute("x",x+8);lab.setAttribute("y",ly+(below?5:0));lab.setAttribute("text-anchor","start");
       }else if(ph==="rising"){lab.setAttribute("x",x+16);lab.setAttribute("y",y-12+(i%2?30:0));lab.setAttribute("text-anchor","start")}
-      else{lab.setAttribute("x",x-12);lab.setAttribute("y",y-14-(i%3)*22);lab.setAttribute("text-anchor","end")}
+      else if(i%2){lab.setAttribute("x",x+12);lab.setAttribute("y",y+28);lab.setAttribute("text-anchor","start")}
+      else{lab.setAttribute("x",x-12);lab.setAttribute("y",y-14);lab.setAttribute("text-anchor","end")}
       lab.textContent=c.name; if(sel)lab.setAttribute("font-weight",600);
       gdot.append(lab);
       const b=c.byw[S.w];

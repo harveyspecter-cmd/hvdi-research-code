@@ -1,22 +1,21 @@
 category                    H T A Q E    V     D   class    phase       Qband        stab  D90%        proj(base)  M
-Ethernet scale-out          4 4 4 3 2  3.33 +0.67  aligned  plateau     committed    0.81  [-0.14,+1.32]  holding    +1
-InfiniBand scale-out        2 3 3 2 1  2.33 -0.33  aligned  underrated  concentrated 0.81  [-1.54,+0.86]  holding    +1
-Ultra Ethernet transport    3 2 2 2 1  1.67 +1.33  ahead    peak        concentrated 0.73  [+0.17,+2.49]  closing    +1
-NVLink scale-up             3 3 4 2 1  2.67 +0.33  aligned  slope       concentrated 0.78  [-0.86,+1.63]  holding    +1
-UALink scale-up             3 1 1 1 1  1.00 +2.00  ahead    rising      thin         0.99  [+1.00,+3.00]  stalling   -1
-Ethernet scale-up           3 3 2 2 1  2.00 +1.00  ahead    peak        concentrated 0.51  [-0.20,+2.18]  closing    +2
-Merchant DPU / SmartNIC     3 3 2 2 2  2.33 +0.67  aligned  slope       concentrated 0.67  [-0.49,+1.84]  holding    +0
-Co-packaged optics          3 3 2 2 2  2.33 +0.67  aligned  slope       concentrated 0.72  [-0.46,+1.78]  holding    +2
-Linear pluggable optics     2 3 3 2 2  2.67 -0.67  aligned  underrated  concentrated 0.71  [-1.79,+0.45]  holding    +0
-Active electrical cables    2 3 3 2 2  2.67 -0.67  aligned  underrated  concentrated 0.64  [-2.00,+0.60]  holding    +0
+Ethernet scale-out          3 4 4 3 2  3.33 -0.33  aligned  underrated  committed    0.98  [-0.76,+0.66]  holding    +1
+InfiniBand scale-out        3 3 3 2 1  2.33 +0.67  aligned  slope       concentrated 0.78  [-0.02,+1.39]  holding    +1
+Ultra Ethernet transport    2 2 2 2 1  1.67 +0.33  aligned  slope       concentrated 0.87  [-1.09,+0.91]  holding    +1
+NVLink scale-up             4 3 4 2 1  2.67 +1.33  ahead    peak        concentrated 0.58  [-0.05,+2.11]  closing    +1
+UALink scale-up             2 1 1 1 1  1.00 +1.00  ahead    rising      thin         0.61  [-0.00,+1.41]  stalling   -1
+Ethernet scale-up           2 3 2 2 1  2.00 +0.00  aligned  slope       concentrated 0.85  [-0.61,+1.36]  holding    +2
+Merchant DPU / SmartNIC     2 3 2 2 2  2.33 -0.33  aligned  underrated  concentrated 0.76  [-0.85,+1.77]  holding    +0
+Co-packaged optics          3 3 2 2 2  2.33 +0.67  aligned  slope       concentrated 0.93  [-0.81,+0.97]  holding    +2
+Linear pluggable optics     3 3 3 2 2  2.67 +0.33  aligned  slope       concentrated 0.85  [-1.16,+0.65]  holding    +0
+Active electrical cables    3 3 3 2 2  2.67 +0.33  aligned  slope       concentrated 0.87  [-0.95,+1.14]  holding    +0
 
 scenario projections:
- base     {'eth_scaleout': 'holding', 'infiniband': 'holding', 'uet': 'closing', 'nvlink': 'holding', 'ualink': 'stalling', 'eth_scaleup': 'closing', 'dpu': 'holding', 'cpo': 'holding', 'lpo': 'holding', 'aec': 'holding'}
+ base     {'eth_scaleout': 'holding', 'infiniband': 'holding', 'uet': 'holding', 'nvlink': 'closing', 'ualink': 'stalling', 'eth_scaleup': 'holding', 'dpu': 'holding', 'cpo': 'holding', 'lpo': 'holding', 'aec': 'holding'}
  taiwan   {'eth_scaleout': 'blocked', 'infiniband': 'blocked', 'uet': 'blocked', 'nvlink': 'blocked', 'ualink': 'blocked', 'eth_scaleup': 'blocked', 'dpu': 'blocked', 'cpo': 'blocked', 'lpo': 'blocked', 'aec': 'blocked'}
- indium   {'eth_scaleout': 'blocked', 'infiniband': 'blocked', 'uet': 'closing', 'nvlink': 'holding', 'ualink': 'stalling', 'eth_scaleup': 'closing', 'dpu': 'holding', 'cpo': 'blocked', 'lpo': 'blocked', 'aec': 'holding'}
+ indium   {'eth_scaleout': 'blocked', 'infiniband': 'blocked', 'uet': 'holding', 'nvlink': 'closing', 'ualink': 'stalling', 'eth_scaleup': 'holding', 'dpu': 'holding', 'cpo': 'blocked', 'lpo': 'blocked', 'aec': 'holding'}
  export   {'eth_scaleout': 'blocked', 'infiniband': 'blocked', 'uet': 'blocked', 'nvlink': 'blocked', 'ualink': 'blocked', 'eth_scaleup': 'blocked', 'dpu': 'blocked', 'cpo': 'blocked', 'lpo': 'blocked', 'aec': 'blocked'}
  grid     {'eth_scaleout': 'blocked', 'infiniband': 'blocked', 'uet': 'blocked', 'nvlink': 'blocked', 'ualink': 'blocked', 'eth_scaleup': 'blocked', 'dpu': 'blocked', 'cpo': 'blocked', 'lpo': 'blocked', 'aec': 'blocked'}
 
 weight-preset class changes:
-  Ethernet scale-out {'equal': 'aligned', 't': 'aligned', 'a': 'aligned', 'e': 'ahead'}
-  Ethernet scale-up {'equal': 'ahead', 't': 'aligned', 'a': 'ahead', 'e': 'ahead'}
+  InfiniBand scale-out {'equal': 'aligned', 't': 'aligned', 'a': 'aligned', 'e': 'ahead'}

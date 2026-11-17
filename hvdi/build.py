@@ -4,7 +4,14 @@
 # PROPRIETARY AND CONFIDENTIAL: Unauthorized copying, modification, distribution,
 # reverse engineering, or use of this file, via any medium, is strictly prohibited
 # without the express prior written permission of Sushant Gaurav.
-import json, hvdi as h, data as d
+import json
+import pathlib
+
+import data as d
+import hclaims as hc
+import hvdi as h
+
+CLAIMS = hc.load_claims(pathlib.Path(__file__).resolve().parent / "claims.csv")
 
 
 def compute():
@@ -26,7 +33,15 @@ def compute():
             v = h.value(sc["T"], sc["A"], sc["E"], w)
             g = sc["H"] - v
             byw[wk] = dict(V=round(v, 2), D=round(g, 2), cls=h.classify(g), phase=h.phase(g, v))
-        mc = h.monte_carlo({k: sc[k] for k in "HTAE"}, cf)
+        # H comes from the claims corpus, so robustness resamples the claims themselves (hclaims.py)
+        mc = hc.monte_carlo_claims(CLAIMS[cid], sc["T"], sc["A"], sc["E"], {k: cf[k] for k in "TAE"})
+        hres = hc.h_from_claims(
+            [x for x, _ in CLAIMS[cid]["stage"]], [x for x, _ in CLAIMS[cid]["narrative"]]
+        )
+        if hres["H"] != sc["H"]:
+            raise SystemExit(
+                f"{cid}: H in evidence.json ({sc['H']}) differs from the claims corpus ({hres['H']})"
+            )
         base = byw["equal"]["cls"]
         bysc = {}
         for sk, s in d.SCENARIOS.items():
@@ -51,6 +66,13 @@ def compute():
                 mc={k: round(v, 3) for k, v in mc["p"].items()},
                 d05=round(mc["d05"], 2),
                 d95=round(mc["d95"], 2),
+                hclaims=dict(
+                    stage=hres["stage"],
+                    narrative=hres["narrative"],
+                    n_stage=len(CLAIMS[cid]["stage"]),
+                    n_narr=len(CLAIMS[cid]["narrative"]),
+                    h_share={str(k): round(v, 3) for k, v in mc["h_share"].items()},
+                ),
                 milestone=c["milestone"],
                 bysc=bysc,
             )

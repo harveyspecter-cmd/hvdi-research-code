@@ -43,12 +43,12 @@ def draw(mode: str, out: pathlib.Path, scale: float = 1.0, footer: bool = True) 
     # 1 evidence
     box(0.2, y0, 2.15, h)
     txt(0.35, y0 + h - 0.25, "1  Evidence", 11, c["ink"], True)
-    txt(0.35, y0 + 1.12, "152 public sources,\neach logged with publisher,\ndate, period and unit", 8.8, c["mut"])
+    txt(0.35, y0 + 1.12, "217 public sources and\n76 dated claims, each with\npublisher, date and unit", 8.8, c["mut"])
     txt(0.35, y0 + 0.35, "Graded by who holds it:\nbuyer, tracker, filing, vendor", 8.8, c["ink"])
     # 2 scores
     box(2.75, y0, 4.05, h)
     txt(2.9, y0 + h - 0.25, "2  Five scores, each 0 to 4", 11, c["ink"], True)
-    tiles = [("H", "Claimed", c["hot"], 2.9), ("T", "Technical\nproof", c["cool"], 3.72), ("A", "Adoption", c["cool"], 4.47),
+    tiles = [("H", "Claimed\n(dated claims)", c["hot"], 2.9), ("T", "Technical\nproof", c["cool"], 3.72), ("A", "Adoption", c["cool"], 4.47),
              ("E", "Buyer\neconomics", c["cool"], 5.22), ("Q", "Capital\nquality", c["mid"], 6.04)]
     for k, lab, col, x in tiles:
         box(x, y0 + 0.5, 0.66, 0.95, edge=col, fill=c["bg"], lw=1.2)

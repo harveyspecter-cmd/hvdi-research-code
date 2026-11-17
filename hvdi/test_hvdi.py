@@ -180,23 +180,38 @@ def test_monte_carlo_no_noise_limit():
         h.P_SHIFT.update(old)
 
 
-def test_scores_reproduced_after_12_nov_audit():
+def test_scores_reproduced_after_16_nov_claims_revision():
     assert h.leverage_breakeven(0.15, 0.20) == pytest.approx(0.03) and h.leverage_breakeven(0.2, 0) == 0
     assert h.leverage_breakeven(0.10, 0.5) < h.leverage_breakeven(0.20, 0.5)
     assert round((1 - 0.73) * 100) == 27 and (1 - 0.73) * 16.7 == pytest.approx(4.509)
     exp = {
-        "ualink": 2.0,
-        "uet": 4 / 3,
-        "eth_scaleup": 1.0,
-        "dpu": 2 / 3,
-        "eth_scaleout": 2 / 3,
+        "nvlink": 4 / 3,
+        "ualink": 1.0,
+        "infiniband": 2 / 3,
         "cpo": 2 / 3,
-        "lpo": -2 / 3,
-        "aec": -2 / 3,
+        "uet": 1 / 3,
+        "lpo": 1 / 3,
+        "aec": 1 / 3,
+        "eth_scaleup": 0.0,
+        "dpu": -1 / 3,
+        "eth_scaleout": -1 / 3,
     }
     for k, v in exp.items():
         c = d.CATS[k]
         assert h.gap(c["H"]["v"], c["T"]["v"], c["A"]["v"], c["E"]["v"]) == pytest.approx(v)
+
+
+def test_h_cells_match_claims_corpus():
+    import pathlib
+
+    import hclaims as hc
+
+    corpus = hc.load_claims(pathlib.Path(__file__).resolve().parent / "claims.csv")
+    for cid, c in d.CATS.items():
+        st = [x for x, _ in corpus[cid]["stage"]]
+        nr = [x for x, _ in corpus[cid]["narrative"]]
+        assert c["H"]["v"] == hc.h_from_claims(st, nr)["H"], cid
+        assert c["H"]["basis"] == "claims" and c["H"]["src"], cid
 
 
 def test_every_evidence_cell_cites_a_logged_source():

@@ -9,13 +9,26 @@
    "medium": "optics",
    "scores": {
     "H": {
-     "v": 4,
-     "basis": "independent",
+     "v": 3,
+     "basis": "claims",
      "conf": "high",
-     "why": "Analyst headlines describe Ethernet extending its lead in AI back-end networks.",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 6 stage claims give stage level 2; 9 narrative claims give narrative level 3. H is the higher of the two (rule in H_RULE.md). 9 distinct claimants. In claim resampling H takes its value in 93% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
+      "S153",
+      "S155",
+      "S156",
+      "S157",
+      "S158",
+      "S86",
+      "S30",
+      "S161",
+      "S162",
       "S11",
-      "S29"
+      "S163",
+      "S29",
+      "S164",
+      "S192",
+      "S193"
      ]
     },
     "T": {
@@ -42,7 +55,7 @@
      "v": 3,
      "basis": "filing",
      "conf": "high",
-     "why": "Arista 10-Q to 30 Sep 2026: remaining performance obligations about $8.6B (91% to be recognised within two years) and deferred revenue $6,839.5M, both contractual buyer-side balances; 100+ Etherlink customers; buyers fund from cash flow and investment-grade debt. Its $11.4B of non-cancellable purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment. Customer-concentration percentages were not read at origin.",
+     "why": "Arista 10-Q to 30 Sep 2026: remaining performance obligations about $8.6B (91% to be recognised within two years) and deferred revenue $6,839.5M, both contractual buyer-side balances; 100+ Etherlink customers; buyers fund from cash flow and investment-grade debt. Its $11.4B of non-cancellable purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment. The 10-Q reports two customers above 10% of revenue in each recent year (26% and 16% in FY2025), so revenue is concentrated even though commitments are contractual.",
      "src": [
       "S139",
       "S55",
@@ -63,39 +76,49 @@
    "byw": {
     "equal": {
      "V": 3.33,
-     "D": 0.67,
+     "D": -0.33,
      "cls": "aligned",
-     "phase": "plateau"
+     "phase": "underrated"
     },
     "t": {
      "V": 3.5,
-     "D": 0.5,
+     "D": -0.5,
      "cls": "aligned",
-     "phase": "plateau"
+     "phase": "underrated"
     },
     "a": {
      "V": 3.5,
-     "D": 0.5,
+     "D": -0.5,
      "cls": "aligned",
-     "phase": "plateau"
+     "phase": "underrated"
     },
     "e": {
      "V": 3.0,
-     "D": 1.0,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.0,
+     "cls": "aligned",
+     "phase": "plateau"
     }
    },
    "qband": "committed",
    "weak": "E",
-   "stability": 0.814,
+   "stability": 0.983,
    "mc": {
-    "ahead": 0.186,
-    "aligned": 0.814,
+    "ahead": 0.017,
+    "aligned": 0.983,
     "behind": 0.0
    },
-   "d05": -0.14,
-   "d95": 1.32,
+   "d05": -0.76,
+   "d95": 0.66,
+   "hclaims": {
+    "stage": 2,
+    "narrative": 3,
+    "n_stage": 6,
+    "n_narr": 9,
+    "h_share": {
+     "3": 0.926,
+     "4": 0.074
+    }
+   },
    "milestone": {
     "text": "1.6T systems: trials in 2H 2026, production deployment expected 2027 (Arista).",
     "targets_weak_leg": false,
@@ -206,13 +229,20 @@
    "medium": "optics",
    "scores": {
     "H": {
-     "v": 2,
-     "basis": "independent",
-     "conf": "medium",
-     "why": "Framed as the fabric losing share to Ethernet.",
+     "v": 3,
+     "basis": "claims",
+     "conf": "high",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 1 stage claims give stage level 3; 8 narrative claims give narrative level 2. H is the higher of the two (rule in H_RULE.md). 6 distinct claimants. In claim resampling H takes its value in 100% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
+      "S161",
+      "S156",
+      "S162",
+      "S165",
       "S11",
-      "S29"
+      "S164",
+      "S192",
+      "S204",
+      "S205"
      ]
     },
     "T": {
@@ -257,39 +287,49 @@
    "byw": {
     "equal": {
      "V": 2.33,
-     "D": -0.33,
+     "D": 0.67,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "t": {
      "V": 2.5,
-     "D": -0.5,
+     "D": 0.5,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "a": {
      "V": 2.5,
-     "D": -0.5,
+     "D": 0.5,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "e": {
      "V": 2.0,
-     "D": 0.0,
-     "cls": "aligned",
-     "phase": "slope"
+     "D": 1.0,
+     "cls": "ahead",
+     "phase": "peak"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.807,
+   "stability": 0.782,
    "mc": {
-    "ahead": 0.032,
-    "aligned": 0.807,
-    "behind": 0.161
+    "ahead": 0.218,
+    "aligned": 0.782,
+    "behind": 0.0
    },
-   "d05": -1.54,
-   "d95": 0.86,
+   "d05": -0.02,
+   "d95": 1.39,
+   "hclaims": {
+    "stage": 3,
+    "narrative": 2,
+    "n_stage": 1,
+    "n_narr": 8,
+    "h_share": {
+     "3": 0.999,
+     "4": 0.001
+    }
+   },
    "milestone": {
     "text": "800G ramp arrived with the platform it was tied to.",
     "targets_weak_leg": false,
@@ -400,14 +440,17 @@
    "medium": "none",
    "scores": {
     "H": {
-     "v": 3,
-     "basis": "vendor",
-     "conf": "medium",
-     "why": "Products marketed as UEC-compliant; the specification is described in the present tense.",
+     "v": 2,
+     "basis": "claims",
+     "conf": "low",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 4 stage claims give stage level 1; 2 narrative claims give narrative level 2. H is the higher of the two (rule in H_RULE.md). 6 distinct claimants. In claim resampling H takes its value in 62% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S07",
-      "S09",
-      "S44"
+      "S75",
+      "S166",
+      "S167",
+      "S71",
+      "S124",
+      "S206"
      ]
     },
     "T": {
@@ -439,7 +482,7 @@
      "v": 2,
      "basis": "vendor",
      "conf": "low",
-     "why": "No UET-specific revenue, backlog or design win on the AMD or Broadcom calls of August to November 2026; a strict reading gives 1.",
+     "why": "No UET-specific revenue, backlog or design win on the AMD or Broadcom calls of August to November 2026.",
      "src": [
       "S80",
       "S82",
@@ -460,39 +503,50 @@
    "byw": {
     "equal": {
      "V": 1.67,
-     "D": 1.33,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.33,
+     "cls": "aligned",
+     "phase": "slope"
     },
     "t": {
      "V": 1.75,
-     "D": 1.25,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.25,
+     "cls": "aligned",
+     "phase": "slope"
     },
     "a": {
      "V": 1.75,
-     "D": 1.25,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.25,
+     "cls": "aligned",
+     "phase": "slope"
     },
     "e": {
      "V": 1.5,
-     "D": 1.5,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.5,
+     "cls": "aligned",
+     "phase": "slope"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.735,
+   "stability": 0.874,
    "mc": {
-    "ahead": 0.735,
-    "aligned": 0.265,
-    "behind": 0.0
+    "ahead": 0.041,
+    "aligned": 0.874,
+    "behind": 0.085
    },
-   "d05": 0.17,
-   "d95": 2.49,
+   "d05": -1.09,
+   "d95": 0.91,
+   "hclaims": {
+    "stage": 1,
+    "narrative": 2,
+    "n_stage": 4,
+    "n_narr": 2,
+    "h_share": {
+     "1": 0.373,
+     "2": 0.62,
+     "3": 0.007
+    }
+   },
    "milestone": {
     "text": "UEC-compliant 800G NICs ship inside AMD Helios racks ramping in Q4 2026.",
     "targets_weak_leg": true,
@@ -519,7 +573,7 @@
       "gate": 0,
       "total": 1
      },
-     "proj": "closing"
+     "proj": "holding"
     },
     "taiwan": {
      "gates": {
@@ -555,7 +609,7 @@
       "gate": 0,
       "total": 1
      },
-     "proj": "closing"
+     "proj": "holding"
     },
     "export": {
      "gates": {
@@ -603,12 +657,18 @@
    "medium": "copper",
    "scores": {
     "H": {
-     "v": 3,
-     "basis": "independent",
+     "v": 4,
+     "basis": "claims",
      "conf": "medium",
-     "why": "Described as the dominant scale-up fabric today, with open alternatives expected to challenge it.",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 3 stage claims give stage level 3; 5 narrative claims give narrative level 4. H is the higher of the two (rule in H_RULE.md). 4 distinct claimants. In claim resampling H takes its value in 71% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S65"
+      "S176",
+      "S86",
+      "S172",
+      "S173",
+      "S196",
+      "S197",
+      "S213"
      ]
     },
     "T": {
@@ -656,39 +716,49 @@
    "byw": {
     "equal": {
      "V": 2.67,
-     "D": 0.33,
-     "cls": "aligned",
-     "phase": "slope"
+     "D": 1.33,
+     "cls": "ahead",
+     "phase": "peak"
     },
     "t": {
      "V": 2.75,
-     "D": 0.25,
-     "cls": "aligned",
-     "phase": "slope"
+     "D": 1.25,
+     "cls": "ahead",
+     "phase": "peak"
     },
     "a": {
      "V": 3.0,
-     "D": 0.0,
-     "cls": "aligned",
-     "phase": "plateau"
+     "D": 1.0,
+     "cls": "ahead",
+     "phase": "peak"
     },
     "e": {
      "V": 2.25,
-     "D": 0.75,
-     "cls": "aligned",
-     "phase": "slope"
+     "D": 1.75,
+     "cls": "ahead",
+     "phase": "peak"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.778,
+   "stability": 0.583,
    "mc": {
-    "ahead": 0.19,
-    "aligned": 0.778,
-    "behind": 0.032
+    "ahead": 0.583,
+    "aligned": 0.417,
+    "behind": 0.0
    },
-   "d05": -0.86,
-   "d95": 1.63,
+   "d05": -0.05,
+   "d95": 2.11,
+   "hclaims": {
+    "stage": 3,
+    "narrative": 4,
+    "n_stage": 3,
+    "n_narr": 5,
+    "h_share": {
+     "3": 0.289,
+     "4": 0.711
+    }
+   },
    "milestone": {
     "text": "Next generation arrives with the 2026 accelerator platform; no dated event adds buyer-economics evidence.",
     "targets_weak_leg": false,
@@ -715,7 +785,7 @@
       "gate": 0,
       "total": 1
      },
-     "proj": "holding"
+     "proj": "closing"
     },
     "taiwan": {
      "gates": {
@@ -751,7 +821,7 @@
       "gate": 0,
       "total": 1
      },
-     "proj": "holding"
+     "proj": "closing"
     },
     "export": {
      "gates": {
@@ -799,12 +869,18 @@
    "medium": "copper",
    "scores": {
     "H": {
-     "v": 3,
-     "basis": "vendor",
-     "conf": "high",
-     "why": "Positioned as the open alternative to NVLink; a 2.0 specification followed in April 2026.",
+     "v": 2,
+     "basis": "claims",
+     "conf": "medium",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 3 stage claims give stage level 2; 6 narrative claims give narrative level 1. H is the higher of the two (rule in H_RULE.md). 8 distinct claimants. In claim resampling H takes its value in 75% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S33"
+      "S170",
+      "S172",
+      "S173",
+      "S171",
+      "S211",
+      "S214",
+      "S215"
      ]
     },
     "T": {
@@ -853,39 +929,50 @@
    "byw": {
     "equal": {
      "V": 1.0,
-     "D": 2.0,
+     "D": 1.0,
      "cls": "ahead",
      "phase": "rising"
     },
     "t": {
      "V": 1.0,
-     "D": 2.0,
+     "D": 1.0,
      "cls": "ahead",
      "phase": "rising"
     },
     "a": {
      "V": 1.0,
-     "D": 2.0,
+     "D": 1.0,
      "cls": "ahead",
      "phase": "rising"
     },
     "e": {
      "V": 1.0,
-     "D": 2.0,
+     "D": 1.0,
      "cls": "ahead",
      "phase": "rising"
     }
    },
    "qband": "thin",
    "weak": "T",
-   "stability": 0.986,
+   "stability": 0.609,
    "mc": {
-    "ahead": 0.986,
-    "aligned": 0.014,
+    "ahead": 0.609,
+    "aligned": 0.391,
     "behind": 0.0
    },
-   "d05": 1.0,
-   "d95": 3.0,
+   "d05": -0.0,
+   "d95": 1.41,
+   "hclaims": {
+    "stage": 2,
+    "narrative": 1,
+    "n_stage": 3,
+    "n_narr": 6,
+    "h_share": {
+     "1": 0.244,
+     "2": 0.749,
+     "3": 0.007
+    }
+   },
    "milestone": {
     "text": "First merchant switch silicon samples at end of 2026, volume in 2027. First racks shipped without it.",
     "targets_weak_leg": true,
@@ -997,14 +1084,19 @@
    "medium": "copper",
    "scores": {
     "H": {
-     "v": 3,
-     "basis": "vendor",
+     "v": 2,
+     "basis": "claims",
      "conf": "medium",
-     "why": "Vendor and operator roadmaps present Ethernet as the open scale-up answer; Arista announced an ESUN-based rack architecture on 3 Nov 2026 (an announcement, not a shipment).",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 4 stage claims give stage level 2; 4 narrative claims give narrative level 2. H is the higher of the two (rule in H_RULE.md). 6 distinct claimants. In claim resampling H takes its value in 72% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S35",
-      "S19b",
-      "S146"
+      "S169",
+      "S167",
+      "S124",
+      "S83",
+      "S161",
+      "S65",
+      "S36",
+      "S195"
      ]
     },
     "T": {
@@ -1056,39 +1148,49 @@
    "byw": {
     "equal": {
      "V": 2.0,
-     "D": 1.0,
-     "cls": "ahead",
-     "phase": "peak"
-    },
-    "t": {
-     "V": 2.25,
-     "D": 0.75,
+     "D": 0.0,
      "cls": "aligned",
      "phase": "slope"
     },
+    "t": {
+     "V": 2.25,
+     "D": -0.25,
+     "cls": "aligned",
+     "phase": "underrated"
+    },
     "a": {
      "V": 2.0,
-     "D": 1.0,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.0,
+     "cls": "aligned",
+     "phase": "slope"
     },
     "e": {
      "V": 1.75,
-     "D": 1.25,
-     "cls": "ahead",
-     "phase": "peak"
+     "D": 0.25,
+     "cls": "aligned",
+     "phase": "slope"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.507,
+   "stability": 0.848,
    "mc": {
-    "ahead": 0.507,
-    "aligned": 0.491,
-    "behind": 0.001
+    "ahead": 0.146,
+    "aligned": 0.848,
+    "behind": 0.006
    },
-   "d05": -0.2,
-   "d95": 2.18,
+   "d05": -0.61,
+   "d95": 1.36,
+   "hclaims": {
+    "stage": 2,
+    "narrative": 2,
+    "n_stage": 4,
+    "n_narr": 4,
+    "h_share": {
+     "2": 0.722,
+     "3": 0.278
+    }
+   },
    "milestone": {
     "text": "AMD Helios racks with UALink-over-Ethernet on Broadcom silicon: shipments from late Q3 2026, ramp in Q4.",
     "targets_weak_leg": true,
@@ -1115,7 +1217,7 @@
       "gate": 0,
       "total": 2
      },
-     "proj": "closing"
+     "proj": "holding"
     },
     "taiwan": {
      "gates": {
@@ -1151,7 +1253,7 @@
       "gate": 0,
       "total": 2
      },
-     "proj": "closing"
+     "proj": "holding"
     },
     "export": {
      "gates": {
@@ -1199,20 +1301,23 @@
    "medium": "none",
    "scores": {
     "H": {
-     "v": 3,
-     "basis": "vendor",
-     "conf": "medium",
-     "why": "Positioned by vendors as core AI-factory infrastructure.",
+     "v": 2,
+     "basis": "claims",
+     "conf": "low",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 3 stage claims give stage level 2; 2 narrative claims give narrative level 0. H is the higher of the two (rule in H_RULE.md). 4 distinct claimants. In claim resampling H takes its value in 55% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S111",
-      "S67"
+      "S178",
+      "S176",
+      "S179",
+      "S180",
+      "S217"
      ]
     },
     "T": {
      "v": 3,
      "basis": "buyer",
      "conf": "low",
-     "why": "Oracle describes a SmartNIC offload device in production compute shapes but gives no counts and does not name the silicon; a strict merchant-only reading gives 2.",
+     "why": "Oracle describes a SmartNIC offload device in production compute shapes but gives no counts and does not name the silicon.",
      "src": [
       "S110",
       "S111",
@@ -1254,39 +1359,50 @@
    "byw": {
     "equal": {
      "V": 2.33,
-     "D": 0.67,
+     "D": -0.33,
      "cls": "aligned",
-     "phase": "slope"
+     "phase": "underrated"
     },
     "t": {
      "V": 2.5,
-     "D": 0.5,
+     "D": -0.5,
      "cls": "aligned",
-     "phase": "slope"
+     "phase": "underrated"
     },
     "a": {
      "V": 2.25,
-     "D": 0.75,
+     "D": -0.25,
      "cls": "aligned",
-     "phase": "slope"
+     "phase": "underrated"
     },
     "e": {
      "V": 2.25,
-     "D": 0.75,
+     "D": -0.25,
      "cls": "aligned",
-     "phase": "slope"
+     "phase": "underrated"
     }
    },
    "qband": "concentrated",
    "weak": "A",
-   "stability": 0.674,
+   "stability": 0.764,
    "mc": {
-    "ahead": 0.318,
-    "aligned": 0.674,
-    "behind": 0.009
+    "ahead": 0.206,
+    "aligned": 0.764,
+    "behind": 0.03
    },
-   "d05": -0.49,
-   "d95": 1.84,
+   "d05": -0.85,
+   "d95": 1.77,
+   "hclaims": {
+    "stage": 2,
+    "narrative": 0,
+    "n_stage": 3,
+    "n_narr": 2,
+    "h_share": {
+     "2": 0.553,
+     "3": 0.316,
+     "4": 0.131
+    }
+   },
    "milestone": {
     "text": "Next-generation merchant DPU launches with 2026 accelerator platforms; it does not address the missing economics evidence.",
     "targets_weak_leg": false,
@@ -1396,11 +1512,16 @@
    "scores": {
     "H": {
      "v": 3,
-     "basis": "independent",
+     "basis": "claims",
      "conf": "medium",
-     "why": "Described as moving from long-promised to entering production.",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 2 stage claims give stage level 3; 4 narrative claims give narrative level 1. H is the higher of the two (rule in H_RULE.md). 6 distinct claimants. In claim resampling H takes its value in 75% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S36"
+      "S176",
+      "S181",
+      "S182",
+      "S36",
+      "S199",
+      "S200"
      ]
     },
     "T": {
@@ -1472,14 +1593,25 @@
    },
    "qband": "concentrated",
    "weak": "A",
-   "stability": 0.725,
+   "stability": 0.929,
    "mc": {
-    "ahead": 0.269,
-    "aligned": 0.725,
-    "behind": 0.006
+    "ahead": 0.048,
+    "aligned": 0.929,
+    "behind": 0.023
    },
-   "d05": -0.46,
-   "d95": 1.78,
+   "d05": -0.81,
+   "d95": 0.97,
+   "hclaims": {
+    "stage": 3,
+    "narrative": 1,
+    "n_stage": 2,
+    "n_narr": 4,
+    "h_share": {
+     "2": 0.751,
+     "3": 0.242,
+     "4": 0.006
+    }
+   },
    "milestone": {
     "text": "102.4T CPO platforms enter production in 2027; 2026 initial deployments arrived when analysts forecast in 2025.",
     "targets_weak_leg": true,
@@ -1591,12 +1723,15 @@
    "medium": "optics",
    "scores": {
     "H": {
-     "v": 2,
-     "basis": "independent",
+     "v": 3,
+     "basis": "claims",
      "conf": "medium",
-     "why": "Less prominent than co-packaged optics in coverage.",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 2 stage claims give stage level 3; 2 narrative claims give narrative level 2. H is the higher of the two (rule in H_RULE.md). 4 distinct claimants. In claim resampling H takes its value in 70% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S36"
+      "S183",
+      "S184",
+      "S137",
+      "S210"
      ]
     },
     "T": {
@@ -1643,39 +1778,49 @@
    "byw": {
     "equal": {
      "V": 2.67,
-     "D": -0.67,
+     "D": 0.33,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "t": {
      "V": 2.75,
-     "D": -0.75,
+     "D": 0.25,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "a": {
      "V": 2.75,
-     "D": -0.75,
+     "D": 0.25,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "e": {
      "V": 2.5,
-     "D": -0.5,
+     "D": 0.5,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.711,
+   "stability": 0.849,
    "mc": {
-    "ahead": 0.005,
-    "aligned": 0.711,
-    "behind": 0.284
+    "ahead": 0.011,
+    "aligned": 0.849,
+    "behind": 0.14
    },
-   "d05": -1.79,
-   "d95": 0.45,
+   "d05": -1.16,
+   "d95": 0.65,
+   "hclaims": {
+    "stage": 3,
+    "narrative": 2,
+    "n_stage": 2,
+    "n_narr": 2,
+    "h_share": {
+     "2": 0.705,
+     "3": 0.295
+    }
+   },
    "milestone": {
     "text": "No dated milestone admitted that would add economics evidence.",
     "targets_weak_leg": false,
@@ -1784,24 +1929,29 @@
    "medium": "copper",
    "scores": {
     "H": {
-     "v": 2,
-     "basis": "independent",
-     "conf": "low",
-     "why": "Limited coverage relative to optics.",
+     "v": 3,
+     "basis": "claims",
+     "conf": "medium",
+     "why": "Claims corpus (12 Nov 2025 to 11 Nov 2026): 2 stage claims give stage level 2; 4 narrative claims give narrative level 3. H is the higher of the two (rule in H_RULE.md). 5 distinct claimants. In claim resampling H takes its value in 76% of draws. Claims and quotes are listed in claims.csv.",
      "src": [
-      "S41",
-      "S130"
+      "S188",
+      "S189",
+      "S190",
+      "S191",
+      "S201",
+      "S202"
      ]
     },
     "T": {
      "v": 3,
      "basis": "buyer",
      "conf": "medium",
-     "why": "Meta presented its large-scale deployment of 800G active electrical cables in AI data centres at OCP 2026; failure-rate data inside the talk is unread.",
+     "why": "Meta's OCP 2026 slides describe 800G AECs (112G PAM4, 1.0 to 3.2 m, under 12 W per end) qualified across three suppliers and in fleet use, and record firmware and link-training failures that appeared only at cluster scale; no unit count is given.",
      "src": [
       "S120",
       "S121",
-      "S41"
+      "S41",
+      "S148"
      ]
     },
     "A": {
@@ -1841,39 +1991,50 @@
    "byw": {
     "equal": {
      "V": 2.67,
-     "D": -0.67,
+     "D": 0.33,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "t": {
      "V": 2.75,
-     "D": -0.75,
+     "D": 0.25,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "a": {
      "V": 2.75,
-     "D": -0.75,
+     "D": 0.25,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     },
     "e": {
      "V": 2.5,
-     "D": -0.5,
+     "D": 0.5,
      "cls": "aligned",
-     "phase": "underrated"
+     "phase": "slope"
     }
    },
    "qband": "concentrated",
    "weak": "E",
-   "stability": 0.636,
+   "stability": 0.872,
    "mc": {
-    "ahead": 0.01,
-    "aligned": 0.636,
-    "behind": 0.354
+    "ahead": 0.08,
+    "aligned": 0.872,
+    "behind": 0.048
    },
-   "d05": -2.0,
-   "d95": 0.6,
+   "d05": -0.95,
+   "d95": 1.14,
+   "hclaims": {
+    "stage": 2,
+    "narrative": 3,
+    "n_stage": 2,
+    "n_narr": 4,
+    "h_share": {
+     "2": 0.19,
+     "3": 0.759,
+     "4": 0.051
+    }
+   },
    "milestone": {
     "text": "No dated milestone admitted that would add economics evidence.",
     "targets_weak_leg": false,
@@ -2615,6 +2776,266 @@
   "S71": {
    "t": "Futuriom (byline M. Jander), Top Trends in Networking for AI: Connectivity from AI Clusters to the Edge, 22 Apr 2026 [Sponsored analyst report (sponsors: DriveNets, Arrcus, Nokia); 34-page PDF supplied by the project author and read; qualitative, no market figures]",
    "u": "https://www.futuriom.com/articles/news/top-trends-in-networking-for-ai-connectivity-from-ai-clusters-to-the-edge/2026/04"
+  },
+  "S153": {
+   "t": "Broadcom, Broadcom Now Shipping World's First 102.4 Tbps Switch in Production Volume (2026-03-12) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-now-shipping-worlds-first-1024-tbps-switch-production"
+  },
+  "S154": {
+   "t": "NVIDIA, via Nasdaq/GlobeNewswire, NVIDIA Vera Rubin Opens Agentic AI Frontier (2026-03-16) [Vendor press release (wire copy on third-party site); opened; claims corpus]",
+   "u": "https://www.nasdaq.com/press-release/nvidia-vera-rubin-opens-agentic-ai-frontier-2026-03-16"
+  },
+  "S155": {
+   "t": "Arista, via Webull, Arista (ANET) Q3 2026 Earnings Call Transcript (2026-11-03) [Vendor earnings call (third-party transcript); opened; claims corpus]",
+   "u": "https://www.webull.com/news/15866284470803456"
+  },
+  "S156": {
+   "t": "NVIDIA, Q4 FY2026 earnings call transcript (2026-02-25) [Vendor earnings call (issuer-hosted transcript); opened; claims corpus]",
+   "u": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/q4/NVDA-Q4-2026-Earnings-Call-25-February-2026-5_00-PM-ET.pdf"
+  },
+  "S157": {
+   "t": "Cisco, Cisco Announces New Silicon One G300 Advanced Systems and Optics to Power and Scale AI Data Centers for the Agentic Era (2026-02-10) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://investor.cisco.com/news/news-details/2026/Cisco-Announces-New-Silicon-One-G300-Advanced-Systems-and-Optics-to-Power-and-Scale-AI-Data-Centers-for-the-Agentic-Era/default.aspx"
+  },
+  "S158": {
+   "t": "Cisco, Cisco Advances Scalability and Openness at OCP 2026 (2026-10-12) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m10/cisco-advances-scalability-and-openness-at-ocp-2026.html"
+  },
+  "S159": {
+   "t": "Arista, Arista Q1 2026 earnings release (2026-05-05) [Vendor primary (earnings release; level-0 non-claim); opened; claims corpus]",
+   "u": "https://www.arista.com/en/company/news/press-release/24017-pr-20260505"
+  },
+  "S160": {
+   "t": "Fierce Network, Arista's Ullal: Ethernet is the 'eventual winner' and equalizer in AI networking () [Trade press (undated); opened; claims corpus]",
+   "u": "https://www.fierce-network.com/cloud/aristas-ullal-ethernet-eventual-winner-and-equalizer-ai-networking"
+  },
+  "S161": {
+   "t": "Dell'Oro Group (S. Boujelbene), Data Center Networking in 2025-2026: Milestones and Opportunities Amid Supply Risk (2025-12-17) [Originating analyst (blog); opened; claims corpus]",
+   "u": "https://www.delloro.com/2026-predictions-data-center-switch-frontend-ai-backed-networks/"
+  },
+  "S162": {
+   "t": "Dell'Oro Group, Ethernet More Than Doubles Size of InfiniBand as the Leading Fabric for AI Scale-Out Networks in 2025 (2026-03-10) [Originating analyst (press release); opened; claims corpus]",
+   "u": "https://www.delloro.com/news/ethernet-more-than-doubles-size-of-infiniband-as-the-leading-fabric-for-ai-scale-out-networks-in-2025/"
+  },
+  "S163": {
+   "t": "IDC (Nicholson, Butler, Jirovsky, Anesini), NVIDIA Becomes #1 in Datacenter Ethernet Switching as 1Q26 Market Surges 39.8% to $15.4 Billion (2026-06-17) [Originating analyst (blog); opened; claims corpus]",
+   "u": "https://www.idc.com/resource-center/blog/nvidia-becomes-1-in-datacenter-ethernet-switching-as-1q26-market-surges-39-8-to-15-4-billion/"
+  },
+  "S164": {
+   "t": "451 Research, S&P Global (M. Fratto), AI networking competition moves beyond bandwidth to openness and efficiency (2026-10-19) [Originating analyst (blog); opened; claims corpus]",
+   "u": "https://www.spglobal.com/energy/en/technology-ai-research-insights/blogs/ai-networking-competition-moves-beyond-bandwidth-to-openness-and-efficiency"
+  },
+  "S165": {
+   "t": "Futurum Group (T. Hollingsworth), Scale-Across AI Networking: The Third Dimension of AI Infrastructure Design (2026-04-28) [Originating analyst (press release/research note); opened; claims corpus]",
+   "u": "https://futurumgroup.com/press-release/scale-across-ai-networking-the-third-dimension-of-ai-infrastructure-design/"
+  },
+  "S166": {
+   "t": "AMD, AAI 2026: AMD Launches AMD Helios Rackscale Solution for Frontier AI (2026-07-23) [Vendor primary (newsroom); opened; claims corpus]",
+   "u": "https://newsroom.amd.com/news/aai-2026-helios-update/"
+  },
+  "S167": {
+   "t": "Arista, Arista Announces Rack-Scale Architectures for Scale-Up and Scale-Out AI Fabrics (2026-10-07) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://www.arista.com/en/company/news/press-release/24818-pr-20261007"
+  },
+  "S168": {
+   "t": "Ultra Ethernet Consortium, Specification History - Ultra Ethernet Consortium () [Consortium primary (web page; as of 29 Oct 2026); opened; claims corpus]",
+   "u": "https://ultraethernet.org/?p=1123"
+  },
+  "S169": {
+   "t": "AMD, Resilient Scale-Up Networking Built for Production AI (AMD Networking blog) (2026-07-23) [Vendor primary (blog); opened; claims corpus]",
+   "u": "https://www.amd.com/en/blogs/2026/amd-helios-resilient-scale-up-networking-for-ai.html"
+  },
+  "S170": {
+   "t": "HPCwire (A. Woodie), Upscale AI Eyes Late 2026 for Scale-Up UALink Switch (2025-12-02) [Trade press; opened; claims corpus]",
+   "u": "https://www.hpcwire.com/2025/12/02/upscale-ai-eyes-late-2026-for-scale-up-ualink-switch/"
+  },
+  "S171": {
+   "t": "The Register (T. Mann), AI networking startup Upscale AI scores $200M to challenge Nvidia's NVSwitch (2026-01-22) [Trade press; opened; claims corpus]",
+   "u": "https://www.theregister.com/2026/01/22/upscale_skyhammer_nvidia/"
+  },
+  "S172": {
+   "t": "Network World (M. Cooter), New v2 UALink specification aims to catch up to NVLink (2026-04-07) [Trade press; opened; claims corpus]",
+   "u": "https://www.networkworld.com/article/4155357/new-v2-ualink-specification-aims-to-catch-up-to-nvlink.html"
+  },
+  "S173": {
+   "t": "Futurum Group (B. Burke), Marvell's XConn Buy Yields a Two-Pronged Open Fabric Play Against NVLink (2026-03-23) [Originating analyst; opened; claims corpus]",
+   "u": "https://futurumgroup.com/insights/marvells-xconn-buy-yields-a-two-pronged-open-fabric-play-against-nvlink/"
+  },
+  "S174": {
+   "t": "UALink Consortium, UALink 2.0 Statement of Support () [Consortium document (undated; URL path 2026/04); opened; claims corpus]",
+   "u": "https://ualinkconsortium.org/wp-content/uploads/2026/04/UALink_2.0-Statement-of-Support_FINAL.pdf"
+  },
+  "S175": {
+   "t": "Astera Labs, Astera Labs Broadens Scorpio X-Series Smart Fabric Switch Roadmap to Address Expanding Scale-Up Market Opportunities (2026-01-22) [Vendor primary (non-claim for UALink); not opened; claims corpus]",
+   "u": "https://www.asteralabs.com/news/astera-labs-broadens-scorpio-x-series-smart-fabric-switch-roadmap-to-address-expanding-scale-up-market-opportunities/"
+  },
+  "S176": {
+   "t": "NVIDIA, NVIDIA Vera Rubin Ramps Into Full Production to Power Agentic AI Factories Worldwide (2026-05-31) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://nvidianews.nvidia.com/news/vera-rubin-full-production-agentic-ai-factory"
+  },
+  "S177": {
+   "t": "NVIDIA and Marvell, via Photonics Online, NVIDIA AI Ecosystem Expands as Marvell Joins Forces Through NVLink Fusion (2026-03-31) [Vendor press release (third-party copy); opened; claims corpus]",
+   "u": "https://www.photonicsonline.com/doc/nvidia-ai-ecosystem-expands-as-marvell-joins-forces-through-nvlink-fusion-0001"
+  },
+  "S178": {
+   "t": "NVIDIA, NVIDIA Rubin Platform, Open Models, Autonomous Driving: NVIDIA Presents Blueprint for the Future at CES (2026-01-05) [Vendor primary (blog); opened; claims corpus]",
+   "u": "https://blogs.nvidia.com/blog/2026-ces-special-presentation"
+  },
+  "S179": {
+   "t": "AMD, AMD Pensando Vulcano 800 AI NIC: Built to Scale-Out and Across (AMD Networking blog) (2026-07-23) [Vendor primary (blog); opened; claims corpus]",
+   "u": "https://www.amd.com/en/blogs/2026/amd-pensando-vulcano-800-ai-nic-scale-out-and-across.html"
+  },
+  "S180": {
+   "t": "Dell'Oro Group, Data Center IT Semiconductors and Components Market to Surpass $1.8 Trillion over Next Five Years (2026-08-12) [Originating analyst (press release); opened; claims corpus]",
+   "u": "https://www.delloro.com/news/data-center-it-semiconductors-and-components-market-to-surpass-1-8-trillion-over-next-five-years/"
+  },
+  "S181": {
+   "t": "TrendForce, NVIDIA and Broadcom Begin Volume Ramp of CPO Switches, with Optical Engine Yield and Advanced Packaging Capacity Emerging as Key Expansion Bottlenecks, Says TrendForce (2026-07-27) [Originating analyst (press release); opened; claims corpus]",
+   "u": "https://www.trendforce.com/presscenter/news/20260727-13151.html"
+  },
+  "S182": {
+   "t": "Lightwave (S. Buckley), reporting LightCounting, AI scale-up raises the stakes for transceivers and CPO adoption (2026-03-10) [Trade press (reporting analyst); opened; claims corpus]",
+   "u": "https://lightwaveonline.com/home/article/55362899/ai-scale-up-raises-the-stakes-for-transceivers-and-cpo-adoption"
+  },
+  "S183": {
+   "t": "Centera Photonics / NewPhotonics, via PR Newswire, Centera Photonics Announces First 1.6Tbps DR8 LPO Transceiver based on NewPhotonics LPO+ PIC with Integrated OSPic Optical Signal Processor (2026-03-17) [Vendor press release (wire); opened; claims corpus]",
+   "u": "https://www.prnewswire.com/il/news-releases/centera-photonics-announces-first-1-6tbps-dr8-lpo-transceiver-based-on-newphotonics-lpo-pic-with-integrated-ospic-optical-signal-processor-302713692.html"
+  },
+  "S184": {
+   "t": "Linktel Technologies, via VIR, Linktel Technologies displays 1.6T optical transceivers at OCP Summit 2026 (2026-10-18) [Vendor press release (republished 19 Oct 2026); opened; claims corpus]",
+   "u": "https://vir.com.vn/linktel-technologies-displays-16t-optical-transceivers-at-ocp-summit-2026-163142.html"
+  },
+  "S185": {
+   "t": "Data Center Frontier (sponsored; E. Yang, CIOE), 'x'PO Technologies Accelerate Evolution, Reshaping the Optical Interconnect Landscape for AI Data Centers (2026-07-24) [Sponsored trade press; opened; claims corpus]",
+   "u": "https://datacenterfrontier.com/sponsored/article/55392421/xpo-technologies-accelerate-evolution-reshaping-the-optical-interconnect-landscape-for-ai-data-centers"
+  },
+  "S186": {
+   "t": "Hengtong, OFC 2026 optical modules: what's real, what's next (blog) (2026-04-02) [Vendor blog; not opened; claims corpus]",
+   "u": "https://www.hengtongglobal.com/info/ofc-2026-optical-modules-whats-real-whats-next-103451285.html"
+  },
+  "S187": {
+   "t": "Lightwave, Overcoming linear pluggable optics (LPO) deployment challenges: from standards to scale (2025-07-22) [Trade press (outside window); not opened; claims corpus]",
+   "u": "https://lightwaveonline.com/home/article/55304830/overcoming-linear-pluggable-optics-lpo-deployment-challenges-from-standards-to-scale"
+  },
+  "S188": {
+   "t": "Credo, via Business Wire, Credo Technology Group Holding Ltd Reports Second Quarter of Fiscal Year 2026 Financial Results (2025-12-01) [Vendor press release (wire); opened; claims corpus]",
+   "u": "https://www.businesswire.com/news/home/20251201598056/en"
+  },
+  "S189": {
+   "t": "Marvell, via Business Wire (quotes 650 Group), Marvell Launches Strategic Initiative to Accelerate AEC Ecosystem and Hyperscaler Adoption (2025-12-09) [Vendor press release (wire); analyst quote relayed; opened; claims corpus]",
+   "u": "https://www.businesswire.com/news/home/20251209603264/en"
+  },
+  "S190": {
+   "t": "MarketBeat, via Yahoo Finance, Credo Technology Group Q3 Earnings Call Highlights (2026-03-02) [Trade press (earnings-call summary, republished); opened; claims corpus]",
+   "u": "https://finance.yahoo.com/news/credo-technology-group-q3-earnings-232723083.html"
+  },
+  "S191": {
+   "t": "Marvell, Marvell Bolsters Connectivity Portfolio with New 3.2T Protocol-aware Retimer and Second-generation 1.6T AEC DSP (2026-10-13) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://investor.marvell.com/news-events/press-releases/detail/1039/marvell-bolsters-connectivity-portfolio-with-new-3-2t-protocol-aware-retimer-and-second-generation-1-6t-aec-dsp"
+  },
+  "S192": {
+   "t": "ICC \u8baf\u77f3\u5149\u901a\u8baf\u7f51, via itiger, Arista CEO\uff1a\u4ee5\u592a\u7f51\u5c06\u6210\u4e3aAI\u7f51\u7edc\u7684\"\u7ec8\u6781\u8d62\u5bb6\" (2026-01-09) [Trade press relay (Chinese); opened; claims corpus]",
+   "u": "https://www.itiger.com/news/2602310929"
+  },
+  "S193": {
+   "t": "Futurum Group (T. Hollingsworth), Ethernet Won't Collapse the Four Enterprise Networks Into One (AINTH202609) (2026-10-13) [Originating analyst (research note PDF); opened; claims corpus]",
+   "u": "https://futurumgroup.com/wp-content/uploads/2026/10/Ethernet-Wont-Collapse-the-Four-Enterprise-Networks-Into-One_AINTH202609.pdf"
+  },
+  "S194": {
+   "t": "Calnex Solutions (D. Triantafyllidou), Ultra Ethernet Is the Transport Solution That AI Infrastructure Has Been Waiting For (2026-05-05) [Vendor blog; opened; claims corpus]",
+   "u": "https://calnexsol.com/blog/ultra-ethernet-is-the-transport-solution-that-ai-infrastructure-has-been-waiting-for/"
+  },
+  "S195": {
+   "t": "BUSINESS NETWORK (businessnetwork.jp), NVLink\u5bfe\u6297\u306e\u65b0\u6a19\u6e96\u300cESUN\u300d\u3068\u306f AI\u30af\u30e9\u30b9\u30bf\u30fc\u306e\u30a4\u30fc\u30b5\u30cd\u30c3\u30c8\u5316\u306b\"\u7b2c2\u6ce2\" (2026-09-07) [Trade press (editorial); opened; claims corpus]",
+   "u": "https://businessnetwork.jp/article/36271/"
+  },
+  "S196": {
+   "t": "Futurum Group (B. Burke), Will NVIDIA Investment Accelerate Marvell's XPU Growth? (2026-04-02) [Originating analyst; opened; claims corpus]",
+   "u": "https://futurumgroup.com/?p=88414"
+  },
+  "S197": {
+   "t": "Tom's Hardware (L. James), Why Nvidia just poured $2 billion into AI ASIC competitor Marvell \u2014 NVLink Fusion turns into soft ecosystem lock-in (2026-04-02) [Trade press (editorial); opened; claims corpus]",
+   "u": "https://www.tomshardware.com/tech-industry/nvidia-invests-2-billion-in-marvell-whose-biggest-clients-are-trying-to-replace-nvidia-chips"
+  },
+  "S198": {
+   "t": "ABI Research, UALink versus NVLink\u2014Open versus Closed (2024-08-01) [Analyst (outside window); opened; claims corpus]",
+   "u": "https://abiresearch.com/market-research/insight/7784495-ualink-versus-nvlinkopen-versus-closed-chi"
+  },
+  "S199": {
+   "t": "Lightwave (by-lined: L. Gasman, CIR), Co-Packaged Optics and the AI data center: From skepticism to strategic adoption (2026-03-05) [Trade press (by-lined analyst article); opened; claims corpus]",
+   "u": "https://www.lightwaveonline.com/home/article/55362126/co-packaged-optics-and-the-ai-data-center-from-skepticism-to-strategic-adoption"
+  },
+  "S200": {
+   "t": "Tom's Hardware (L. James), relaying SemiAnalysis, Near-packaged optics gains ground as the industry hedges against co-packaged optics' growing pains (2026-08-13) [Trade press (relaying analyst); opened; claims corpus]",
+   "u": "https://www.tomshardware.com/tech-industry/near-packaged-optics-gains-ground-aso-the-industry-hedges-against-co-packaged-optics-growing-pains"
+  },
+  "S201": {
+   "t": "CRU Group (E. Balla), The outlook of copper-based data cables in AI data centres (2026-07-10) [Analyst (commodities; own publication); opened; claims corpus]",
+   "u": "https://www.crugroup.com/en/communities/thought-leadership/2026/the-outlook-of-copper-based-data-cables-in-ai-data-centres/"
+  },
+  "S202": {
+   "t": "MarketWatch (B. Nguyen), via Tiger Brokers republication, It's been one of Wall Street's most heated AI debates - and it may be totally missing the point (2026-04-11) [Financial press (republication); opened; claims corpus]",
+   "u": "https://www.itiger.com/news/2626252541"
+  },
+  "S203": {
+   "t": "Marvell, Is copper dead? Not by a long shot (Nine things to remember about the future of copper in computing) (2024-10-29) [Vendor blog (outside window); not opened; claims corpus]",
+   "u": "https://www.marvell.com/blogs/nine-things-to-remember-about-the-future-of-copper-in-computing.html"
+  },
+  "S204": {
+   "t": "NVIDIA (S. Martin, NVIDIA Blog), Accelerated Computing, Networking Drive Supercomputing in Age of AI (2025-11-17) [Vendor primary (blog); opened; claims corpus]",
+   "u": "https://blogs.nvidia.com/?p=87393"
+  },
+  "S205": {
+   "t": "NAND Research (M. McDowell), NVIDIA Just Rewired the AI Factory \u2014 And Networking Is Now the Star of the Show (GTC 2026) (2026-03-20) [Originating analyst; opened; claims corpus]",
+   "u": "https://nand-research.com/nvidiagtc-2026-networking/"
+  },
+  "S206": {
+   "t": "Le Monde Informatique (La r\u00e9daction), Les consortiums Ethernet fixent leurs priorit\u00e9s 2026 (2026-01-13) [Trade press (editorial); opened; claims corpus]",
+   "u": "https://www.lemondeinformatique.fr/actualites/lire-les-consortiums-ethernet-fixent-leurs-priorites-2026-99016.html"
+  },
+  "S207": {
+   "t": "Converge Digest, OCP Summit Keynote: Broadcom's Ram Velaga Outlines ESUN (2025-10-16) [Trade press (outside window); opened; claims corpus]",
+   "u": "https://convergedigest.com/?p=106340"
+  },
+  "S208": {
+   "t": "SiliconANGLE (M. Deutscher), Nvidia introduces BlueField-4 STX reference architecture for AI storage systems (2026-03-16) [Trade press (quoting vendor); opened; claims corpus]",
+   "u": "https://siliconangle.com/2026/03/16/nvidia-introduces-bluefield-4-stx-reference-architecture-ai-storage-systems/"
+  },
+  "S209": {
+   "t": "AMD (Y. Khan), How Agentic AI Is Expanding the Role of the DPU (blog) (2026-10-05) [Vendor primary (blog); opened; claims corpus]",
+   "u": "https://www.amd.com/en/blogs/2026/how-agentic-ai-is-expanding-the-role-of-the-dpu-.html"
+  },
+  "S210": {
+   "t": "DataCenterNews US (M. Tarre), Semtech backs linear pluggable optics for AI data centres (2026-08-05) [Trade press (reporting vendor); opened; claims corpus]",
+   "u": "https://datacenter.news/story/semtech-backs-linear-pluggable-optics-for-ai-data-centres"
+  },
+  "S211": {
+   "t": "UALink Consortium (N. Morgan), UALink Consortium Highlights Open Scale-Up Innovation at Xcelerated Compute (2026-05-06) [Consortium primary (blog); opened; claims corpus]",
+   "u": "https://ualinkconsortium.org/blog/ualink-consortium-highlights-open-scale-up-innovation-at-xcelerated-compute-1448/"
+  },
+  "S212": {
+   "t": "UALink Consortium, via Business Wire, UALink Consortium press release (4 specifications) (2026-04-07) [Consortium press release (wire); opened; claims corpus]",
+   "u": "https://www.businesswire.com/news/home/20260407620696/en/"
+  },
+  "S213": {
+   "t": "NVIDIA, NVIDIA Vera Rubin Opens Agentic AI Frontier (press release, GTC 2026) (2026-03-16) [Vendor primary (press release); opened; claims corpus]",
+   "u": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/"
+  },
+  "S214": {
+   "t": "Astera Labs, via The Motley Fool transcript, Astera Labs (ALAB) Q1 2026 earnings call transcript (2026-05-05) [Vendor primary (earnings call, third-party transcript); opened; claims corpus]",
+   "u": "https://www.fool.com/earnings/call-transcripts/2026/05/05/astera-labs-alab-q1-2026-earnings-transcript/"
+  },
+  "S215": {
+   "t": "The Register (T. Mann), Astera Labs Scorpio switch / NVLink Fusion support (nvlink_astera_big_swich) (2026-05-05) [Trade press (editorial); opened; claims corpus]",
+   "u": "https://www.theregister.com/2026/05/05/nvlink_astera_big_swich/"
+  },
+  "S216": {
+   "t": "Converge Digest, Astera Labs Q1 revenue jumps 93% on AI fabric growth (2026-05-05) [Trade press (call summary); opened; claims corpus]",
+   "u": "https://convergedigest.com/astera-labs-q1-revenue-jumps-93-ai-fabric-growth/?amp=1"
+  },
+  "S217": {
+   "t": "Futuriom (M. Jander), SmartNICs and DPUs: A Market Update (2026-07-15) [Analyst firm publication (news, partly paywalled); opened; claims corpus]",
+   "u": "https://www.futuriom.com/articles/news/smartnics-and-dpus-a-market-update/2026/07"
   }
  },
  "rubric": {

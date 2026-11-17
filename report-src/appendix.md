@@ -11,13 +11,25 @@
 
 ### Appendix 2. Scoring rubric
 
-| Level | H: claimed | T: technical proof | A: adoption | Q: capital quality | E: buyer economics |
+| Level | H: claimed (summary; full scales below) | T: technical proof | A: adoption | Q: capital quality | E: buyer economics |
 | --- | --- | --- | --- | --- | --- |
 | 0 | Little or no claim | None | None | No committed capital | None |
 | 1 | A future promise | Specification or simulation | Announced or sampling | Venture or strategic capital only | Vendor claim only |
 | 2 | Imminent or early | Vendor or lab demonstration | Pilot or single buyer | Revenue, but concentrated, single-buyer or vendor-financed | One buyer-reported benefit or bounded vendor comparison |
 | 3 | In production | Independent or buyer-side proof at scale | Two or more buyers | Revenue from several buyers backed by binding commitments | Buyer benefit against a matched baseline |
 | 4 | The default | Multi-generation, operator-documented | Dominant share | As 3, low concentration, multi-year record | Lifecycle economics at several buyers |
+
+**Claimed maturity (H) in full.** H is coded from dated public claims (Appendix 9), each classified as a stage claim (what deployment stage is asserted now) or a narrative claim (how the technology's maturity, momentum or destiny is framed). Architectural or value statements that assert no adoption, momentum or deployment are recorded but not counted.
+
+| Level | Stage claim | Narrative claim |
+| --- | --- | --- |
+| 0 | No deployment claim (not counted) | Absolute decline, niche restriction, abandonment, or losing share with no offsetting growth |
+| 1 | Specification or standardisation work, or a product more than 12 months out | Not ready yet, a premature launch, a long-term possibility or an open question |
+| 2 | Launched, available, sampling, initial shipping, or deploying within 12 months | A promising contender or emerging challenger; or growing while losing relative share |
+| 3 | Volume production, or in production at customers | Leading, winning majority share, gaining momentum, or set to dominate within about two years |
+| 4 | Claimed as the default choice | Explicitly the default or standard now, or the inevitable eventual winner |
+
+For each kind, the level is the highest that a strict majority of claims reach; the narrative level counts only with at least two narrative claims; H is the higher of the stage and narrative levels. This is version 3.1 of the rule, which incorporates six clarifications proposed by a blind second coder.
 
 Curve position is derived from the scores, not taken from Gartner: D of +1 or more with V below 1.5 is "promise outruns proof"; with V of 1.5 or more, "peak claims"; negative D is "proof outruns talk"; otherwise V below 3 is "earning it" and 3 or more is "earned".
 
@@ -86,11 +98,18 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 | To 16 October 2026 | Exploratory dossier: claim audit, first sources, index design |
 | To 11 November 2026 | Six-parameter model; engine and tests; ten technologies scored; scenarios; interactive page; report and deck |
 | 12 November 2026 | Evidence audit: filings and operator documents read at origin; two scores revised; 152 sources logged |
+| 12 to 16 November 2026 | Blind second coding; claimed maturity rebuilt from 76 dated claims; rubric version 3.1; quotes checked against live pages; 217 sources logged |
 
 ### Appendix 8. Declarations
 
-**Data.** All data are public and secondary. No primary data, employer information or purchased report was used. The full source ledger (S01 to S152), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
+**Data.** All data are public and secondary. No primary data, employer information or purchased report was used. The full source ledger (S01 to S217), the claims corpus (Appendix 9), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
 
 **Use of AI assistance.** An AI assistant (Claude, Anthropic) was used to search for and retrieve public sources, extract figures from documents, draft and edit text, and write and test code. The author set the research design, supplied primary documents, reviewed the outputs and is responsible for all judgements and any errors.
 
 **Originality.** This report is the author's own work for the IIMA BPGP Live Project. All sources are cited.
+
+### Appendix 9. Claims corpus for claimed maturity (H)
+
+Each row is one dated public claim used to score H, coded on the scales in Appendix 2. Quotes and notes are in `claims.csv` in the code repository.
+
+{{CLAIMS_TABLE}}
