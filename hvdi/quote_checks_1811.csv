@@ -1,0 +1,18 @@
+claim_id,tech,quote_status,date_status,attribution_ok,url_read
+ESO-10,eth_scaleout,verbatim,ok,yes,https://investor.cisco.com/news/news-details/2026/Cisco-Announces-New-Silicon-One-G300-Advanced-Systems-and-Optics-to-Power-and-Scale-AI-Data-Centers-for-the-Agentic-Era/default.aspx
+ESO-14,eth_scaleout,verbatim (quote is an exact substring of the page sentence),ok,yes,https://www.sec.gov/Archives/edgar/data/1596532/000159653226000252/ex991q326-earningsrelease.htm
+ESO-07,eth_scaleout,verbatim,ok,yes,https://www.delloro.com/newsroom/ai-back-end-networks-switch-sales-surpass-front-end-networks-for-the-first-time-in-2q2026/
+UET-03,uet,no quote recorded; page confirmed live and dated,ok,not checked,https://www.arista.com/en/company/news/press-release/24818-pr-20261007
+UET-06,uet,no quote recorded; page confirmed live and dated,ok,not checked,https://engineering.fb.com/2026/10/12/open-source/ocp-summit-2026-powering-ai-with-open-innovations-in-scale-up-scale-out-and-scale-across-networks/
+ESU-05,eth_scaleup,verbatim (quote is an exact substring of the page sentence),ok,yes,https://www.arista.com/en/company/news/press-release/24818-pr-20261007
+ESU-02,eth_scaleup,verbatim (quote is an exact substring of the page sentence),ok,yes,https://www.delloro.com/newsroom/ai-back-end-switch-market-will-push-past-100-billion-by-2030/
+AEC-1,aec,verbatim,ok,yes,https://investors.credosemi.com/news-events/news/news-details/2025/Credo-Technology-Group-Holding-Ltd-Reports-Second-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx
+AEC-2,aec,verbatim (quote is an exact substring of the page sentence),ok,yes,https://investor.marvell.com/news-events/press-releases/detail/1002/marvell-launches-strategic-initiative-to-accelerate-aec-ecosystem-and-hyperscaler-adoption
+N-E01,eth_scaleout,not checked (page unavailable),not checked,not checked,https://www.itiger.com/news/2602310929
+N-I01,infiniband,no quote recorded; page confirmed live and dated,not checked,not checked,https://www.itiger.com/news/2602310929
+N-S01,eth_scaleup,verbatim,ok,yes,https://businessnetwork.jp/article/36271/
+DN1,dpu,verbatim (quote is an exact substring of the page sentence),ok,yes,https://www.delloro.com/news/data-center-it-semiconductors-and-components-market-to-surpass-1-8-trillion-over-next-five-years/
+NA2,aec,verbatim,ok,yes,https://news.futunn.com/en/post/71370725/it-s-been-one-of-wall-street-s-most-heated
+N-U02,uet,not checked (page unavailable),not checked,not checked,https://www.lemondeinformatique.fr/actualites/lire-les-consortiums-ethernet-fixent-leurs-priorites-2026-99016.html
+LN1,lpo,verbatim,ok,yes,https://datacenter.news/story/semtech-backs-linear-pluggable-optics-for-ai-data-centres
+X-NV1,nvlink,verbatim,ok,yes,https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform

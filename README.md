@@ -23,7 +23,7 @@ outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 
 | `hvdi/claims.csv` | The claims corpus behind H: 76 included dated public claims (12 Nov 2025 to 11 Nov 2026), each with claimant, kind (stage or narrative), level, alternative level, quote, URL and source ID. **Edit this file to change an H score.** |
 | `hvdi/H_RULE.md` | Rule v3.1 for scoring H from claims: the stage and narrative scales and the aggregation rule. |
 | `hvdi/hclaims.py` | Computes H from the claims corpus and runs the claim-resampling Monte Carlo. Standard library only. |
-| `hvdi/quote_checks_1611.csv`, `hvdi/quote_checks_1611b.csv` | Live-page checks of the quotes (59 of 76 verbatim, none failed). |
+| `hvdi/quote_checks_1611.csv`, `hvdi/quote_checks_1611b.csv`, `hvdi/quote_checks_1811.csv` | Live-page checks of the claims: 71 of 76 verbatim on the live page or an official copy, none failed; 2 have no quote (pages confirmed live); 3 on 2 unreachable pages, and dropping them changes no verdict. |
 | `hvdi/test_hvdi.py`, `hvdi/test_hclaims.py` | 64 automated tests. |
 | `hvdi/template.html` | Source of the interactive page. `build.py` injects the data into it. |
 | `hvdi/site/` | The built page (`index.html`, self-contained, no external requests) and `data.json`. |
