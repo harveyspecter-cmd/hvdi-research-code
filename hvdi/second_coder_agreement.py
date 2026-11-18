@@ -5,6 +5,7 @@ Reports kind agreement, level agreement (exact, within one, quadratic-weighted k
 H per technology under rule v3.1, and the verdict each H implies with the published T, A, E.
 """
 import csv
+import re
 import sys
 from collections import defaultdict
 
@@ -34,15 +35,20 @@ def main(path):
     first = {r["claim_id"]: r for r in csv.DictReader(open("claims.csv", encoding="utf-8"))}
     if path.lower().endswith(".csv"):  # Google Form responses sheet, downloaded as CSV (first response row)
         resp = next(csv.DictReader(open(path, encoding="utf-8")))
-        num = {k.split(".")[0]: v for k, v in resp.items() if k and k.split(".")[0].isdigit()}
-        if num:  # short form: one combined answer per statement, e.g. "Stage 3  ·  volume production"
+        num = {}
+        for k, v in resp.items():
+            m = re.match(r"(\d+)\. (Level|Statement)", k or "")
+            if m:
+                num[(int(m.group(1)), m.group(2))] = v
+        if num:  # short form: per statement, one kind answer and one level answer
             key = {r["code"]: r["claim_id"] for r in csv.DictReader(open("coder_key_short.csv", encoding="utf-8"))}
             rows = []
             for code in sorted(key):
-                ans = num.get(str(int(code[1:])), "")
-                head = ans.split("\u00b7")[0].strip()
-                kind = "Not a claim" if head.startswith("Not a claim") else (head.split()[0] if head else None)
-                lvl = int(head.split()[1]) if kind in ("Stage", "Narrative") else None
+                n = int(code[1:])
+                k1 = num.get((n, "Statement"), "")
+                kind = {"Stage": "Stage", "Narrative": "Narrative", "Neither": "Not a claim"}.get(k1.split(":")[0], None)
+                lv = num.get((n, "Level"), "")
+                lvl = int(lv.split()[0]) if lv and kind in ("Stage", "Narrative") else None
                 rows.append([None, code] + [None] * 6 + [kind, lvl])
             return report(rows, key, first)
         rows = []
