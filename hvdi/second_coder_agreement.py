@@ -34,6 +34,17 @@ def main(path):
     first = {r["claim_id"]: r for r in csv.DictReader(open("claims.csv", encoding="utf-8"))}
     if path.lower().endswith(".csv"):  # Google Form responses sheet, downloaded as CSV (first response row)
         resp = next(csv.DictReader(open(path, encoding="utf-8")))
+        num = {k.split(".")[0]: v for k, v in resp.items() if k and k.split(".")[0].isdigit()}
+        if num:  # short form: one combined answer per statement, e.g. "Stage 3  ·  volume production"
+            key = {r["code"]: r["claim_id"] for r in csv.DictReader(open("coder_key_short.csv", encoding="utf-8"))}
+            rows = []
+            for code in sorted(key):
+                ans = num.get(str(int(code[1:])), "")
+                head = ans.split("\u00b7")[0].strip()
+                kind = "Not a claim" if head.startswith("Not a claim") else (head.split()[0] if head else None)
+                lvl = int(head.split()[1]) if kind in ("Stage", "Narrative") else None
+                rows.append([None, code] + [None] * 6 + [kind, lvl])
+            return report(rows, key, first)
         rows = []
         for code in sorted(key):
             kind = resp.get(f"{code} Kind") or None
@@ -42,6 +53,10 @@ def main(path):
     else:
         ws = load_workbook(path, data_only=True)["4 Coding sheet"]
         rows = list(ws.iter_rows(min_row=2, values_only=True))
+    return report(rows, key, first)
+
+
+def report(rows, key, first):
     kind_same = lvl_a = lvl_b = 0
     a, b = [], []
     second = defaultdict(lambda: {"stage": [], "narrative": []})
@@ -69,6 +84,9 @@ def main(path):
     print("tech | H first | H second | D first | D second | verdict first | verdict second")
     same_v = 0
     for t, cl in first_claims.items():
+        coded = {key[r[1]] for r in rows if r[8]}
+        if not all(cid in coded for cid, f in first.items() if f["tech"] == t and f["include"] == "yes"):
+            continue  # H is only reproduced for technologies whose claims were all coded
         h1 = hc.h_from_claims([l for l, _ in cl["stage"]], [l for l, _ in cl["narrative"]])["H"]
         s2 = second[t]
         st = [x for x in s2["stage"] if x > 0]
@@ -83,7 +101,7 @@ def main(path):
         d1, d2 = h1 - v, h2 - v
         same_v += verdict(d1) == verdict(d2)
         print(f"{t} | {h1} | {h2} | {d1:+.2f} | {d2:+.2f} | {verdict(d1)} | {verdict(d2)}")
-    print(f"verdicts identical: {same_v}/{len(first_claims)}")
+    print(f"verdicts identical: {same_v} of the technologies fully coded")
     if missing:
         print("uncoded rows:", ", ".join(missing))
 
