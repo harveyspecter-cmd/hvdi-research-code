@@ -1,6 +1,6 @@
 """Compare a returned second-coder workbook with the first coder's claims.csv.
 
-Usage: python3 second_coder_agreement.py HVDI_Second_Coder_Questionnaire.xlsx
+Usage: python3 second_coder_agreement.py <returned .xlsx, or the Google Form responses sheet saved as .csv>
 Reports kind agreement, level agreement (exact, within one, quadratic-weighted kappa),
 H per technology under rule v3.1, and the verdict each H implies with the published T, A, E.
 """
@@ -32,8 +32,16 @@ def qwk(a, b, k=5):
 def main(path):
     key = {r["code"]: r["claim_id"] for r in csv.DictReader(open("coder_key.csv", encoding="utf-8"))}
     first = {r["claim_id"]: r for r in csv.DictReader(open("claims.csv", encoding="utf-8"))}
-    ws = load_workbook(path, data_only=True)["4 Coding sheet"]
-    rows = list(ws.iter_rows(min_row=2, values_only=True))
+    if path.lower().endswith(".csv"):  # Google Form responses sheet, downloaded as CSV (first response row)
+        resp = next(csv.DictReader(open(path, encoding="utf-8")))
+        rows = []
+        for code in sorted(key):
+            kind = resp.get(f"{code} Kind") or None
+            lvl = resp.get(f"{code} Level") or None
+            rows.append([None, code] + [None] * 6 + [kind, int(lvl) if lvl not in (None, "") else None])
+    else:
+        ws = load_workbook(path, data_only=True)["4 Coding sheet"]
+        rows = list(ws.iter_rows(min_row=2, values_only=True))
     kind_same = lvl_a = lvl_b = 0
     a, b = [], []
     second = defaultdict(lambda: {"stage": [], "narrative": []})
