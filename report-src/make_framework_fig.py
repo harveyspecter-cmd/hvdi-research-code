@@ -93,7 +93,8 @@ def draw(mode: str, out: pathlib.Path, scale: float = 1.0, footer: bool = True) 
 
 
 if __name__ == "__main__":
-    draw("light", HERE / "fig_framework.png")
+    import shutil  # report figure = light version of the deck visual (deck-src/make_framework_v5.py)
+    shutil.copy((HERE.parent / "deck" if (HERE.parent / "deck").exists() else HERE.parent / "deck-src") / "framework_v5_light.png", HERE / "fig_framework.png")
     deck = HERE.parent / "deck"
     if deck.exists() or len(sys.argv) > 1:
         d = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else deck

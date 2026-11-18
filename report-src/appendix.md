@@ -81,7 +81,7 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 
 | Hypothesis | Result |
 | --- | --- |
-| H1 Narrative leads deployment for some fabrics | Supported for UALink, Ultra Ethernet transport and Ethernet scale-up; not for CPO |
+| H1 Narrative leads deployment for some fabrics | Supported for NVLink and native UALink; not for co-packaged optics, Ultra Ethernet transport or Ethernet scale-up once hype is scored from dated claims |
 | H2 Link speed poorly predicts useful benefit | Not tested: no matched goodput data |
 | H3 Efficiency depends on boundary | Supported for rated power (12.5 versus 43.3 pJ/bit) |
 | H4 Open standards do not instantly remove lock-in | Supported |
