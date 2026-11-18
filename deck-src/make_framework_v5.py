@@ -7,8 +7,8 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Circle, Rectangl
 
 plt.rcParams["font.family"] = "Inter"
 PAL = {
-    "dark": dict(bg="#000000", ink="#F3F1EA", mut="#9A9D96", card="#111312", edge="#2B2E2B", hot="#E8601C", cool="#3D8FD6", mid="#B9B5A8", glow=0.10),
-    "light": dict(bg="#FFFFFF", ink="#141414", mut="#5A5A5A", card="#F6F5F1", edge="#DAD8D0", hot="#C24E12", cool="#2A6FB0", mid="#8A867A", glow=0.07),
+    "dark": dict(bg="#000000", ink="#F3F1EA", mut="#9A9D96", card="#111312", edge="#2B2E2B", hot="#E8601C", cool="#3D8FD6", mid="#B9B5A8", glow=0.10, top="#1B1E1C", bot="#0C0E0D"),
+    "light": dict(bg="#FFFFFF", ink="#141414", mut="#5A5A5A", card="#F6F5F1", edge="#DAD8D0", hot="#C24E12", cool="#2A6FB0", mid="#8A867A", glow=0.07, top="#FBFAF7", bot="#EFEDE6"),
 }
 W, H = 24.8, 11.2
 
@@ -27,12 +27,22 @@ def draw(mode, out):
             for k, a in ((0.22, 0.05), (0.12, 0.08)):
                 ax.add_patch(FancyBboxPatch((x - k, y - k), w + 2 * k, h + 2 * k, boxstyle=f"round,pad=0,rounding_size={r + k}",
                                             fc=glow, ec="none", alpha=a))
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}", fc=fill or c["card"],
+        pb = FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}", fc=fill or c["card"],
+                            ec="none", lw=0)
+        ax.add_patch(pb)
+        if fill is None:
+            from matplotlib.colors import LinearSegmentedColormap
+            cm = LinearSegmentedColormap.from_list("g", [c["bot"], c["top"]])
+            im = ax.imshow(np.linspace(0, 1, 64)[:, None], extent=(x, x + w, y, y + h), origin="lower", cmap=cm,
+                           aspect="auto", zorder=pb.get_zorder())
+            im.set_clip_path(pb)
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}", fc="none",
                                     ec=edge or c["edge"], lw=lw))
 
     def badge(x, y, n, col):
-        ax.add_patch(Circle((x, y), 0.3, fc=col, ec="none"))
-        T(x, y - 0.01, str(n), 12, c["bg"], "bold", ha="center", va="center")
+        solid = col == c["hot"]
+        ax.add_patch(Circle((x, y), 0.3, fc=col if solid else c["bg"], ec=c["hot"], lw=1.6))
+        T(x, y - 0.01, str(n), 12, c["bg"] if solid else c["hot"], "bold", ha="center", va="center")
 
     def arrow(p, q, col, lw=1.6, cs="arc3", ls="-"):
         ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>,head_length=6,head_width=3.5", mutation_scale=1.6, color=col,
@@ -45,13 +55,16 @@ def draw(mode, out):
     T(1.65, 10.3, "Gates, outside the arithmetic", 15, c["hot"], "bold", va="center")
     T(23.75, 10.3, "A blocked gate overrides every score", 13, c["ink"], "bold", va="center", ha="right")
     gates = ["Site power and grid", "Advanced packaging", "High-bandwidth memory", "Indium phosphide lasers", "Export policy"]
+    gap = 0.3
+    wds = [0.62 + len(g) * 0.175 for g in gates]
+    extra = (24.2 - 0.5 - 1.1 - sum(wds) - gap * 4) / 5
     x = 1.1
-    for g in gates:
-        wd = 0.62 + len(g) * 0.175
+    for g, wd in zip(gates, wds):
+        wd += extra
         ax.add_patch(FancyBboxPatch((x, 9.28), wd, 0.5, boxstyle="round,pad=0,rounding_size=0.25", fc=c["card"], ec=c["hot"], lw=0.9))
         ax.add_patch(Circle((x + 0.27, 9.53), 0.07, fc=c["hot"], ec="none"))
         T(x + 0.45, 9.525, g, 9.5, c["ink"], va="center")
-        x += wd + 0.32
+        x += wd + gap
 
     yb, hb = 3.95, 4.05
     # 1 evidence
@@ -66,13 +79,13 @@ def draw(mode, out):
         T(xx + 0.46, yb + 0.38, nm, 7.5, "#FFFFFF" if a > 0.6 else c["ink"], "bold", ha="center", va="center")
 
     # 2 five scores
-    x2, w2 = 5.55, 8.0
+    x2, w2 = 5.45, 8.0
     card(x2, yb, w2, hb); badge(x2 + 0.6, yb + hb - 0.55, 2, c["mid"])
     T(x2 + 1.1, yb + hb - 0.55, "Five scores, each 0 to 4", 15, w="bold", va="center")
     tiles = [("H", "Claimed\nmaturity", c["hot"], 4), ("T", "Technical\nproof", c["cool"], 3), ("A", "Adoption", c["cool"], 3),
              ("E", "Buyer\neconomics", c["cool"], 2), ("Q", "Capital\nquality", c["mid"], 2)]
     for k, (L, lab, col, lv) in enumerate(tiles):
-        tx = x2 + 0.4 + k * 1.5 + (0.25 if k == 4 else 0)
+        tx = x2 + 0.4 + k * 1.5 + (0.05 if k == 4 else 0)
         ax.add_patch(FancyBboxPatch((tx, yb + 1.1), 1.25, 1.9, boxstyle="round,pad=0,rounding_size=0.22",
                                     fc=col if k == 0 else c["bg"], ec=col, lw=1.6, alpha=1, ls="--" if k == 4 else "-"))
         T(tx + 0.625, yb + 2.5, L, 22, c["bg"] if k == 0 else col, "bold", ha="center", va="center")
@@ -85,10 +98,12 @@ def draw(mode, out):
     T((bx0 + bx1) / 2, yb + 0.45, "Proven value   V = mean(T, A, E)", 11.5, c["cool"], "bold", ha="center", va="center")
 
     # 3 gap
-    x3, w3 = 14.1, 3.1
+    x3, w3 = 13.95, 3.05
     card(x3, yb, w3, hb); badge(x3 + 0.6, yb + hb - 0.55, 3, c["mid"])
     T(x3 + 1.1, yb + hb - 0.55, "Gap", 15, w="bold", va="center")
-    T(x3 + w3 / 2, yb + 2.45, "D = H − V", 21, w="bold", ha="center", va="center")
+    cxm = x3 + w3 / 2
+    for dx, t, col in ((-0.96, "D", c["ink"]), (-0.47, "=", c["mut"]), (0.0, "H", c["hot"]), (0.49, "−", c["mut"]), (0.98, "V", c["cool"])):
+        T(cxm + dx, yb + 2.45, t, 19.5, col, "bold", ha="center", va="center")
     T(x3 + w3 / 2, yb + 1.75, "story minus proof", 10.5, c["mut"], ha="center", va="center")
     lx0, lx1, ly = x3 + 0.35, x3 + w3 - 0.35, yb + 0.85
     seg = (lx1 - lx0) / 4
@@ -98,29 +113,29 @@ def draw(mode, out):
         T(lx0 + k * seg, ly - 0.38, t, 8.5, c["mut"], ha="center", va="center")
 
     # 4 verdict
-    x4, w4 = 17.7, 3.95
+    x4, w4 = 17.5, 3.75
     card(x4, yb, w4, hb); badge(x4 + 0.6, yb + hb - 0.55, 4, c["mid"])
     T(x4 + 1.1, yb + hb - 0.55, "Verdict", 15, w="bold", va="center")
     for k, (txt, col, a) in enumerate((("story ahead   D ≥ +1", c["hot"], 1), ("aligned", c["mid"], 0.45), ("proof ahead   D ≤ −1", c["cool"], 1))):
         yy = yb + 2.65 - k * 0.55
         ax.add_patch(FancyBboxPatch((x4 + 0.35, yy - 0.11), 0.22, 0.22, boxstyle="round,pad=0,rounding_size=0.11", fc=col, ec="none", alpha=a))
-        T(x4 + 0.7, yy, txt, 10, col if a == 1 else c["ink"], "bold", va="center")
+        T(x4 + 0.7, yy, txt, 10.5, col if a == 1 else c["ink"], "bold", va="center")
     xs = np.linspace(-2.2, 2.2, 23)
     for k, v in enumerate(xs):
         hgt = 0.55 * np.exp(-v * v / 1.1)
         ax.add_patch(Rectangle((x4 + 0.4 + k * 0.115, yb + 0.55), 0.08, hgt, fc=c["mid"], ec="none", alpha=0.6))
     T(x4 + 3.15, yb + 0.85, "stability:\nshare of\n20,000\nre-scorings", 8, c["mut"], ha="right", va="center", linespacing=1.05) if False else None
-    T(x4 + 0.4, yb + 0.33, "stability across 20,000 re-scorings", 7.5, c["mut"], va="center")
+    T(x4 + 0.4, yb + 0.33, "stability over 20,000 re-scorings", 7.5, c["mut"], va="center")
 
     # 5 posture
-    x5, w5 = 22.15, 2.05
+    x5, w5 = 21.75, 2.45
     card(x5, yb, w5, hb, edge=c["hot"], lw=1.6, glow=c["hot"]); badge(x5 + 0.5, yb + hb - 0.55, 5, c["hot"])
-    T(x5 + 0.88, yb + hb - 0.55, "Posture", 11.5, w="bold", va="center")
+    T(x5 + 0.92, yb + hb - 0.55, "Posture", 12.5, w="bold", va="center")
     for k, nm in enumerate(["Deploy", "Pilot", "Hold option", "Defer", "Prove baseline"]):
         yy = yb + 2.75 - k * 0.56
         ax.add_patch(FancyBboxPatch((x5 + 0.22, yy - 0.21), w5 - 0.44, 0.42, boxstyle="round,pad=0,rounding_size=0.21",
                                     fc=c["hot"], ec="none", alpha=0.16 + 0.04 * (4 - k)))
-        T(x5 + w5 / 2, yy, nm, 8.5, c["ink"], ha="center", va="center")
+        T(x5 + w5 / 2, yy, nm, 9.5, c["ink"], ha="center", va="center")
 
     # flow arrows
     ym = yb + hb / 2
@@ -134,7 +149,7 @@ def draw(mode, out):
     T(x2 + 0.4, 2.05, "A score of 3 or more needs proof from a\nbuyer, an independent tracker or a filing.", 10.5, c["mut"], va="top", linespacing=1.35)
     T(x2 + 0.4, 0.85, "Vendor-only evidence stops at 2.", 10.5, c["hot"], "bold", va="center")
     arrow((x2 + 3.4, 3.1), (x2 + 3.4, yb - 0.05), c["mid"], 1.5)
-    x6 = 15.4
+    x6 = x3
     card(x6, 0.35, 24.2 - x6, 2.75)
     T(x6 + 0.4, 2.6, "Outlook", 14, w="bold", va="center")
     T(x6 + 0.4, 2.05, "Dated milestone on the weakest leg, punctuality of the\nlast one, and capital quality Q.", 10.5, c["mut"], va="top", linespacing=1.35)
@@ -143,7 +158,7 @@ def draw(mode, out):
         ax.add_patch(FancyBboxPatch((24.2 - 3.75 + k * 1.15, 2.42), 0.98, 0.36, boxstyle="round,pad=0,rounding_size=0.18",
                                     fc=c["bg"], ec=(c["cool"], c["mid"], c["hot"])[k], lw=1.1))
         T(24.2 - 3.75 + 0.49 + k * 1.15, 2.6, nm, 8, (c["cool"], c["mid"], c["hot"])[k], ha="center", va="center")
-    qx = x2 + 0.4 + 4 * 1.5 + 0.25 + 1.05
+    qx = x2 + 0.4 + 4 * 1.5 + 0.05 + 1.05
     ax.plot([qx, qx, x6 - 0.15], [yb + 1.1, 1.75, 1.75], color=c["mid"], lw=1.3, ls=(0, (3, 3)))
     arrow((x6 - 0.4, 1.75), (x6 - 0.03, 1.75), c["mid"], 1.3)
     arrow((x5 + w5 / 2, 3.1), (x5 + w5 / 2, yb - 0.05), c["mid"], 1.5)
