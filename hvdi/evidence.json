@@ -54,7 +54,7 @@
      "S163",
      "S29",
      "S164",
-     "S192",
+     "S218",
      "S193"
     ]
    },
@@ -126,7 +126,7 @@
      "S165",
      "S11",
      "S164",
-     "S192",
+     "S218",
      "S204",
      "S205"
     ]
@@ -1712,6 +1712,10 @@
   "S217": {
    "text": "Futuriom (M. Jander), SmartNICs and DPUs: A Market Update (2026-07-15) [Analyst firm publication (news, partly paywalled); opened; claims corpus]",
    "url": "https://www.futuriom.com/articles/news/smartnics-and-dpus-a-market-update/2026/07"
+  },
+  "S218": {
+   "text": "Fierce Network, Arista's Ullal: Ethernet is the 'eventual winner' for AI networking (2026-01-08) [Trade press (interview); opened; claims corpus; English original of S192]",
+   "url": "https://www.fierce-network.com/cloud/aristas-ullal-ethernet-eventual-winner-and-equalizer-ai-networking"
   }
  }
 }

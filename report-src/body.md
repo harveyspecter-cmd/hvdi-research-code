@@ -248,7 +248,7 @@ Four roadblocks shaped the method. Paid analyst tables were not accessible, so p
 ### 6.4 Limitations and next steps
 
 1. One coder assigned every score. Two blind codings by an AI model, with the first coder's scores withheld, test consistency rather than human inter-rater reliability. On the 50 score cells, 62% matched exactly and 92% within one level (quadratic-weighted kappa 0.68); agreement was high except for claimed maturity, which matched for two of ten technologies. After H was rebuilt from dated claims, a blind coding of the 74 quoted claims matched 66% exactly and 82% within one level (kappa about 0.5), gave the same H for eight technologies and the same verdict for all ten.
-2. Claims were read partly through a page-summarising tool; 71 of the 76 claims were then matched verbatim on the live page or an official copy (a filing, the issuer's investor site or newsroom), including every quote behind the two story-ahead verdicts, and none failed. Of the other five, two were recorded without a quote on pages confirmed live, and three sit on two pages that could not be reached; dropping those three changes no verdict.
+2. Claims were read partly through a page-summarising tool; 74 of the 76 claims were then matched verbatim on the live page or an official copy (a filing, the issuer's investor site or newsroom), including every quote behind the two story-ahead verdicts, and none failed; the other two were recorded without a quote, on pages confirmed live.
 3. One date and no back-test on past networking bets: the index cannot yet show whether a gap closes.
 4. Any pre-production technology shows a positive gap. That marks timing risk, not a flawed technology.
 5. Eight of ten verdicts are directional only.
