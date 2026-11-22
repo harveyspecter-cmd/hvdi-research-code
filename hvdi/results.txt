@@ -6,7 +6,7 @@ NVLink scale-up             4 3 4 2 1  2.67 +1.33  ahead    peak        concentr
 UALink scale-up             2 1 1 1 1  1.00 +1.00  ahead    rising      thin         0.61  [-0.00,+1.41]  stalling   -1
 Ethernet scale-up           2 3 2 2 1  2.00 +0.00  aligned  slope       concentrated 0.85  [-0.61,+1.36]  holding    +2
 Merchant DPU / SmartNIC     2 3 2 2 2  2.33 -0.33  aligned  underrated  concentrated 0.76  [-0.85,+1.77]  holding    +0
-Co-packaged optics          3 3 2 2 2  2.33 +0.67  aligned  slope       concentrated 0.93  [-0.81,+0.97]  holding    +2
+Co-packaged optics          3 3 2 2 2  2.33 +0.67  aligned  slope       concentrated 0.93  [-0.81,+0.98]  holding    +2
 Linear pluggable optics     3 3 3 2 2  2.67 +0.33  aligned  slope       concentrated 0.85  [-1.16,+0.65]  holding    +0
 Active electrical cables    3 3 3 2 2  2.67 +0.33  aligned  slope       concentrated 0.87  [-0.95,+1.14]  holding    +0
 

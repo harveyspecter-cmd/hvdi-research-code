@@ -102,7 +102,7 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 
 ### Appendix 8. Declarations
 
-**Data.** All data are public and secondary. No primary data, employer information or purchased report was used. The full source ledger (S01 to S217), the claims corpus (Appendix 9), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
+**Data.** All evidence data are public and secondary. The only primary data are the anonymous ratings of five volunteer coders (Appendix 10). No employer information or purchased report was used. The full source ledger (S01 to S217), the claims corpus (Appendix 9), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
 
 **Use of AI assistance.** An AI assistant (Claude, Anthropic) was used to search for and retrieve public sources, extract figures from documents, draft and edit text, and write and test code. The author set the research design, supplied primary documents, reviewed the outputs and is responsible for all judgements and any errors.
 
@@ -113,3 +113,47 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 Each row is one dated public claim used to score H, coded on the scales in Appendix 2. Quotes and notes are in `claims.csv` in the code repository.
 
 {{CLAIMS_TABLE}}
+
+
+### Appendix 10. Human second coding
+
+**Why this appendix shows every result.** A reliability check that reports only its best figure is weaker than one that reports all of them. The full comparison below shows where the coding is robust and where it is not, so a reader can judge the verdicts in Section 4 with their limits in view.
+
+**Design.** Five volunteer coders from the IIMA BPGP 2025–27 batch, none of whom had seen the report, slides or website, rated 30 of the 76 claims (39%) between 19 and 23 November 2026. The 30 comprised all 17 claims behind the two story-ahead verdicts (NVLink and native UALink) and 13 claims spread across the other eight technologies, English quotes only, in shuffled order. An online form showed each quote with a one-line description of the technology; links, speakers and dates were withheld so that ratings rested on the words alone. For each quote coders chose the kind of claim (stage, narrative or neither) and a level from 0 to 4 using a plain-language version of the scales in Appendix 2. Responses were anonymous. Coders are labelled C1 to C5 in order of submission; the labels do not follow the order of names in the acknowledgement below.
+
+**How agreement is measured.** Raw percentage agreement overstates reliability because two people guessing would sometimes agree by chance. The three coefficients used here correct for chance; each is 0 when agreement is no better than chance and 1 when it is perfect.
+
+- *Weighted kappa (κ)* compares two raters ([[cohen1968]]). Quadratic weights count a two-level disagreement as four times worse than a one-level disagreement, which suits an ordered 0 to 4 scale. It is used here for each coder against the first coder, and for the coders' majority against the first coder.
+- *Fleiss' kappa* extends chance-corrected agreement to three or more raters assigning unordered categories ([[fleiss1971]]). It is used for agreement among the five coders on the kind of claim.
+- *Krippendorff's alpha (α)* works for any number of raters, tolerates missing ratings and can treat the scale as interval data ([[krippendorff2004]]). It is computed as one minus the ratio of observed to chance-expected disagreement. It is used for agreement among the five coders on level. Krippendorff treats α of at least 0.80 as reliable and 0.67 as the floor for tentative conclusions.
+
+The bands in Figure A1 follow the common reading of kappa: below 0.20 slight, 0.21 to 0.40 fair, 0.41 to 0.60 moderate, 0.61 to 0.80 substantial, above 0.80 almost perfect ([[landis1977]]).
+
+**Table A10.1.** *Agreement of each coder, and of the coders' majority, with the first coder (30 claims)*
+
+| Coder | Same kind | Same level where kind matched | Within one level | Weighted κ | Mean level difference from first coder |
+| --- | --- | --- | --- | --- | --- |
+| C1 | 67% | 65% | 95% | 0.70 | −0.10 |
+| C2 | 57% | 59% | 100% | 0.71 | −0.38 |
+| C3 | 53% | 75% | 94% | 0.77 | −0.32 |
+| C4 | 57% | 35% | 88% | 0.37 | −0.50 |
+| C5 | 80% | 38% | 83% | 0.40 | −0.70 |
+| Majority of five | 73% | 64% | 100% | 0.82 | — |
+
+*Note.* Among the five coders, Fleiss' κ on the kind of claim was 0.16 and Krippendorff's α on level was 0.51. No coder gave a uniform or patterned set of answers.
+
+![Figure A1. Agreement with the first coder (left) and chance-corrected coefficients (right).](figA1_coder_agreement.png)
+
+**Verdicts.** Using the coders' majority codes in place of the first coder's on the 30 sampled claims changed no verdict for any technology. Coder by coder, NVLink's story-ahead verdict was reproduced by two of five coders and native UALink's by three of five (Figure A2).
+
+![Figure A2. Gap D for the two story-ahead technologies under the first coder, each coder and the coders' majority. Orange: story ahead; grey: aligned.](figA2_coder_verdicts.png)
+
+**Sensitivity to a more cautious reading.** Every coder rated claims lower on average than the first coder, by 0.10 to 0.70 levels. To test what this means for the verdicts, every one of the 76 claims was read one level lower with a probability equal to the coders' average offset (0.40) and, separately, the most cautious coder's offset (0.70), in 5,000 draws each, with T, A and E unchanged. NVLink then remains story ahead in 20% and 3% of draws, and native UALink in 35% and 9% (Figure A3). No verdict reverses: no technology becomes proof ahead, and none of the eight aligned technologies becomes story ahead. The simulation assumes the offset measured on 30 claims applies to all 76.
+
+![Figure A3. Share of draws keeping the story-ahead verdict: the report's claim-resampling stability, and two cautious-reading simulations.](figA3_coder_sensitivity.png)
+
+**What this shows.** Independent readers applying the rubric reach the first coder's verdicts collectively (majority κ 0.82), which supports the index as a reproducible diagnostic. Individual readings vary, the first coder reads claims somewhat more strongly than lay readers, and separating stage from narrative claims is the least reliable step for non-specialists. The two story-ahead verdicts are therefore best read as leaning ahead, as Section 4.1 states, not as firm.
+
+**A correction made after the coding.** Claim NC2 (a relayed SemiAnalysis description of near-packaged optics as "the interim step" to co-packaged optics) had been coded narrative 4. No coder rated it above 2, and level 4 requires an explicit claim of being the default or the eventual winner. It was recoded to 2. The change was made after seeing the coders' ratings and is disclosed here for that reason; it does not change H for co-packaged optics.
+
+**Acknowledgement.** The author thanks Ashutosh Yadav, Fairy Pandit, Manogna Manyam, Sucheta Dahiya and Nachiket Karmalkar (IIMA BPGP 2025–27) for volunteering as independent coders.
