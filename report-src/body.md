@@ -29,10 +29,6 @@ The objective is to design the HVDI, test it, and apply it to the AI network har
 
 The unit of analysis is technology by buyer type by generation by date. This report scores a hyperscale buyer on evidence available on 11 November 2026. Ten technologies are scored, namely Ethernet scale-out (800G, RoCEv2), InfiniBand scale-out, Ultra Ethernet transport, NVLink scale-up, native UALink scale-up, Ethernet scale-up (SUE, ESUN, UALink over Ethernet), merchant DPUs, co-packaged optics (CPO), linear pluggable optics (LPO) and active electrical cables (AEC). High-bandwidth memory and advanced packaging are treated as gates. GPU ranking and application-layer economics are out of scope. The 2025 to 2030 horizon holds observations to late 2026 and scenarios beyond. The research matrix, which maps each question to evidence, method and managerial output, is in Appendix 1.
 
-### 1.4 How the report unfolds
-
-The report tells one story in four moves. Section 2 states the planner's problem and why existing tools cannot settle it. Section 3 builds the framework and shows it working on one technology. Section 4 reads the results as eight findings, each ending with what it means for the planner. Sections 5 and 6 turn those findings into decision rules and a way to adopt the instrument.
-
 ## 2. Problem Statement
 
 The managerial problem is specific. How should an infrastructure planner allocate investment across networking options when vendor narrative, capital, deployable infrastructure and workload value mature at different speeds?
@@ -62,7 +58,7 @@ These claims of novelty rest on a limited literature search and are provisional.
 
 Figure 1 shows the framework in one view. It has five steps and two side rules.
 
-![Figure 1. The HVDI framework. Evidence is graded, scored, differenced and tested before it becomes a posture.](fig_framework.png)
+![Figure 1. The HVDI framework.](fig_framework.png)
 
 **Step 1, evidence.** Every claim enters a ledger with its publisher, date, period and unit, and is graded by who holds it, whether a buyer, an independent tracker, a regulatory filing or a vendor.
 
@@ -78,9 +74,9 @@ Figure 1 shows the framework in one view. It has five steps and two side rules.
 
 **Two side rules.** Capital quality (Q) is reported beside the gap and never subtracted from it, because money is not proof. The gates (X) sit outside the arithmetic. They are site power and grid, advanced packaging, high-bandwidth memory, indium phosphide lasers and export policy. Each is open, constraining or blocked, applies only to the technologies exposed to it, and overrides every score when blocked.
 
-**A worked example.** Native UALink is the open alternative to NVLink. Its stage claims place the first switches later in 2026, while a supplier's chief executive says only that it will be prepared to intercept that launch ([[S170,S172,S214]]), giving a stage level of 2. Its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren't ready" ([[S172,S171]]), so H is 2. Its targets rest on simulation and no switch chip had sampled, so T = 1. No product carries a native switch, so A = 1, and no buyer has reported a benefit, so E = 1. Proven value is 1.00 and the gap is +1.00, exactly on the threshold, so the story is ahead, a verdict kept by 61% of random re-scorings. Capital is venture money (Q = 1) and the last milestone slipped, so the outlook is stalling. No gate is blocked. The posture is to defer until switch silicon samples.
+**A worked example.** Native UALink is the open alternative to NVLink. Stage claims place the first switches later in 2026 and its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren't ready" ([[S170,S172,S171,S214]]), so H is 2. Targets rest on simulation (T = 1), no product carries a native switch (A = 1) and no buyer has reported a benefit (E = 1). The gap is therefore +1.00, exactly on the threshold and kept by 61% of re-scorings (Figure 2). With venture capital (Q = 1) and a slipped milestone, the outlook is stalling and the posture is to defer until switch silicon samples.
 
-![Figure 2. The worked example, native UALink. Claimed maturity stands at level 2 while every proof score stands at 1, so proven value is 1.00 and the gap is +1.00, exactly on the story-ahead threshold.](fig_info_ualink_card.png)
+![Figure 2. Worked example, native UALink (gap +1.00).](fig_info_ualink_card.png)
 
 ### 3.3 Data collection
 
@@ -102,28 +98,13 @@ The findings follow the framework's own order, from the gap to the leading stori
 
 ### 4.1 Finding 1. Once hype is measured from dated claims, only two stories run ahead of their proof
 
-Two technologies are scored as story ahead of proof, eight as broadly aligned and none as proof ahead (Table 1, Figures 3 and 4).
+Two technologies are scored as story ahead of proof, eight as broadly aligned and none as proof ahead (Figures 3 and 4, Table A4.1).
 
-![Figure 3. The ten technologies on this study's curve, positioned by the rule in Appendix 2 and not by Gartner. Orange marks story ahead, grey aligned and blue proof ahead.](fig_info_curve.png)
-
-**Table 1.** *HVDI scores at 11 November 2026, equal weights*
-
-| Technology | H | T | A | Q | E | V | D | Verdict | Stability | Outlook |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| NVLink scale-up | 4 | 3 | 4 | 2 | 1 | 2.67 | +1.33 | Story ahead | 58% | Closing |
-| UALink scale-up (native) | 2 | 1 | 1 | 1 | 1 | 1.00 | +1.00 | Story ahead | 61% | Stalling |
-| InfiniBand scale-out | 3 | 3 | 3 | 2 | 1 | 2.33 | +0.67 | Aligned | 78% | Holding |
-| Co-packaged optics | 3 | 3 | 2 | 2 | 2 | 2.33 | +0.67 | Aligned | 93% | Holding |
-| Ultra Ethernet transport | 2 | 2 | 2 | 2 | 1 | 1.67 | +0.33 | Aligned | 87% | Holding |
-| Linear pluggable optics | 3 | 3 | 3 | 2 | 2 | 2.67 | +0.33 | Aligned | 85% | Holding |
-| Active electrical cables | 3 | 3 | 3 | 2 | 2 | 2.67 | +0.33 | Aligned | 87% | Holding |
-| Ethernet scale-up | 2 | 3 | 2 | 2 | 1 | 2.00 | 0.00 | Aligned | 85% | Holding |
-| Merchant DPU | 2 | 3 | 2 | 2 | 2 | 2.33 | −0.33 | Aligned | 76% | Holding |
-| Ethernet scale-out | 3 | 4 | 4 | 3 | 2 | 3.33 | −0.33 | Aligned | 98% | Holding |
+![Figure 3. The ten technologies on this study's curve, not Gartner's.](fig_info_curve.png)
 
 *Note.* Stability is the share of 20,000 draws, resampling claims and scores, that keep the verdict. Evidence for every score is in Appendix 4, and the claims behind H are in Appendix 9.
 
-![Figure 4. Claim against proof for each technology. The line from proven (blue) to claimed (orange) is the gap, and stability is the share of 20,000 re-scorings that keep the verdict.](fig_info_claim_proof.png)
+![Figure 4. Claim against proof, with verdict stability.](fig_info_claim_proof.png)
 
 The first is the incumbent. NVIDIA's chief executive told investors that most of the world's data centres "will just be Vera Rubin NVLink-72" ([[S86]]), and an analyst wrote of NVLink's "inevitable momentum" as the dominant fabric ([[S196]]). Its technical proof and adoption are strong, but no buyer has published its economics, so the story outruns the proof by 1.33. The second is native UALink, exactly on the threshold.
 
@@ -131,7 +112,7 @@ The public record is more restrained than its reputation. Vendors claim shipping
 
 Under the three alternative weightings, nine verdicts do not change, and InfiniBand becomes story ahead when buyer economics carries half the weight (D = +1.00). For eight technologies the 90% interval of the gap crosses a threshold (Figure 5). Only Ethernet scale-out and co-packaged optics stay aligned across it, so eight verdicts are directional. A blind second coding of the 76 claims gave the same verdict for all ten technologies (Section 6.4).
 
-![Figure 5. Gap D at equal weights (point) with the 5th to 95th percentile of 20,000 Monte Carlo draws (bar). The shaded band marks broad alignment.](fig2_gap_interval.png)
+![Figure 5. Gap D with its 90% Monte Carlo interval.](fig2_gap_interval.png)
 
 The 12 November audit moved two proof scores. Ethernet scale-up technical proof rose from 2 to 3 because Meta states that its Tahan scale-up switch is shipping ([[S124]]). Merchant-DPU buyer economics rose from 1 to 2 because Google reports host cores freed on a co-designed device ([[S136]]), whereas the one independent merchant-DPU baseline is unfavourable to offload ([[S112]]).
 
@@ -161,11 +142,11 @@ A bounded model shows why this gap matters. If the network is 15% of cluster cos
 
 ### 4.5 Finding 5. The revenue is real, but it rests on few payers
 
-Nine of ten technologies score 2 or less on capital quality. Only Ethernet scale-out reaches 3. Arista's 10-Q shows remaining performance obligations of about $8.6 billion and deferred revenue of $6.84 billion, both owed by buyers, against $3.66 billion of quarterly revenue ([[S139,S30]]). Its $11.4 billion of purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment.
+Nine of ten technologies score 2 or less on capital quality. Only Ethernet scale-out reaches 3. Arista's 10-Q shows remaining performance obligations of about $8.6 billion and deferred revenue of $6.84 billion, both owed by buyers, against $3.66 billion of quarterly revenue ([[S139,S30]]).
 
-Elsewhere, revenue rests on few payers. Credo's two largest customers were 43% and 28% of revenue in the quarter to 1 August 2026, and 81% together in fiscal 2026 ([[S147,S142]]). NVIDIA's three largest direct customers were 44% of first-half fiscal 2027 revenue ([[S54]]). AMD's binding 1 GW commitment from Meta comes with a warrant for up to 160 million shares, and it is for GPUs, not the scale-up fabric ([[S140,S141]]). Buyers also lean on external funding. Third-quarter capital expenditure was 182% of operating cash flow at Amazon, 122% at Alphabet and 103% at Meta (secondary compilation, [[S32]]). Concentration is not hype, but a single buyer's pause would change the picture faster than any technical event.
+Elsewhere, revenue rests on few payers. Credo's two largest customers were 43% and 28% of revenue in the quarter to 1 August 2026, and 81% together in fiscal 2026 ([[S147,S142]]). NVIDIA's three largest direct customers were 44% of first-half fiscal 2027 revenue ([[S54]]). Buyers also lean on external funding, with third-quarter capital expenditure above operating cash flow at Amazon, Alphabet and Meta (Figure 6, [[S32]]). Concentration is not hype, but a single buyer's pause would change the picture faster than any technical event.
 
-![Figure 6. How solid the money is. Customer concentration, capital expenditure against operating cash flow, and the commitments buyers have signed.](fig_info_money.png)
+![Figure 6. How solid the money is.](fig_info_money.png)
 
 *For the planner.* Read supplier concentration as a supply risk, and ask for capacity reservations and second sources.
 
@@ -183,15 +164,15 @@ All five gates are constraining and none is blocked (Appendix 5). Grid-connectio
 
 The scenarios show a structural asymmetry. A halt in indium exports blocks the four optical technologies and leaves the six copper or protocol technologies untouched. A Taiwan packaging disruption, tighter export rules or worse grid delays block all ten. These are exposure tests and predict nothing.
 
-![Figure 7. Exposure of each technology to the five gates under observed conditions, with its outlook. The highlighted row is native UALink.](fig_info_gates.png)
+![Figure 7. Gate exposure and outlook by technology.](fig_info_gates.png)
 
 *For the planner.* Schedule by gate, not by product, and keep a copper path where reach allows.
 
 ### 4.8 Finding 8. Energy per bit depends on where the boundary is drawn
 
-Rated switch energy per bit fell about 4.7 times across four generations of Tomahawk-based systems, from 58.4 to 12.5 picojoules per bit at typical load without optics ([[S46,S47,S48,S49]]). The boundary changes the answer more than the generation does. The same Tomahawk 5 switch reads 12.5 pJ/bit with copper cables and 43.3 at maximum load with optics ([[S49]]). A linear 800G module is rated 7.5 W below a retimed one ([[S51,S50]]). At $0.08 per kWh, a facility overhead of 1.2 and a four-year life, that saving is worth $25.23 per module in energy, and if freed site capacity is valued at $8 per watt, it adds $72.00. The inputs are illustrative, not sourced prices. The structural point is that the case for linear optics rests on freed capacity and reliability, not on electricity. All values are vendor-rated, not measured in operation.
+Rated switch energy per bit fell about 4.7 times across four generations of Tomahawk-based systems, from 58.4 to 12.5 picojoules per bit at typical load without optics ([[S46,S47,S48,S49]]). The boundary changes the answer more than the generation does. The same Tomahawk 5 switch reads 12.5 pJ/bit with copper cables and 43.3 at maximum load with optics ([[S49]]). A linear 800G module is rated 7.5 W below a retimed one ([[S51,S50]]). At $0.08 per kWh, a facility overhead of 1.2 and a four-year life, that saving is worth $25.23 per module in energy, and if freed site capacity is valued at $8 per watt, it adds $72.00. The inputs are illustrative and all values vendor-rated, so the case for linear optics rests on freed capacity and reliability, not on electricity.
 
-![Figure 8. Energy per bit by system boundary, with the illustrative value of a lower-power optical module and of a pricier network.](fig_info_energy.png)
+![Figure 8. Energy per bit by system boundary.](fig_info_energy.png)
 
 *For the planner.* Never compare energy figures without fixing the boundary, the load and the optics.
 
@@ -207,9 +188,9 @@ The first solution is the instrument itself. A planning team that adopts the HVD
 
 ### 5.2 Decision rules for infrastructure planners
 
-The second solution converts verdicts into postures (Table 2). Each posture states the evidence that would move a technology up.
+The second solution converts verdicts into postures (Table 1). Each posture states the evidence that would move a technology up.
 
-**Table 2.** *Decision rules and current assignments*
+**Table 1.** *Decision rules and current assignments*
 
 | Posture | Condition | Technologies today | Require before moving up |
 | --- | --- | --- | --- |
@@ -242,7 +223,7 @@ A planning team can adopt the instrument in five steps.
 1. **Fix the unit.** Choose the buyer type, generation and date, since a score for a hyperscaler does not transfer to an enterprise buyer.
 2. **Score independently.** Two analysts score every cell from the evidence ledger and report an agreement statistic before any result is used.
 3. **Run the engine.** The code recomputes gaps, robustness and scenarios and fails its tests if a score lacks admissible evidence.
-4. **Assign postures and triggers.** Each technology gets a posture from Table 2 and one observable event that would change a score, such as native UALink silicon sampling or a second named CPO buyer at 102.4 Tb/s.
+4. **Assign postures and triggers.** Each technology gets a posture from Table 1 and one observable event that would change a score, such as native UALink silicon sampling or a second named CPO buyer at 102.4 Tb/s.
 5. **Refresh quarterly, and on triggers.** Filings and standards releases set a quarterly cadence.
 
 ### 6.2 Implementation artefact

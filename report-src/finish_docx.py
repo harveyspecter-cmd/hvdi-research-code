@@ -98,7 +98,7 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
         pf = p.paragraph_format
         if txt.startswith("BPGP 2025-27, Indian Institute"):
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        pf.line_spacing = 1.5; pf.space_after = Pt(6)
+        pf.line_spacing = 1.15; pf.space_after = Pt(6)
         if name not in ("Image Caption", "Captioned Figure", "Table Caption") and not txt.startswith("BPGP 2025-27, Indian Institute"):
             p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         if in_refs and txt and not txt.startswith("Ledger identifiers"):

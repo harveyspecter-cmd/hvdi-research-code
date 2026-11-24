@@ -54,6 +54,8 @@ Curve position is derived from the scores, not taken from Gartner. D of +1 or mo
 
 ### Appendix 4. Scoring rationale
 
+{{TABLE_SCORES}}
+
 | Technology | Decisive evidence |
 | --- | --- |
 | Ethernet scale-out | Operator-documented production, about two-thirds of AI-cluster switch sales, $8.6 billion of remaining performance obligations at one vendor, no public matched-baseline economics ([[S10,S29,S139]]) |

@@ -181,5 +181,30 @@ _before_planner("### 4.7", "![Figure 7. Exposure of each technology to the five 
 _before_planner("### 4.8", "![Figure 8. Energy per bit by system boundary, with the illustrative value of a lower-power optical module and of a pricier network.](fig_info_energy.png)")
 b = "\n".join(L)
 b = b.replace("(Table 1, Figure 2)", "(Table 1, Figures 3 and 4)").replace("crosses a threshold (Figure 3)", "crosses a threshold (Figure 5)")
+
+# --- Word-count audit cuts (25 Nov): Table 1 to Appendix 4, short captions, 1.4 removed ---
+L = b.split("\n")
+i = [k for k, l in enumerate(L) if l.startswith("### 1.4 How the report unfolds")][0]
+j = i + 1
+while not L[j].startswith("#"): j += 1
+del L[i:j]
+i = [k for k, l in enumerate(L) if l.startswith("**Table 1.** *HVDI scores")][0]
+j = i + 1
+while j < len(L) and (not L[j].strip() or L[j].startswith("|")): j += 1
+(HERE / "table_scores.md").write_text("\n".join(L[i:j]).replace("**Table 1.**", "**Table A4.1.**") + "\n", encoding="utf-8")
+del L[i:j]
+b = "\n".join(L)
+b = b.replace("(Table 1, Figures 3 and 4)", "(Figures 3 and 4, Table A4.1)")
+b = b.replace("**Table 2.**", "**Table 1.**").replace("postures (Table 2)", "postures (Table 1)").replace("posture from Table 2", "posture from Table 1")
+CAP = {"Figure 1.": "Figure 1. The HVDI framework.", "Figure 2.": "Figure 2. Worked example, native UALink (gap +1.00).",
+       "Figure 3.": "Figure 3. The ten technologies on this study's curve, not Gartner's.", "Figure 4.": "Figure 4. Claim against proof, with verdict stability.",
+       "Figure 5.": "Figure 5. Gap D with its 90% Monte Carlo interval.", "Figure 6.": "Figure 6. How solid the money is.",
+       "Figure 7.": "Figure 7. Gate exposure and outlook by technology.", "Figure 8.": "Figure 8. Energy per bit by system boundary."}
+b = _re.sub(r"!\[(Figure \d\.)[^\]]*\]", lambda m: "![" + CAP[m.group(1)] + "]", b)
+b = b.replace(" Its $11.4 billion of purchase commitments are owed to its own suppliers, so they show vendor confidence, not buyer commitment.", "")
+b = b.replace("AMD's binding 1 GW commitment from Meta comes with a warrant for up to 160 million shares, and it is for GPUs, not the scale-up fabric ([[S140,S141]]). ", "")
+b = b.replace("Buyers also lean on external funding. Third-quarter capital expenditure was 182% of operating cash flow at Amazon, 122% at Alphabet and 103% at Meta (secondary compilation, [[S32]]).", "Buyers also lean on external funding, with third-quarter capital expenditure above operating cash flow at Amazon, Alphabet and Meta (Figure 6, [[S32]]).")
+b = b.replace(" The inputs are illustrative, not sourced prices. The structural point is that the case for linear optics rests on freed capacity and reliability, not on electricity. All values are vendor-rated, not measured in operation.", " The inputs are illustrative and all values vendor-rated, so the case for linear optics rests on freed capacity and reliability, not on electricity.")
+b = b.replace('**A worked example.** Native UALink is the open alternative to NVLink. Its stage claims place the first switches later in 2026, while a supplier\'s chief executive says only that it will be prepared to intercept that launch ([[S170,S172,S214]]), giving a stage level of 2. Its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren\'t ready" ([[S172,S171]]), so H is 2. Its targets rest on simulation and no switch chip had sampled, so T = 1. No product carries a native switch, so A = 1, and no buyer has reported a benefit, so E = 1. Proven value is 1.00 and the gap is +1.00, exactly on the threshold, so the story is ahead, a verdict kept by 61% of random re-scorings. Capital is venture money (Q = 1) and the last milestone slipped, so the outlook is stalling. No gate is blocked. The posture is to defer until switch silicon samples.', '**A worked example.** Native UALink is the open alternative to NVLink. Stage claims place the first switches later in 2026 and its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren\'t ready" ([[S170,S172,S171,S214]]), so H is 2. Targets rest on simulation (T = 1), no product carries a native switch (A = 1) and no buyer has reported a benefit (E = 1). The gap is therefore +1.00, exactly on the threshold and kept by 61% of re-scorings (Figure 2). With venture capital (Q = 1) and a slipped milestone, the outlook is stalling and the posture is to defer until switch silicon samples.')
 (HERE / "body.md").write_text(b, encoding="utf-8")
 print("body.md written")

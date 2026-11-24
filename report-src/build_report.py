@@ -247,7 +247,7 @@ def claims_table() -> str:
 
 def main() -> None:
     body = render((HERE / "body.md").read_text(encoding="utf-8")).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
-    app = render((HERE / "appendix.md").read_text(encoding="utf-8").replace("{{CLAIMS_TABLE}}", claims_table())).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
+    app = render((HERE / "appendix.md").read_text(encoding="utf-8").replace("{{CLAIMS_TABLE}}", claims_table()).replace("{{TABLE_SCORES}}", (HERE / "table_scores.md").read_text(encoding="utf-8"))).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
     entries = sorted(((R[k][1], k) for k in USED), key=lambda e: re.sub(r"[^a-z0-9 ]", "", e[0].lower()))
     ref = ["## References", "",
            "Ledger identifiers in square brackets (S01 to S218) link each entry to the project's source ledger and dataset.", ""]
