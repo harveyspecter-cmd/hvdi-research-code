@@ -238,7 +238,7 @@ def claims_table() -> str:
     rows.sort(key=lambda r: (order.index(r["tech"]), r["kind"] != "stage", r["date"]))
     out = ["| Technology | ID | Date | Claimant | Kind | Level | Source |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for r in rows:
-        who = re.sub(r"\s+", " ", r["claimant"].replace("|", "/")).strip()
+        who = re.sub(r"\s+", " ", r["claimant"].replace("|", "/")).strip().replace("; ", ", and ").replace(": ", ", ")
         sid = SAME_DOC.get(r["source_id"], r["source_id"])
         lvl = r["level"] + (f" (or {r['alt_level']})" if r["alt_level"].strip() else "")
         out.append(f"| {TECH[r['tech']]} | {r['claim_id']} | {r['date']} | {who} | {r['kind']} | {lvl} | ([[{sid}]]) |")
@@ -250,7 +250,7 @@ def main() -> None:
     app = render((HERE / "appendix.md").read_text(encoding="utf-8").replace("{{CLAIMS_TABLE}}", claims_table())).replace("{{SITE_URL}}", SITE_URL).replace("{{CODE_URL}}", CODE_URL)
     entries = sorted(((R[k][1], k) for k in USED), key=lambda e: re.sub(r"[^a-z0-9 ]", "", e[0].lower()))
     ref = ["## References", "",
-           "Ledger identifiers in square brackets (S01 to S217) link each entry to the project's source ledger and dataset.", ""]
+           "Ledger identifiers in square brackets (S01 to S218) link each entry to the project's source ledger and dataset.", ""]
     for e, k in entries:
         ref.append(e + (f" [{k}]" if k.startswith("S") else ""))
         ref.append("")
@@ -270,7 +270,7 @@ def main() -> None:
     for sec in re.split(r"\n(?=## )", body):
         print(f"  {sec.splitlines()[0][:40]:40} {words(sec)}")
     subprocess.run(["pandoc", str(HERE / "Beyond_the_Hype_Cycle_Report.md"), "-o", str(HERE / "raw.docx"),
-                    "--resource-path", str(HERE), "--from", "markdown+pipe_tables+implicit_figures"], check=True)
+                    "--resource-path", str(HERE), "--from", "markdown+pipe_tables+implicit_figures+autolink_bare_uris"], check=True)
 
 
 if __name__ == "__main__":

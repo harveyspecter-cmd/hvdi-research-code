@@ -70,7 +70,7 @@ def draw(mode, out):
     # 1 evidence
     card(0.6, yb, 4.35, hb); badge(1.2, yb + hb - 0.55, 1, c["mid"])
     T(1.7, yb + hb - 0.55, "Evidence", 15, w="bold", va="center")
-    T(1.0, yb + 2.45, "217", 25, c["ink"], "bold", va="center"); T(2.6, yb + 2.45, "public sources", 10, c["mut"], va="center")
+    T(1.0, yb + 2.45, "218", 25, c["ink"], "bold", va="center"); T(2.6, yb + 2.45, "public sources", 10, c["mut"], va="center")
     T(1.0, yb + 1.6, "76", 25, c["hot"], "bold", va="center"); T(2.6, yb + 1.6, "dated claims", 10, c["mut"], va="center")
     T(1.0, yb + 0.8, "graded by who holds the proof", 9, c["mut"], va="center")
     for k, (nm, a) in enumerate((("buyer", 1.0), ("tracker", 0.75), ("filing", 0.55), ("vendor", 0.3))):

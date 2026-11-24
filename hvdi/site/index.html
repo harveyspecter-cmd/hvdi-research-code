@@ -1,9 +1,8 @@
 <!doctype html>
 <!--
   Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All Rights Reserved.
-  Contact: bpgp25sushant@iima.ac.in
 
-  PROPRIETARY AND CONFIDENTIAL: Unauthorized copying, modification, distribution,
+  PROPRIETARY (ALL RIGHTS RESERVED): Unauthorized copying, modification, distribution,
   reverse engineering, or use of this file, via any medium, is strictly prohibited
   without the express prior written permission of Sushant Gaurav.
 -->
@@ -141,7 +140,8 @@ footer{padding:36px 0 64px;color:var(--dim);font-size:.86rem;border-top:1px soli
 .donut{display:flex;align-items:center;gap:12px;margin-top:14px;color:var(--mut);font-size:.84rem}
 .ev{border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;margin-top:12px;font-size:.94rem;min-height:58px}
 .ev b{margin-right:8px}.ev small{display:block;color:var(--mut);margin-top:3px}.ev a{color:var(--mut);font-size:.84rem}
-.axis{cursor:pointer}.axis text{fill:var(--ink);font-size:13px}.axis.on text{font-weight:600}
+.axis{cursor:pointer}.lvl{fill:var(--mid);font-size:10px}
+.axis text{fill:var(--ink);font-size:13px}.axis.on text{font-weight:600}
 .gl{display:inline-block;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--mut);vertical-align:-2px}
 .gl.s2{background:var(--ink);border-color:var(--ink);border-radius:3px}.gl.sx{border:0;width:6px;height:6px;background:var(--line2);vertical-align:2px;margin:0 4px}
 #gates td.g,#gates th.g{text-align:center}
@@ -239,7 +239,7 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
     <p>Curve position: gap of +1 or more with V under 1.5 is "promise outruns proof"; with V of 1.5 or more, "peak claims"; a negative gap is "proof outruns talk"; otherwise V under 3 is "earning it" and 3 or more is "earned". These are this study's positions, not Gartner's.</p>
     <p>Outlook is an uncalibrated rule: +1 for a dated milestone aimed at the weakest proof, ±1 for whether the last milestone was on time, ±1 for capital quality.</p></div></details>
   <details><summary>Limits</summary>
-    <div class="cols"><p>Project analysis assigned every score, so there is no second coder and no inter-rater figure. One date, so it cannot show whether a gap is closing.</p>
+    <div class="cols"><p>Project analysis assigned every score; blind AI codings and five blind human coders reproduced all ten verdicts, though the human coders read claims more cautiously. A reading at one date describes timing risk, not eventual success. An exploratory back-test on 400G Ethernet and OpenFlow suggested that the gap's direction over time separates the two, and identified refinements for a version 3.2, which is separate from this project.</p>
     <p>Any pre-production technology shows a positive gap; that marks timing risk, not a bad technology. Buyer economics are mostly private, so nothing scores above 2 there.</p>
     <p>Several operator results came through second-hand reports. Scenarios test exposure and predict nothing. Not investment advice.</p></div></details>
   <details><summary>Sources</summary><ul class="src" id="src" style="margin-top:12px"></ul></details>
@@ -322,7 +322,7 @@ function donut(p){
 function radar(c){
   const s=sv("svg",{viewBox:"0 0 320 290",role:"img","aria-label":"Proof shape against claimed level"}),cx=160,cy=148,R=100;
   const ax=[["T",0,-1],["A",1,0],["E",0,1],["Q",-1,0]];
-  for(let k=1;k<=4;k++){const r=R*k/4;s.append(sv("path",{d:`M${cx} ${cy-r}L${cx+r} ${cy}L${cx} ${cy+r}L${cx-r} ${cy}Z`,fill:"none",stroke:"#232523"}))}
+  for(let k=1;k<=4;k++){const r=R*k/4;s.append(sv("path",{d:`M${cx} ${cy-r}L${cx+r} ${cy}L${cx} ${cy+r}L${cx-r} ${cy}Z`,fill:"none",stroke:"#232523"}));const lv=sv("text",{x:cx-r/2-4,y:cy+r/2+4,"text-anchor":"end",class:"lvl"});lv.textContent=k;s.append(lv)}
   ax.forEach(([k,dx,dy])=>s.append(sv("line",{x1:cx,y1:cy,x2:cx+dx*R,y2:cy+dy*R,stroke:"#232523"})));
   const pts=ax.map(([k,dx,dy])=>{const r=R*c.scores[k].v/4;return [cx+dx*r,cy+dy*r]});
   s.append(sv("path",{d:"M"+pts.map(p=>p.join(" ")).join("L")+"Z",fill:"rgba(61,143,214,.22)",stroke:"#3D8FD6","stroke-width":2,"stroke-linejoin":"round"}));

@@ -1,6 +1,6 @@
 # H coding rule, version 3.1 (16 Nov 2026)
 
-Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All Rights Reserved. Proprietary and confidential.
+Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All Rights Reserved. Proprietary; publicly visible for review.
 
 H measures the story told about a technology's maturity and destiny for hyperscale AI buyers, at the cut-off of 11 November 2026, from dated public claims made between 12 November 2025 and 11 November 2026. Claims are listed in `claims.csv`; the rule is implemented in `hclaims.py`.
 

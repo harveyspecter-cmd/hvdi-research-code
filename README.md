@@ -7,10 +7,10 @@ The index scores ten AI networking technologies on what is claimed (H), technica
 adopted (A), financially committed (Q) and gained by buyers (E), and keeps external constraints (X)
 outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 12 November 2026.
 
-**Private repository. Proprietary and confidential; see `LICENSE`.**
+**Public repository. Copyright © 2026 Sushant Gaurav. All rights reserved; see `LICENSE`.**
 
 - Interactive page (public): https://harveyspecter-cmd.github.io/hvdi-research/
-- This repository (private): https://github.com/harveyspecter-cmd/hvdi-research-code
+- This repository: https://github.com/harveyspecter-cmd/hvdi-research-code
 
 ## 1. What is here
 
@@ -131,11 +131,14 @@ HVDI_APPLY_THEME=/path/to/apply_theme.js DECK_THEME=print node build.js     # li
 
 ## 8. Limits
 
-One coder scored every cell, at one date. Nine of ten verdicts are directional. The outlook rule is
-uncalibrated. Buyer-side economics are mostly private. A back-test on earlier networking bets is the
-condition for calling the index predictive. See `hvdi/EVIDENCE_AUDIT.md` and the report.
+One coder scored every cell, at one date; blind AI codings and five blind human coders reproduced all ten
+verdicts. Eight of ten verdicts are directional. The outlook rule is uncalibrated. Buyer-side economics
+are mostly private. An exploratory back-test on 400G Ethernet and OpenFlow (report, Appendix 11) suggested
+that the gap's direction over time separated success from stall, and identified three refinements
+(claim volume, independent-only proof, substitute tracking). These form a version 3.2, which is outside
+the scope of this submission and will be taken up independently. See `hvdi/EVIDENCE_AUDIT.md` and the report.
 
 ## Licence
 
-Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All rights reserved. Proprietary and confidential.
+Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All rights reserved. Proprietary; publicly visible for review.
 See `LICENSE`.

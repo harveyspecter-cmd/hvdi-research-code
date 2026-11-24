@@ -1,7 +1,6 @@
 # Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All Rights Reserved.
-# Contact: bpgp25sushant@iima.ac.in
 #
-# PROPRIETARY AND CONFIDENTIAL: Unauthorized copying, modification, distribution,
+# PROPRIETARY (ALL RIGHTS RESERVED): Unauthorized copying, modification, distribution,
 # reverse engineering, or use of this file, via any medium, is strictly prohibited
 # without the express prior written permission of Sushant Gaurav.
 """Write the public copy of the page: same page, header notice reduced to one line."""

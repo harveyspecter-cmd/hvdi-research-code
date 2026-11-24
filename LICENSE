@@ -1,5 +1,5 @@
 ================================================================================
-PROPRIETARY AND CONFIDENTIAL SOFTWARE LICENSE & COPYRIGHT NOTICE
+PROPRIETARY SOFTWARE LICENSE & COPYRIGHT NOTICE
 ================================================================================
 
 Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). 
@@ -28,10 +28,12 @@ no person or entity is granted any license, right, or permission to:
   f) Remove, obscure, or alter any copyright, trademark, or proprietary notices 
      contained within the Software.
 
-3. CONFIDENTIALITY
-The Software contains confidential and proprietary information belonging to the 
-Author. Any authorized recipient or viewer agrees to maintain the strict 
-confidentiality of the Software and to prevent unauthorized access or disclosure.
+3. PUBLIC VISIBILITY
+The Software is made publicly visible for academic review and for verifying the 
+results of the report "Beyond the Hype Cycle". Viewing the Software, and running 
+it solely to reproduce those results, is permitted. Public visibility grants no 
+other right: every restriction in Section 2 continues to apply, and the Software 
+remains the proprietary intellectual property of the Author.
 
 4. DISCLAIMER OF WARRANTIES
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
@@ -49,5 +51,5 @@ criminal legal remedies to the fullest extent permitted by law.
 
 For licensing inquiries or written permissions, contact:
 Sushant Gaurav (BPGP 2025-27, IIMA)
-Email: bpgp25sushant@iima.ac.in
+GitHub: https://github.com/harveyspecter-cmd
 ================================================================================

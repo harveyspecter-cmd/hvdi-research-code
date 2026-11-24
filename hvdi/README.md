@@ -1,6 +1,6 @@
 # Beyond the Hype Cycle: HVDI v3.1
 
-Static, selection-only site plus the tested model behind it. Evidence cut-off 11 Nov 2026. Scores are provisional (single coder; two blind AI second codings, verdicts 10 of 10 on the claims check).
+Static, selection-only site plus the tested model behind it. Evidence cut-off 11 Nov 2026. Scores are provisional (single coder; blind AI and human second codings reproduced all ten verdicts).
 
 ## View it
 - Locally: double-click `site/index.html`. No server needed. (The Switzer font loads from Fontshare when online; offline it falls back to the system font.)
@@ -34,8 +34,8 @@ Python 3.9 or later. The engine uses the standard library only. `pip install -r 
 ## Links
 
 - Interactive page (public): https://harveyspecter-cmd.github.io/hvdi-research/
-- Code repository (private): https://github.com/harveyspecter-cmd/hvdi-research-code
+- Code repository: https://github.com/harveyspecter-cmd/hvdi-research-code
 
 ## Licence
 
-Proprietary and confidential. Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All rights reserved. See `LICENSE`.
+Proprietary; publicly visible for review. Copyright (c) 2026 Sushant Gaurav (BPGP 2025-27, IIMA). All rights reserved. See `LICENSE`.

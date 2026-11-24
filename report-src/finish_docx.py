@@ -7,17 +7,18 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Inches, Pt, RGBColor
+from docx.shared import Cm, Inches, Pt, RGBColor
 
 HERE = pathlib.Path(__file__).resolve().parent
 FONT = "Times New Roman"
 BLACK = RGBColor(0, 0, 0)
+BLUE = RGBColor(0x1F, 0x4E, 0x79)
 
 
-def set_font(run, size=None, bold=None, italic=None):
+def set_font(run, size=None, bold=None, italic=None, color=BLACK):
     run.font.name = FONT
     run._element.rPr.rFonts.set(qn("w:eastAsia"), FONT)
-    run.font.color.rgb = BLACK
+    run.font.color.rgb = color
     if size: run.font.size = Pt(size)
     if bold is not None: run.font.bold = bold
     if italic is not None: run.font.italic = italic
@@ -34,21 +35,29 @@ def borders(table):
 
 
 def page_number(section):
-    p = section.footer.paragraphs[0]
+    ft = section.footer
+    ft.is_linked_to_previous = False
+    p = ft.paragraphs[0]
+    for old in list(p.runs): old._r.getparent().remove(old._r)
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run()
-    for tag, text in (("begin", None), (None, "PAGE"), ("end", None)):
-        if tag:
-            f = OxmlElement("w:fldChar"); f.set(qn("w:fldCharType"), tag); r._r.append(f)
+    lead = p.add_run("Beyond the Hype Cycle  |  Sushant Gaurav  |  IIMA BPGP 2025-27 Live Project  |  Page ")
+    set_font(lead, 9)
+    for kind, val in (("begin", None), ("instr", " PAGE "), ("separate", None), ("text", "1"), ("end", None)):
+        r = p.add_run()
+        if kind == "instr":
+            e = OxmlElement("w:instrText"); e.set(qn("xml:space"), "preserve"); e.text = val; r._r.append(e)
+        elif kind == "text":
+            r.text = val
         else:
-            i = OxmlElement("w:instrText"); i.set(qn("xml:space"), "preserve"); i.text = text; r._r.append(i)
-    set_font(r, 10)
+            e = OxmlElement("w:fldChar"); e.set(qn("w:fldCharType"), kind); r._r.append(e)
+        set_font(r, 9)
 
 
 def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
     d = Document(HERE / src)
     for s in d.sections:
-        s.left_margin = s.right_margin = s.top_margin = s.bottom_margin = Inches(1)
+        s.page_width = Cm(21.0); s.page_height = Cm(29.7)
+        s.left_margin = s.right_margin = s.top_margin = s.bottom_margin = Cm(2.54)
         page_number(s)
     for st in d.styles:
         try:
@@ -56,6 +65,15 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
                 st.font.name = FONT; st.font.color.rgb = BLACK
         except (AttributeError, ValueError):
             pass
+    for nm, sz in (("Heading 1", 14), ("Heading 2", 14), ("Heading 3", 13), ("Heading 4", 12)):
+        try:
+            st = d.styles[nm]; st.font.size = Pt(sz); st.font.color.rgb = BLUE; st.font.bold = True
+        except KeyError:
+            pass
+    try:
+        d.styles["Footer"].font.size = Pt(9)
+    except KeyError:
+        pass
     in_refs = False
     first_h = True
     for p in d.paragraphs:
@@ -64,10 +82,10 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
         if name.startswith("Heading"):
             lvl = int(name.split()[-1]) if name.split()[-1].isdigit() else 1
             in_refs = txt == "References"
-            if lvl <= 2 and (first_h or txt in ("References", "Appendices", "1. Introduction")):
+            if lvl <= 2 and (not first_h) and txt in ("References", "Appendices", "1. Introduction"):
                 p.insert_paragraph_before().add_run().add_break(WD_BREAK.PAGE)
             first_h = False
-            for r in p.runs: set_font(r, {1: 14, 2: 13}.get(lvl, 12), bold=True, italic=False)
+            for r in p.runs: set_font(r, {1: 14, 2: 14, 3: 13}.get(lvl, 12), bold=True, italic=False, color=BLUE)
             p.paragraph_format.space_before = Pt(12); p.paragraph_format.space_after = Pt(6)
             p.paragraph_format.keep_with_next = True
             continue
@@ -81,6 +99,8 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
         if txt.startswith("BPGP 2025-27, Indian Institute"):
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         pf.line_spacing = 1.5; pf.space_after = Pt(6)
+        if name not in ("Image Caption", "Captioned Figure", "Table Caption") and not txt.startswith("BPGP 2025-27, Indian Institute"):
+            p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         if in_refs and txt and not txt.startswith("Ledger identifiers"):
             pf.left_indent = Inches(0.5); pf.first_line_indent = Inches(-0.5); pf.line_spacing = 1.15
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
