@@ -102,9 +102,9 @@ Curve position is derived from the scores, not taken from Gartner: D of +1 or mo
 
 ### Appendix 8. Declarations
 
-**Data.** All evidence data are public and secondary. The only primary data are the anonymous ratings of five volunteer coders (Appendix 10). No employer information or purchased report was used. The full source ledger (S01 to S217), the claims corpus (Appendix 9), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
+**Data.** All evidence data are public and secondary. The only primary data are the anonymous ratings of five volunteer coders (Appendix 10). No employer information or purchased report was used. The back-test (Appendix 11) used news archives licensed to IIMA (Nexis Uni, LexisNexis, through the Vikram Sarabhai Library) for academic use; the article texts are not redistributed. The full source ledger (S01 to S218), the claims corpus (Appendix 9), the dataset, the code and its tests accompany this report. Interactive page: {{SITE_URL}}. Code repository (private; access on request): {{CODE_URL}}.
 
-**Use of AI assistance.** An AI assistant (Claude, Anthropic) was used to search for and retrieve public sources, extract figures from documents, draft and edit text, and write and test code. The author set the research design, supplied primary documents, reviewed the outputs and is responsible for all judgements and any errors.
+**Use of AI assistance.** An AI assistant (Claude, Anthropic) was used to search for and retrieve public sources, extract figures from documents, draft and edit text, and write and test code. For the back-test, a second assistant (ChatGPT, OpenAI) extracted statements from one 2013 news file, with every quote checked by code against the file. The author set the research design, supplied primary documents, reviewed the outputs and is responsible for all judgements and any errors.
 
 **Originality.** This report is the author's own work for the IIMA BPGP Live Project. All sources are cited.
 
@@ -157,3 +157,35 @@ The bands in Figure A1 follow the common reading of kappa: below 0.20 slight, 0.
 **A correction made after the coding.** Claim NC2 (a relayed SemiAnalysis description of near-packaged optics as "the interim step" to co-packaged optics) had been coded narrative 4. No coder rated it above 2, and level 4 requires an explicit claim of being the default or the eventual winner. It was recoded to 2. The change was made after seeing the coders' ratings and is disclosed here for that reason; it does not change H for co-packaged optics.
 
 **Acknowledgement.** The author thanks Ashutosh Yadav, Fairy Pandit, Manogna Manyam, Sucheta Dahiya and Nachiket Karmalkar (IIMA BPGP 2025–27) for volunteering as independent coders.
+
+### Appendix 11. Exploratory back-test on two earlier networking bets
+
+**Purpose and expectation fixed in advance.** The index was applied, with the version 3.1 rules unchanged, to two past networking technologies whose outcomes are known: OpenFlow-based software-defined networking (stalled: the protocol did not become the mainstream switch interface, and programmable pipelines such as P4 later took over much of its role) and 400G Ethernet (realised: mainstream in hyperscale data centres by 2021–22). The expectation was set before scoring: a stalled technology should read story ahead and a realised one aligned.
+
+**Data and sampling.** For each technology, three windows were drawn from Nexis Uni: OpenFlow July–December 2013, 2015 and 2017 (200, 298 and 131 articles); 400G 2018, 2020 and 2022 (296, 293 and 235 articles), English only, top results by relevance. Articles were split by code and qualifying statements shortlisted; from each month the first two admissible claims in relevance order were coded with the H rule (at most two per article and four per organisation), giving 12 to 24 claims per window. T, A and E were scored from the same articles with the Appendix 2 rubric. Robustness used the report's claim resampling (20,000 draws, seed 7) with T, A and E each allowed to move by one level.
+
+**Table A11.1. Back-test results**
+
+| Case (outcome) | Window | H | T, A, E | V | D | Verdict (story ahead in draws) | Matches |
+|---|---|---|---|---|---|---|---|
+| OpenFlow (stalled) | 2013 H2 | 3 | 2, 3, 2 | 2.33 | +0.67 | Aligned (16%) | No |
+| | 2015 | 2 | 2, 2, 1 | 1.67 | +0.33 | Aligned (2%) | No |
+| | 2017 | 3 | 2, 2, 1 | 1.67 | +1.33 | Story ahead (25%) | Yes |
+| 400G (realised) | 2018 | 3 | 2, 1, 1 | 1.33 | +1.67 | Story ahead (57%) | No |
+| | 2020 | 2 | 3, 2, 1 | 2.00 | 0.00 | Aligned (15%) | Yes |
+| | 2022 | 3 | 3, 3, 1 | 2.33 | +0.67 | Aligned (13%) | Yes |
+
+Claims coded per window: 12, 24 and 15 (OpenFlow); 18, 20 and 15 (400G).
+
+![Figure A4. Gap and proof over time in the back-test. The gap for 400G opened at launch and closed as proof rose; the gap for OpenFlow opened late as proof stalled.](figA4_backtest.png)
+
+**Result.** Three of six windows matched the expectation, no better than chance. On this evidence a single reading of the gap does not predict whether a technology succeeds.
+
+**A pattern observed after scoring (a hypothesis, not a finding).** The direction of the gap separated the two cases. For 400G the gap was widest at launch (+1.67) and closed as proof rose from 1.33 to 2.33; this is the timing risk the index is meant to flag. For OpenFlow the gap was small at the hype peak and widened later (+1.33 in 2017) because proof stalled while vendor claims continued. Because this reading was formed after seeing the results and rests on two technologies, it is offered for testing, not as validation. It would be falsified by a technology whose proof rises while it stalls, or whose gap closes while it fails.
+
+**What the test exposed in the construct.** (1) H records the level of the loudest credible claims, not their volume: qualifying OpenFlow claims fell from about 53 to about 14 a month between 2015 and 2017 without lowering H. (2) In the back-test, claims and proof came from the same press releases, so H and V moved together; the main study scores proof from independent sources. (3) The index cannot see a substitute rising, which is how OpenFlow lost its role.
+
+**Method notes.** One coder (the author) coded all back-test claims, without a second coder. The 2013 statements were extracted by an AI assistant with code-verified quotes; the 2015–2022 statements were cut directly from the files by code, so every quote is verbatim. Month-only newsletter dates were set to the first of the month, and 19 articles that were not in English (or carried only a non-English date line) were excluded. Scores are estimates from news coverage, a narrower source base than the main study.
+
+**Next step.** A version 3.2, with its rules fixed in advance (claim volume, proof from independent sources only, substitute tracking, and the gap's trajectory), should be tested on a technology not used here, such as P4 or Omni-Path.
+

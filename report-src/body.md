@@ -4,7 +4,7 @@ AI networking is now a first-order investment decision, yet the signals used to 
 
 Using 217 logged public sources as of 11 November 2026, including 76 dated claims about maturity, two technologies show a story ahead of their proof: NVLink (gap +1.33) and native UALink (+1.00, on the threshold). Neither verdict is firm: each holds in about three of five random re-scorings. The other eight are broadly aligned and none has proof ahead of its story. Blind second codings, by an AI model and by the majority of five human coders, reproduced all ten verdicts. No technology scores above 2 on buyer economics, because that evidence sits with buyers. All five gates constrain today and none blocks; a halt in indium exports would block the four optical technologies.
 
-The proposed solution has three parts: the index itself as a reusable instrument, a set of decision rules (deploy, pilot, hold an option, defer, prove the baseline), and contract practices that buy the missing buyer-side proof. The index is a decision aid built from one coder's scores at one date. A back-test on earlier networking bets is the condition for calling it predictive.
+The proposed solution has three parts: the index itself as a reusable instrument, a set of decision rules (deploy, pilot, hold an option, defer, prove the baseline), and contract practices that buy the missing buyer-side proof. The index is a decision aid built from one coder's scores at one date. An exploratory back-test on two earlier networking bets matched its pre-set expectation in three of six windows, so the index is not yet predictive (Appendix 11).
 
 ## 1. Introduction
 
@@ -247,13 +247,13 @@ Four roadblocks shaped the method. Paid analyst tables were not accessible, so p
 
 ### 6.4 Limitations and next steps
 
-1. One coder assigned every score. Two blind AI codings tested consistency: 62% of score cells matched exactly (quadratic-weighted κ 0.68), and the rebuilt claims gave the same verdict for all ten technologies. Five blind human coders then rated 30 of the 76 claims, including every claim behind the two story-ahead verdicts. Their majority matched the first coder within one level on every claim (κ 0.82) and reproduced all ten verdicts, but each coder read claims more cautiously; under that reading the two story-ahead verdicts mostly soften, though none reverses (Appendix 10).
-2. Claims were read partly through a page-summarising tool; 74 of the 76 claims were then matched verbatim on the live page or an official copy (a filing, the issuer's investor site or newsroom), including every quote behind the two story-ahead verdicts, and none failed; the other two were recorded without a quote, on pages confirmed live.
-3. One date and no back-test on past networking bets: the index cannot yet show whether a gap closes.
+1. One coder assigned every score. Two blind AI codings matched 62% of score cells exactly and gave the same verdict for all ten technologies. Five blind human coders then rated 30 of the 76 claims, covering both story-ahead verdicts. Their majority matched the first coder within one level on every claim (κ 0.82) and reproduced all ten verdicts, but each coder read claims more cautiously; under that reading the two story-ahead verdicts mostly soften, though none reverses (Appendix 10).
+2. Claims were read partly through a page-summarising tool; 74 of the 76 were then matched verbatim on the live page or an official copy, including every quote behind the two story-ahead verdicts, and none failed; the other two were recorded without a quote.
+3. One date. An exploratory back-test on 400G and OpenFlow matched its pre-set expectation in three of six windows and exposed three construct limits: H ignores claim volume, hype and proof shared sources, and a rising substitute is invisible (Appendix 11).
 4. Any pre-production technology shows a positive gap. That marks timing risk, not a flawed technology.
 5. Eight of ten verdicts are directional only.
 6. The outlook rule is uncalibrated, and the scenarios test exposure, not likelihood.
 7. Capital quality is observed at company level and attached to technologies by judgement.
 8. Some sources were read as excerpts, and operator results reached the study partly through second-hand accounts ([[S120,S39]]).
 
-Each finding has a stated falsifier in the evidence audit; for example, a published Ultra Ethernet plugfest result would lift its technical score, and a UALink revenue line in a supplier's filing would lift its capital score. The next steps are a second coder, a frozen corpus of claims, a quarterly panel, and a back-test on earlier networking bets such as 400G, software-defined networking and SmartNICs. That back-test is the condition for calling the index predictive.
+Each finding has a stated falsifier in the evidence audit; for example, a published Ultra Ethernet plugfest result would lift its technical score, and a UALink revenue line in a supplier's filing would lift its capital score. The next steps are a second coder, a frozen corpus of claims, a quarterly panel, and a version 3.2, fixed in advance (Appendix 11), tested on a fresh case such as P4. Passing that test is the condition for calling the index predictive.
