@@ -1,30 +1,6 @@
-## Reader's Guide
-
-The report scores each technology on five evidence parameters, combines three of them into proven value and compares that with what is claimed. The table defines every symbol, and the steps below show how to read a verdict.
-
-| Symbol | Name | Question it answers | Scale |
-| ---------- | ------------ | ------------------------------------ | -------------------- |
-| H | Claimed maturity | How far along do vendors, promoters and analysts say it is | 0 to 4, from dated public claims |
-| T | Technical proof | Has it worked outside the vendor's own demonstration | 0 to 4 |
-| A | Adoption | Who has deployed it, and at what scale | 0 to 4 |
-| E | Buyer economics | Has a buyer shown a gain against a matched baseline | 0 to 4 |
-| Q | Capital quality | How solid is the money behind it | 0 to 4, reported beside the gap and never subtracted |
-| V | Proven value | The mean of T, A and E | 0 to 4 |
-| D | Gap | H minus V, positive when the story leads the proof | −4 to +4 |
-| X | Gates | Power and grid, packaging, memory, lasers and export policy | Constrains or blocks, whatever the scores |
-| Stability | Verdict stability | Share of 20,000 random re-scorings that keep the verdict | 0 to 100% |
-
-**How to read a verdict.**
-
-1. Start with the gap D. At +1.0 or more the story is ahead of the proof, at −1.0 or less the proof is ahead, and in between the technology is broadly aligned.
-2. Check stability. Above about 90% the verdict is firm, and below that it is directional, so treat it as a signal to watch rather than a fact.
-3. Look at which proof score is lowest. That is the evidence a buyer should ask for before committing.
-4. Check the gates. A blocked gate stops a technology whatever its scores.
-5. Read the posture in Table 1, which turns the verdict into an action, from deploy to defer, with the evidence that would move it up.
-
 ## Executive Summary
 
-AI networking is now a first-order investment decision, yet the signals used to judge it disagree. Analysts describe narrative maturity, equity research describes vendor revenue, and engineers describe power, reach and cost per bit. This project builds the Hype-to-Value Divergence Index (HVDI), a tested instrument that scores ten interconnect technologies on what is claimed (H), technically proven (T), adopted (A) and gained by buyers (E), with capital quality (Q) reported alongside. External constraints sit outside the arithmetic as gates that no score can offset. The evidence base is 218 public sources and 76 dated claims as of 11 November 2026. Three takeaways follow.
+AI networking is now a first-order investment decision, yet the signals used to judge it disagree. Analysts describe narrative maturity, equity research describes vendor revenue, and engineers describe power, reach and cost per bit. This project builds the Hype-to-Value Divergence Index (HVDI), a tested instrument that scores ten interconnect technologies on what is claimed (H), technically proven (T), adopted (A) and gained by buyers (E), with capital quality (Q) reported alongside. External constraints sit outside the arithmetic as gates that no score can offset. The evidence base is 218 public sources and 76 dated claims as of 11 November 2026, and a reader's guide to every symbol opens the appendices. Three takeaways follow.
 
 1. **Two stories run ahead of their proof.** NVLink (gap +1.33) and native UALink (+1.00, on the threshold) are story ahead, each holding in about three of five re-scorings. The other eight are broadly aligned, and blind second codings by an AI model and by five human coders reproduced all ten verdicts.
 2. **Buyer economics is the missing proof.** No technology scores above 2 on what buyers have gained, because that evidence sits with buyers, not vendors.
