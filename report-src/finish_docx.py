@@ -82,7 +82,7 @@ def main(src="raw.docx", out="Beyond_the_Hype_Cycle_Report.docx"):
         if name.startswith("Heading"):
             lvl = int(name.split()[-1]) if name.split()[-1].isdigit() else 1
             in_refs = txt == "References"
-            if lvl <= 2 and (not first_h) and txt in ("References", "Appendices", "1. Introduction"):
+            if lvl <= 2 and (not first_h) and txt in ("References", "Appendices", "1. Introduction", "Executive Summary"):
                 p.insert_paragraph_before().add_run().add_break(WD_BREAK.PAGE)
             first_h = False
             for r in p.runs: set_font(r, {1: 14, 2: 14, 3: 13}.get(lvl, 12), bold=True, italic=False, color=BLUE)

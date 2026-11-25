@@ -206,5 +206,45 @@ b = b.replace("AMD's binding 1 GW commitment from Meta comes with a warrant for 
 b = b.replace("Buyers also lean on external funding. Third-quarter capital expenditure was 182% of operating cash flow at Amazon, 122% at Alphabet and 103% at Meta (secondary compilation, [[S32]]).", "Buyers also lean on external funding, with third-quarter capital expenditure above operating cash flow at Amazon, Alphabet and Meta (Figure 6, [[S32]]).")
 b = b.replace(" The inputs are illustrative, not sourced prices. The structural point is that the case for linear optics rests on freed capacity and reliability, not on electricity. All values are vendor-rated, not measured in operation.", " The inputs are illustrative and all values vendor-rated, so the case for linear optics rests on freed capacity and reliability, not on electricity.")
 b = b.replace('**A worked example.** Native UALink is the open alternative to NVLink. Its stage claims place the first switches later in 2026, while a supplier\'s chief executive says only that it will be prepared to intercept that launch ([[S170,S172,S214]]), giving a stage level of 2. Its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren\'t ready" ([[S172,S171]]), so H is 2. Its targets rest on simulation and no switch chip had sampled, so T = 1. No product carries a native switch, so A = 1, and no buyer has reported a benefit, so E = 1. Proven value is 1.00 and the gap is +1.00, exactly on the threshold, so the story is ahead, a verdict kept by 61% of random re-scorings. Capital is venture money (Q = 1) and the last milestone slipped, so the outlook is stalling. No gate is blocked. The posture is to defer until switch silicon samples.', '**A worked example.** Native UALink is the open alternative to NVLink. Stage claims place the first switches later in 2026 and its narrative is mostly sceptical, from "a premature launch" to switches that "simply aren\'t ready" ([[S170,S172,S171,S214]]), so H is 2. Targets rest on simulation (T = 1), no product carries a native switch (A = 1) and no buyer has reported a benefit (E = 1). The gap is therefore +1.00, exactly on the threshold and kept by 61% of re-scorings (Figure 2). With venture capital (Q = 1) and a slipped milestone, the outlook is stalling and the posture is to defer until switch silicon samples.')
+
+# --- sharper executive summary (25 Nov) ---
+_i = b.index("## Executive Summary"); _j = b.index("\n## 1.", _i)
+b = b[:_i] + """## Executive Summary
+
+AI networking is now a first-order investment decision, yet the signals used to judge it disagree. Analysts describe narrative maturity, equity research describes vendor revenue, and engineers describe power, reach and cost per bit. This project builds the Hype-to-Value Divergence Index (HVDI), a tested instrument that scores ten interconnect technologies on what is claimed (H), technically proven (T), adopted (A) and gained by buyers (E), with capital quality (Q) reported alongside. External constraints sit outside the arithmetic as gates that no score can offset. The evidence base is 218 public sources and 76 dated claims as of 11 November 2026. Three takeaways follow.
+
+1. **Two stories run ahead of their proof.** NVLink (gap +1.33) and native UALink (+1.00, on the threshold) are story ahead, each holding in about three of five re-scorings. The other eight are broadly aligned, and blind second codings by an AI model and by five human coders reproduced all ten verdicts.
+2. **Buyer economics is the missing proof.** No technology scores above 2 on what buyers have gained, because that evidence sits with buyers, not vendors.
+3. **Constraints bind outside the stack.** All five gates constrain today and none blocks, although a halt in indium exports would block the four optical technologies.
+
+For planners the index becomes decision rules. Deploy where proof is solid, such as Ethernet scale-out, deploy NVLink while verifying its economics, pilot co-packaged optics and Ultra Ethernet at scale, defer native UALink until switch silicon samples, and write matched-baseline measurement into contracts to buy the missing proof. The index is a decision aid built from one coder's scores at one date. An exploratory back-test on 400G Ethernet and OpenFlow suggested that the gap's direction over time separates success from stall, and identified three refinements toward stronger predictive power (Appendix 11).
+""" + b[_j:]
+
+# --- reader's guide as front matter (25 Nov) ---
+b = b.replace("## Executive Summary", """## Reader's Guide
+
+The report scores each technology on five evidence parameters, combines three of them into proven value and compares that with what is claimed. The table defines every symbol, and the steps below show how to read a verdict.
+
+| Symbol | Name | Question it answers | Scale |
+| ---------- | ------------ | ------------------------------------ | -------------------- |
+| H | Claimed maturity | How far along do vendors, promoters and analysts say it is | 0 to 4, from dated public claims |
+| T | Technical proof | Has it worked outside the vendor's own demonstration | 0 to 4 |
+| A | Adoption | Who has deployed it, and at what scale | 0 to 4 |
+| E | Buyer economics | Has a buyer shown a gain against a matched baseline | 0 to 4 |
+| Q | Capital quality | How solid is the money behind it | 0 to 4, reported beside the gap and never subtracted |
+| V | Proven value | The mean of T, A and E | 0 to 4 |
+| D | Gap | H minus V, positive when the story leads the proof | −4 to +4 |
+| X | Gates | Power and grid, packaging, memory, lasers and export policy | Constrains or blocks, whatever the scores |
+| Stability | Verdict stability | Share of 20,000 random re-scorings that keep the verdict | 0 to 100% |
+
+**How to read a verdict.**
+
+1. Start with the gap D. At +1.0 or more the story is ahead of the proof, at −1.0 or less the proof is ahead, and in between the technology is broadly aligned.
+2. Check stability. Above about 90% the verdict is firm, and below that it is directional, so treat it as a signal to watch rather than a fact.
+3. Look at which proof score is lowest. That is the evidence a buyer should ask for before committing.
+4. Check the gates. A blocked gate stops a technology whatever its scores.
+5. Read the posture in Table 1, which turns the verdict into an action, from deploy to defer, with the evidence that would move it up.
+
+## Executive Summary""", 1)
 (HERE / "body.md").write_text(b, encoding="utf-8")
 print("body.md written")
