@@ -180,7 +180,7 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
 .htile b{display:block;font-size:2rem;line-height:1.1;font-variant-numeric:tabular-nums}.htile span{color:var(--mut);font-size:.84rem}
 .hc>*{max-width:100%;box-sizing:border-box}.htile b{overflow-wrap:break-word}.op{font-size:1.8rem;color:var(--mut)}.pill{display:inline-block;border-radius:999px;padding:8px 16px;font-weight:600;font-size:1.05rem}
 .hline{color:var(--mut);font-size:.88rem;margin-top:10px}
-.howhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.howhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
 .hplay{font:inherit;font-size:.85rem;color:var(--ink);background:transparent;border:1px solid var(--line2);border-radius:999px;padding:6px 14px;cursor:pointer}
 .fwx{margin-top:14px;display:grid;gap:12px}
 .gbar{border:1px dashed var(--hot);border-radius:var(--r);padding:10px 14px;background:linear-gradient(180deg,rgba(232,96,28,.10),rgba(232,96,28,.02));cursor:pointer}
@@ -211,15 +211,36 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
 .fwx.drawn .bell .cv{stroke-dashoffset:0}
 @media (max-width:900px){.fcs{grid-template-columns:1fr 1fr}.fc:last-child{grid-column:1/-1}.fc::after{display:none}.fsub{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.fwx *{transition:none!important;animation:none!important}.bell .cv{stroke-dashoffset:0}}
+.tbar{position:sticky;top:0;z-index:4;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tbar .wrap{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px}
+.tlab{color:var(--mut);font-size:.8rem;white-space:nowrap}
+.tbar .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.tbar .chips::-webkit-scrollbar{display:none}.tbar .chips>*{flex:none}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;max-width:760px}
+.kpis div{border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;background:linear-gradient(180deg,#121312,#070707)}
+.kpis b{display:block;font-size:1.9rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}.kpis b.h{color:var(--hot)}.kpis span{color:var(--mut);font-size:.8rem}
+header{background:radial-gradient(70% 120% at 15% 0%,rgba(232,96,28,.14),transparent 60%)}
+section h2::after{content:"";display:block;width:44px;height:3px;border-radius:2px;margin-top:10px;background:linear-gradient(90deg,var(--hot),rgba(232,96,28,0))}
+.howhead h2::after{display:none}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){.kpis{grid-template-columns:1fr 1fr}.tlab{display:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 </style></head>
 <body>
 <header><div class="wrap">
   <div class="stamp"><i></i><span>Evidence as of <span id="asof"></span>. Provisional scores, project analysis.</span></div>
   <h1>Where the story runs ahead of the proof</h1>
   <p class="lede">Ten AI networking technologies, scored on what is claimed against what is proven. First the framework, then the results.</p>
+  <div class="kpis"><div><b data-to="10">0</b><span>technologies</span></div><div><b data-to="218">0</b><span>public sources</span></div><div><b data-to="76">0</b><span>dated claims</span></div><div><b data-to="2" class="h">0</b><span>stories ahead of proof</span></div></div>
 </div></header>
+<div class="tbar"><div class="wrap"><span class="tlab">Technology</span><div class="chips" id="chips" role="group" aria-label="Technology"></div></div></div>
 <main>
 <section id="how" style="border-top:0;padding-top:0"><div class="wrap">
+  <div class="controls" style="margin-top:0">
+    <div class="ctl"><span>Weigh the evidence</span><div class="seg" id="wseg" role="group" aria-label="Evidence weighting"></div></div>
+    <div class="ctl"><span>Stress test</span><div class="seg" id="sseg" role="group" aria-label="Stress scenario"></div></div>
+    <button class="tour" id="tour" type="button" aria-pressed="false">Play tour</button>
+  </div>
   <div class="howhead"><h2>How the index works</h2><button class="hplay" id="hplay" aria-label="Replay the walkthrough">Replay</button></div>
   <div class="fwx" id="fwx">
     <div class="gbar" data-k="X"><div class="gt"><b>X</b> Gates stand over every score</div><div class="gps">
@@ -240,12 +261,6 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
 
 
 <section><div class="wrap">
-  <div class="chips" id="chips" role="group" aria-label="Technology"></div>
-  <div class="controls">
-    <div class="ctl"><span>Weigh the evidence</span><div class="seg" id="wseg" role="group" aria-label="Evidence weighting"></div></div>
-    <div class="ctl"><span>Stress test</span><div class="seg" id="sseg" role="group" aria-label="Stress scenario"></div></div>
-    <button class="tour" id="tour" type="button" aria-pressed="false">Play tour</button>
-  </div>
   <div class="stage">
     <div class="curvebox"><svg id="svg" viewBox="0 0 1000 530" role="img" aria-label="Ten technologies placed on a hype curve by this study's scores"></svg></div>
   </div>
@@ -579,6 +594,11 @@ $("#asof").textContent=new Date(DATA.asof+"T00:00:00").toLocaleDateString("en-GB
 const used=new Set();DATA.cats.forEach(c=>{"HTAQE".split("").forEach(k=>c.scores[k].src.forEach(s=>used.add(s)));c.milestone.src.forEach(s=>used.add(s))});Object.values(DATA.gates).forEach(g=>g.src.forEach(s=>used.add(s)));DATA.actors.forEach(a=>used.add(a.src));DATA.energy.forEach(e=>used.add(e.src));
 [...used].sort((a,b)=>parseInt(a.slice(1))-parseInt(b.slice(1))).forEach(sid=>{const s=DATA.sources[sid],li=el("li");const a=el("a",null,s.t);a.href=s.u;a.target="_blank";a.rel="noopener";li.append(document.createTextNode(sid+"  "),a);$("#src").append(li)});
 render();drawActors();drawEnergy();drawBE();drawLV();playFW();
+/* polish: hero counters and section reveal */
+document.querySelectorAll(".kpis b").forEach(b=>{const to=+b.dataset.to,t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1200);b.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll("main section:not(#how)").forEach(x=>{x.classList.add("reveal");io.observe(x)})}
+
 </script>
 </body>
 </html>
