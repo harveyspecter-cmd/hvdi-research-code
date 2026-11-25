@@ -121,6 +121,7 @@ tr.sel td{background:#121312}
 .src li{margin:0 0 6px;color:var(--mut);font-size:.88rem}
 .src{padding-left:0;list-style:none;columns:2;column-gap:36px}
 footer{padding:36px 0 64px;color:var(--dim);font-size:.86rem;border-top:1px solid var(--line)}
+@media (max-width:900px){#gates th:first-child,#gates td:first-child{position:sticky;left:0;background:var(--bg);z-index:1}.panel svg{overflow:visible;max-width:78%;margin:0 auto;display:block}#gates{min-width:640px}.gatehint{display:block!important}}
 @media (max-width:900px){.curvebox{overflow-x:auto}.curvebox::after{content:"Swipe sideways to see the whole curve";display:block;position:sticky;left:0;width:max-content;color:var(--mut);font-size:.84rem;padding:4px 8px 6px}.curvebox svg{min-width:760px}.stage,.two,.be,.card{grid-template-columns:1fr}.leg{grid-template-columns:1fr}.rowhead,.row,.scale{grid-template-columns:130px 1fr 52px}.rowhead div:nth-child(4),.row>:nth-child(4),.scale div:nth-child(4){display:none}.erow{grid-template-columns:140px 1fr 76px}.src{columns:1}header{padding-top:44px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @keyframes draw{from{stroke-dashoffset:3200}to{stroke-dashoffset:0}}
@@ -194,8 +195,8 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
 
 <section><div class="wrap">
   <h2>What could stop it</h2>
-  <div style="overflow-x:auto;margin-top:14px"><table id="gates"></table></div>
-  <div class="legend"><span><span class="gl"></span> Slowing it</span><span><span class="gl s2"></span> Blocked</span><span><span class="gl sx"></span> Not exposed</span><span>Hover a column for the evidence. Change the stress test above.</span></div>
+  <p class="note gatehint" style="display:none;margin:10px 0 0">Swipe sideways to see every gate.</p><div style="overflow-x:auto;margin-top:14px"><table id="gates"></table></div>
+  <div class="legend"><span><span class="gl"></span> Slowing it</span><span><span class="gl s2"></span> Blocked</span><span><span class="gl sx"></span> Not exposed</span><span>Hover or tap a cell for the evidence. Change the stress test above.</span></div>
 </div></section>
 
 <section><div class="wrap">
@@ -264,8 +265,11 @@ const colorOf=c=>{const b=c.byw[S.w];return b.D<0&&b.cls==="aligned"?"var(--cool
 function curveY(s){return 0.95*Math.exp(-Math.pow((s-0.235)/0.085,2))+0.56/(1+Math.exp(-(s-0.63)/0.07))}
 const X=s=>50+s*900, Y=s=>390-curveY(s)*285;
 function seg(node,opts,cur,on){node.replaceChildren();opts.forEach(([v,t])=>{const b=el("button",null,t);b.type="button";b.setAttribute("aria-pressed",v===cur);b.onclick=()=>on(v);node.append(b)})}
-function tip(e,title,body){const t=$("#tip");t.replaceChildren(el("b",null,title),el("span",null,body));t.style.opacity=1;const x=Math.min(e.clientX+14,innerWidth-300),y=e.clientY+16;t.style.left=x+"px";t.style.top=y+"px"}
-function untip(){$("#tip").style.opacity=0}
+function tip(e,title,body){const t=$("#tip");t.replaceChildren(el("b",null,title),el("span",null,body));t.style.opacity=1;const r=t.getBoundingClientRect(),x=Math.max(8,Math.min(e.clientX+14,innerWidth-r.width-8)),y=(e.clientY+16+r.height>innerHeight-8)?Math.max(8,e.clientY-r.height-12):e.clientY+16;t.style.left=x+"px";t.style.top=y+"px";tipY=scrollY}
+/* touch: a tap shows the same tooltip a mouse hover shows; tapping elsewhere or scrolling hides it */
+document.addEventListener("pointerup",e=>{if(e.pointerType==="mouse")return;let n=e.target;while(n&&n!==document){if(n.onpointermove){n.onpointermove(e);return}n=n.parentNode}untip()},{passive:true});
+let tipY=0;addEventListener("scroll",()=>{if(Math.abs(scrollY-tipY)>150)untip()},{passive:true});
+function untip(e){if(e&&e.pointerType&&e.pointerType!=="mouse")return;$("#tip").style.opacity=0}
 
 function drawCurve(){
   const svg=$("#svg");svg.replaceChildren();
