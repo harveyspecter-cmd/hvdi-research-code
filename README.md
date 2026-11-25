@@ -34,6 +34,14 @@ outside the arithmetic as gates. Evidence is as of 11 November 2026, audited on 
 | `report-src/` | Report text (`body.md`, `appendix.md`), figures (including the framework diagram, `make_framework_fig.py`) and the scripts that build the Word file. |
 | `deck-src/` | Slide source (`build.js`). |
 
+
+## Report and presentation
+
+- Report (PDF): https://harveyspecter-cmd.github.io/hvdi-research/artefacts/Beyond_the_Hype_Cycle_Report.pdf
+- Presentation: https://harveyspecter-cmd.github.io/hvdi-research/artefacts/Beyond_the_Hype_Cycle_Deck.pptx
+- Presentation, print version: https://harveyspecter-cmd.github.io/hvdi-research/artefacts/Beyond_the_Hype_Cycle_Deck_Print.pptx
+- Interactive page: https://harveyspecter-cmd.github.io/hvdi-research/
+
 ## 2. Requirements
 
 - Python 3.9 or later. The engine itself needs nothing else.

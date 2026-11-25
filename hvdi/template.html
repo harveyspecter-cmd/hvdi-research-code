@@ -164,12 +164,29 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
 .split{height:12px;border-radius:6px;overflow:hidden;display:flex;margin:12px 0 6px;background:#0f100f}
 .split span:first-child{background:var(--mid)}.split span:last-child{background:var(--cool)}
 @media (max-width:900px){.panel,.mgrid{grid-template-columns:1fr}.panel>div{border-left:0;border-top:1px solid var(--line)}.panel>div:first-child{border-top:0}}
+.lede a{color:var(--ink);text-underline-offset:3px}
+.hstep{font:inherit;color:var(--ink);text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.hstep span{color:var(--mut);font-size:.84rem;line-height:1.35}.hstep b{font-size:.95rem}
+.hstep i{font-style:normal;color:var(--hot);font-size:.78rem;letter-spacing:.02em}
+.hstep[aria-pressed=true]{border-color:var(--hot);box-shadow:inset 0 0 0 1px var(--hot)}
+.hgate{width:100%;margin-top:18px;border-style:dashed}
+.how{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px;position:relative}
+.howcard{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-top:12px;line-height:1.5}
+.howcard h3{margin:0 0 6px;font-size:1.05rem}.howcard p{margin:6px 0;color:var(--ink)}
+.howcard .eq{font-variant-numeric:tabular-nums;font-size:1.15rem;margin:10px 0;padding:10px 14px;border-radius:10px;background:var(--panel);display:table;white-space:pre-line;line-height:1.6}.howcard small{display:block;margin-top:6px}
+.howcard .sc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.howcard .sc span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.88rem}
+.howcard .sc span b{margin-right:6px}.howcard small{color:var(--mut)}
+.art{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.art a{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);color:var(--ink);text-decoration:none;background:var(--panel)}
+.art a:hover,.art a:focus-visible{border-color:var(--hot)}.art a span{color:var(--mut);font-size:.86rem;line-height:1.4}
+@media (max-width:900px){.how{grid-template-columns:1fr 1fr}.art{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.art{grid-template-columns:1fr}}
 </style></head>
 <body>
 <header><div class="wrap">
   <div class="stamp"><i></i><span>Evidence as of <span id="asof"></span>. Provisional scores, project analysis.</span></div>
   <h1>Where the story runs ahead of the proof</h1>
-  <p class="lede">Ten AI networking technologies. Pick one.</p>
+  <p class="lede">Ten AI networking technologies, scored on what is claimed against what is proven. Pick one, or <a href="#how">see how the index works</a>.</p>
 </div></header>
 <main>
 <section style="border-top:0;padding-top:0"><div class="wrap">
@@ -185,6 +202,14 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
   <p class="note" id="snote" style="margin-top:10px"></p>
   <div class="panel" id="panel" aria-live="polite"></div>
   <div class="ev" id="ev"></div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>How the index works</h2>
+  <p class="lede" style="max-width:62ch">The Hype-to-Value Divergence Index asks one question of each technology. Is the story ahead of the proof? It answers from dated public evidence in five steps, with five outside constraints standing over all of them. Click a step to see it worked through for the technology you picked.</p>
+  <button class="hstep hgate" data-k="X"><b>Gates</b><span>Power, packaging, memory, lasers, export policy. A blocked gate overrides every score.</span></button>
+  <div class="how" role="group" aria-label="Framework steps"></div>
+  <div class="howcard" id="howcard" aria-live="polite"></div>
 </div></section>
 
 <section><div class="wrap">
@@ -245,6 +270,16 @@ details p{color:var(--mut);font-size:.95rem;margin:0;max-width:none}
     <p>Several operator results came through second-hand reports. Scenarios test exposure and predict nothing. Not investment advice.</p></div></details>
   <details><summary>Sources</summary><ul class="src" id="src" style="margin-top:12px"></ul></details>
 </div></section>
+<section id="work"><div class="wrap">
+  <h2>Read the full work</h2>
+  <div class="art">
+    <a href="artefacts/Beyond_the_Hype_Cycle_Report.pdf" target="_blank" rel="noopener"><b>Report</b><span>PDF, 42 pages. Method, findings, decision rules and eleven appendices.</span></a>
+    <a href="artefacts/Beyond_the_Hype_Cycle_Deck.pptx"><b>Presentation</b><span>PowerPoint, 12 slides, dark version with click-to-reveal builds.</span></a>
+    <a href="artefacts/Beyond_the_Hype_Cycle_Deck_Print.pptx"><b>Presentation, print</b><span>PowerPoint, 12 slides, light version for printing.</span></a>
+    <a href="https://github.com/harveyspecter-cmd/hvdi-research-code" target="_blank" rel="noopener"><b>Code and data</b><span>Scoring engine, dataset, 64 tests and the source ledger.</span></a>
+  </div>
+</div></section>
+
 </main>
 <footer><div class="wrap">Beyond the Hype Cycle. Sushant Gaurav, IIMA BPGP 2025-27 Live Project.</div></footer>
 <div id="tip" role="tooltip"></div>
@@ -425,7 +460,43 @@ function stopTour(){if(tourT){clearInterval(tourT);tourT=null;$("#tour").setAttr
 function step(d){const i=DATA.cats.findIndex(c=>c.id===S.cat);pick(DATA.cats[(i+d+DATA.cats.length)%DATA.cats.length].id,true)}
 $("#tour").onclick=()=>{if(tourT){stopTour();return}$("#tour").setAttribute("aria-pressed","true");$("#tour").textContent="Stop tour";tourT=setInterval(()=>step(1),2400)};
 addEventListener("keydown",e=>{if(e.key==="ArrowRight"){stopTour();step(1)}if(e.key==="ArrowLeft"){stopTour();step(-1)}});
-function render(){drawChips();drawCurve();drawPanel();drawEv();drawRows();drawGates()}
+
+const HOW=[["E","1 · Evidence","Graded by who holds it"],["S","2 · Scores","Claimed against proven"],["D","3 · Gap","Claimed minus proven"],["V","4 · Verdict","Ahead, aligned or behind"],["P","5 · Posture","What a buyer should do"]];
+let HK="D";
+function posture(c,b){const T=c.scores.T.v,A=c.scores.A.v,st=c.bysc[S.sc].proj;
+  if(b.cls==="ahead"){if(T>=3&&A>=3)return["Deploy, verify the economics","Matched-baseline economics and exit terms against lock-in"];
+    if(st==="stalling")return["Defer","Switch silicon sampled, then multi-vendor interoperability"];return["Hold an option","A dated milestone that triggers the option or releases it"]}
+  if(c.id==="dpu")return["Prove the baseline","A host-only comparison on the buyer's own workload"];
+  if(T>=3&&A>=3)return["Deploy","Supply assurance, with matched-baseline economics in the contract"];
+  return["Pilot at scale","Reliability or interoperability data for the generation being bought, plus a fallback path"]}
+function drawHow(){
+  const box=$(".how");box.replaceChildren();
+  HOW.forEach(([k,t,d])=>{const b=el("button","hstep");b.append(el("b",null,t),el("span",null,d));b.setAttribute("aria-pressed",HK===k);b.onclick=()=>{HK=k;drawHow()};box.append(b)});
+  const g=$(".hgate");g.setAttribute("aria-pressed",HK==="X");g.onclick=()=>{HK="X";drawHow()};
+  const c=cat(S.cat),b=c.byw[S.w],sc=c.scores,card=$("#howcard");card.replaceChildren();
+  const P=(t)=>{const p=el("p");p.textContent=t;return p};
+  const fmtv=v=>(v>0?"+":"")+v.toFixed(2);
+  if(HK==="E"){const ids=new Set();"HTAQE".split("").forEach(k=>sc[k].src.forEach(x=>ids.add(x)));
+    card.append(el("h3",null,"Evidence for "+c.name),
+      P("Every score rests on dated public evidence, graded by who holds it. Buyers, independent trackers and filings rank above vendor statements, and a score of 3 or more needs one of them. Vendor marketing alone stops at 2."),
+      P(c.name+" rests on "+ids.size+" sources. Its claimed maturity comes from "+c.hclaims.n_stage+" stage claims and "+c.hclaims.n_narr+" narrative claims, each dated and quoted."),
+      el("small",null,"Click any score in the card above to see the evidence and sources behind it."))}
+  if(HK==="S"){const sp=el("div","sc");[["H","Claimed"],["T","Technical proof"],["A","Adoption"],["E","Buyer economics"],["Q","Capital quality"]].forEach(([k,n])=>{const x=el("span");x.append(el("b",null,k+" "+sc[k].v),document.createTextNode(n));sp.append(x)});
+    card.append(el("h3",null,"Five scores, each 0 to 4"),P("H is what vendors, promoters and analysts claim. T, A and E are the proof, from technical results, real deployments and buyer-reported gains. Q, the quality of the money behind it, is shown beside the gap and never subtracted."),sp,
+      el("small",null,"Each level has a written rubric, so two people scoring the same evidence should land on the same number."))}
+  if(HK==="D"){const eq=el("div","eq");eq.textContent=S.w==="equal"?`V = (T ${sc.T.v} + A ${sc.A.v} + E ${sc.E.v}) ÷ 3 = ${b.V.toFixed(2)}\nD = H ${sc.H.v} − V ${b.V.toFixed(2)} = ${fmtv(b.D)}`:`V = weighted mean of T, A, E = ${b.V.toFixed(2)}\nD = H ${sc.H.v} − ${b.V.toFixed(2)} = ${fmtv(b.D)}`;
+    card.append(el("h3",null,"The gap"),P("Proven value V is the mean of the three proof scores. The gap D is what is claimed minus what is proven, so a positive gap means the story is ahead."),eq,
+      el("small",null,"Change the weighting above to lean on technical proof, adoption or economics, and watch the gap move."))}
+  if(HK==="V"){card.append(el("h3",null,c.name+" · "+CLS[b.cls].t),P("A gap of +1.0 or more is story ahead of proof, −1.0 or less is proof ahead of story, and anything between is broadly aligned."),
+      P(`Re-scored 20,000 times with the claims and scores resampled, this verdict holds in ${Math.round(c.stability*100)}% of draws, and 90% of gaps fall between ${fmtv(c.d05)} and ${fmtv(c.d95)}. Above about 90% a verdict is firm; below that it is a signal to watch.`))}
+  if(HK==="P"){const [pt,need]=posture(c,b);card.append(el("h3",null,"Posture · "+pt),P("The verdict, the proof scores and the outlook combine into a decision rule a planner can act on, from deploy to defer."),P("To move "+c.name+" up, ask for this. "+need+"."),
+      el("small",null,"The outlook comes from dated milestones, punctuality, capital and gates, and is not yet calibrated."))}
+  if(HK==="X"){const gs=c.bysc[S.sc].gates,GN={power:"Power and grid",packaging:"Packaging",memory:"Memory",lasers:"Lasers",policy:"Export policy"},ST=["open","constraining","blocked"];
+    const sp=el("div","sc");Object.keys(gs).forEach(k=>{const x=el("span");x.append(el("b",null,GN[k]||k),document.createTextNode(gs[k]==null?"not exposed":(ST[gs[k]]||"constraining")));sp.append(x)});
+    card.append(el("h3",null,"Gates stand over the scores"),P("Five constraints sit outside the technology itself. No score can outvote them, so a blocked gate stops a technology however strong its proof."),sp,
+      el("small",null,"Switch the stress test above, for example to an indium export halt, and watch the optical technologies become blocked."))}
+}
+function render(){drawChips();drawCurve();drawPanel();drawEv();drawRows();drawGates();drawHow()}
 $("#asof").textContent=new Date(DATA.asof+"T00:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
 const used=new Set();DATA.cats.forEach(c=>{"HTAQE".split("").forEach(k=>c.scores[k].src.forEach(s=>used.add(s)));c.milestone.src.forEach(s=>used.add(s))});Object.values(DATA.gates).forEach(g=>g.src.forEach(s=>used.add(s)));DATA.actors.forEach(a=>used.add(a.src));DATA.energy.forEach(e=>used.add(e.src));
 [...used].sort((a,b)=>parseInt(a.slice(1))-parseInt(b.slice(1))).forEach(sid=>{const s=DATA.sources[sid],li=el("li");const a=el("a",null,s.t);a.href=s.u;a.target="_blank";a.rel="noopener";li.append(document.createTextNode(sid+"  "),a);$("#src").append(li)});
